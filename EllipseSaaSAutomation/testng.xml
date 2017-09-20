@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Axis P2P Automation" parallel="true">
+     <suite-files>
+        <suite-file path="src/com/abb/ventyx/axis/support/testng_AxisSupport_CustomerUserGroup.xml" />
+        <suite-file path="src/com/abb/ventyx/axis/support/testng_DocumentTypes.xml" />
+        <suite-file path="src/com/abb/ventyx/axis/support/testng_Permissions.xml" />
+        <suite-file path="src/com/abb/ventyx/axis/support/testng_Support_CodeSetType.xml" />
+    </suite-files>
+</suite>
