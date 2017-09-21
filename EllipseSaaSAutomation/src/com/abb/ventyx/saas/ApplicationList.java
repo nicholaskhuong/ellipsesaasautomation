@@ -8,7 +8,7 @@ import com.abb.ventyx.utilities.BaseTestCase;
 import com.abb.ventyx.utilities.Credentials;
 
 @ALM(id = "1")
-@Credentials(user = "HREMP", password = "test", district = "R100", position = "HRMAN")
+@Credentials(user = "SPR002", password = "", district = "R100", position = "HRMAN")
 public class ApplicationList extends BaseTestCase {
 	@Test(description = "Access to Leave Request Application")
 	public void checkApplicationInList() {
