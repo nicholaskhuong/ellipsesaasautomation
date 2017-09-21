@@ -16,12 +16,6 @@
         <pathelement location="bin"/>
         <path refid="TestNG.libraryclasspath"/>
         <pathelement location="Lib/cglib-nodep-3.2.4.jar"/>
-        <pathelement location="Lib/client-combined-3.0.1-nodeps.jar"/>
-        <pathelement location="Lib/commons-codec-1.10.jar"/>
-        <pathelement location="Lib/commons-exec-1.3.jar"/>
-        <pathelement location="Lib/commons-io-2.5.jar"/>
-        <pathelement location="Lib/commons-lang3-3.4.jar"/>
-        <pathelement location="Lib/commons-logging-1.2.jar"/>
         <pathelement location="Lib/cssparser-0.9.20.jar"/>
         <pathelement location="Lib/dom4j.jar"/>
         <pathelement location="Lib/gson-2.3.1.jar"/>
@@ -74,6 +68,7 @@
         <pathelement location="Lib/ant-contrib-1.0b3.jar"/>
         <pathelement location="Lib/opencsv-1.8.jar"/>
         <pathelement location="Lib/jxl-2.6.12.jar"/>
+        <pathelement location="Lib/selenium-server-standalone-3.5.3.jar"/>
     </path>
     <target name="init">
         <mkdir dir="bin"/>
