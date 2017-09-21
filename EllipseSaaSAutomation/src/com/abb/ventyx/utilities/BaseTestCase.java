@@ -22,6 +22,7 @@ import jxl.read.biff.BiffException;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.logging.impl.Log4JLogger;
 import org.apache.log4j.xml.DOMConfigurator;
+import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.UnsupportedCommandException;
@@ -115,6 +116,15 @@ public class BaseTestCase {
 		}
 	}
 
+	public void loginToApplication(String applicationName) {
+		driver.findElement(
+				By.cssSelector(String
+						.format("#%s_%s__%s_ > a > span", applicationName, getEllipse_Version().substring(0, getEllipse_Version().indexOf(" "))
+								.trim(), getEllipse_Version().substring(getEllipse_Version().indexOf(" ") + 1, getEllipse_Version().length()).trim()
+								.replace(".", "_")))).click();
+		login();
+	}
+
 	public void login() {
 		LoginPage loginpage = new LoginPage(driver);
 		loginpage.login(getCurrentCredentials().getUsername(), getCurrentCredentials().getPassword(), getCurrentCredentials().getDistrict(),
@@ -192,6 +202,10 @@ public class BaseTestCase {
 			}
 		}
 		return ALMid;
+	}
+
+	public String getEllipse_Version() {
+		return getProperty(TEST_ELLIPSE_VERSION);
 	}
 
 	public String getServerURL() {
