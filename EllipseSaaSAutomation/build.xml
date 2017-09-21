@@ -140,6 +140,11 @@
             <jvmarg value="-Dtest.browser=${test.browser}" />
             <jvmarg value="-Dtest.username=${test.username}" />
             <jvmarg value="-Dtest.password=${test.password}" />
+            <jvmarg value="-Dtest.district=${test.district}" />
+            <jvmarg value="-Dtest.position=${test.position}" />
+            <jvmarg value="-Dtest.email=${test.email}" />
+            <jvmarg value="-Dtest.verify.code=${test.verify.code}" />
+            <jvmarg value="-Dtest.ellipse.version=${test.ellipse.version}" />
             <jvmarg value="-Dtest.server.url=${test.server.url}" />
             <jvmarg value="-Dtest.selenium.port=${test.selenium.port}" />
             <jvmarg value="-Dtest.selenium.server=${test.selenium.server}" />

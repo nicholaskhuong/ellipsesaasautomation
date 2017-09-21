@@ -3,7 +3,7 @@
     <property name="test.set" value="${test.set}" />
 	<property name="newreport.dir" value="report" />
     <property name="report.tmp" value="${report.dir}/tmp" />
-    <property name="dashboard.dir" value="src/com/abb/ventyx/axis/dashboard/" />
+    <property name="saas.dir" value="src/com/abb/ventyx/saas/" />
     <property name="customer.dir" value="src/com/abb/ventyx/axis/customer/" />
     <property name="supplier" value="src/com/abb/ventyx/axis/supplier" />
     <property name="support" value="src/com/abb/ventyx/axis/support" />
@@ -22,9 +22,9 @@
             </fileset>
         </sort>
     </path>    
-    <path id="dashboard.source.path">
+    <path id="saas.source.path">
         <sort>
-            <fileset dir="${dashboard.dir}">
+            <fileset dir="${saas.dir}">
                 <include name="**/testng_*.xml" />                                
             </fileset>
         </sort>
@@ -51,10 +51,10 @@
         </sort>
     </path>   
 	<switch value="${test.set}">
-		<case value="dashboard">
-			<property name="src.dir" value="${dashboard.dir}" />
+		<case value="saas">
+			<property name="src.dir" value="${saas.dir}" />
 			<path id="test.set.source.path">
-				<path refid="dashboard.source.path" />
+				<path refid="saas.source.path" />
 			</path>
 		</case>
 		<case value="support">
@@ -89,12 +89,12 @@
 	
     <target name="test.parallel">    
         <!-- check test.set has a valid value -->
-        <assert message="Unrecognized value (${test.set}) for 'test.set'. Must be one of: all, other, dashboard, supplier, customer.">
+        <assert message="Unrecognized value (${test.set}) for 'test.set'. Must be one of: all, other, saas, supplier, customer.">
             <bool>
                 <or>
                     <equals arg1="${test.set}" arg2="other" />
                     <equals arg1="${test.set}" arg2="all" />
-                    <equals arg1="${test.set}" arg2="dashboard" />
+                    <equals arg1="${test.set}" arg2="saas" />
                     <equals arg1="${test.set}" arg2="supplier" />
                     <equals arg1="${test.set}" arg2="customer" />
                 </or>
@@ -158,6 +158,11 @@
             <jvmarg value="-Dtest.browser=${test.browser}" />
             <jvmarg value="-Dtest.username=${test.username}" />
             <jvmarg value="-Dtest.password=${test.password}" />
+            <jvmarg value="-Dtest.district=${test.district}" />
+            <jvmarg value="-Dtest.position=${test.position}" />
+            <jvmarg value="-Dtest.email=${test.email}" />
+            <jvmarg value="-Dtest.verify.code=${test.verify.code}" />
+            <jvmarg value="-Dtest.ellipse.version=${test.ellipse.version}" />
             <jvmarg value="-Dtest.server.url=${test.server.url}" />
             <jvmarg value="-Dtest.selenium.port=${test.selenium.port}" />
             <jvmarg value="-Dtest.selenium.server=${test.selenium.server}" />
