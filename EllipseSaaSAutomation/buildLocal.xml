@@ -3,16 +3,16 @@
               Any modifications will be overwritten.
               To include a user specific buildfile here, simply create one in the same
               directory with the processing instruction <?eclipse.ant.import?>
-              as the first entry and export the buildfile again. --><project basedir="." default="build" name="AxisP2PAutomation">
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="SaaSAutomation">
     <property environment="env"/>
-    <property name="ECLIPSE_HOME" value="../../Selenium/eclipse-standard-kepler-SR2-win32-x86_64/eclipse"/>
+    <property name="ECLIPSE_HOME" value="../../../Fox/Selenium/eclipse-standard-kepler-SR2-win32-x86_64/eclipse"/>
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.7"/>
     <property name="source" value="1.7"/>
     <path id="TestNG.libraryclasspath">
         <pathelement location="${ECLIPSE_HOME}/plugins/org.testng.eclipse_6.7.0.20120825_1316/lib/testng.jar"/>
     </path>
-    <path id="AxisP2PAutomation.classpath">
+    <path id="SaaSAutomation.classpath">
         <pathelement location="bin"/>
         <path refid="TestNG.libraryclasspath"/>
         <pathelement location="Lib/cglib-nodep-3.2.4.jar"/>
@@ -67,11 +67,19 @@
         <pathelement location="Lib/xmlbeans-5.3.0-rc1.jar"/>
         <pathelement location="Lib/selendroid-standalone-0.11.0-with-dependencies.jar"/>
         <pathelement location="Lib/selendroid-standalone-0.17.0-with-dependencies.jar"/>
+        <pathelement location="Lib/spring-core-4.2.2.jar"/>
+        <pathelement location="Lib/testng-result-parser.jar"/>
+        <pathelement location="Lib/testng.jar"/>
+        <pathelement location="Lib/ventyx-testng-core.jar"/>
+        <pathelement location="Lib/ant-contrib-1.0b3.jar"/>
+        <pathelement location="Lib/opencsv-1.8.jar"/>
+        <pathelement location="Lib/jxl-2.6.12.jar"/>
     </path>
     <target name="init">
         <mkdir dir="bin"/>
         <copy includeemptydirs="false" todir="bin">
             <fileset dir="src">
+                <exclude name="**/*.launch"/>
                 <exclude name="**/*.java"/>
                 <exclude name="com/abb/ventyx/saas/TestAppium.java"/>
             </fileset>
@@ -88,7 +96,7 @@
         <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
             <src path="src"/>
             <exclude name="com/abb/ventyx/saas/TestAppium.java"/>
-            <classpath refid="AxisP2PAutomation.classpath"/>
+            <classpath refid="SaaSAutomation.classpath"/>
         </javac>
     </target>
     <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>

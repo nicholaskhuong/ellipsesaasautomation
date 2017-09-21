@@ -1,4 +1,4 @@
-<project name="AxisP2PAutomation" basedir="." default="help" xmlns:ivy="antlib:org.apache.ivy.ant">
+<project name="SaaSAutomation" basedir="." default="help" xmlns:ivy="antlib:org.apache.ivy.ant">
     <taskdef resource="net/sf/antcontrib/antlib.xml" >
 	  <classpath>
 	    <pathelement location="Lib/ant-contrib-1.0b3.jar"/>
@@ -15,7 +15,7 @@
     <property name="test.server.url" value="" />
     <property name="test.selenium.grid" value="true" />
     <property name="report.dir" value="test-output" />
-	<path id="AxisP2PAutomation.classpath">
+	<path id="SaaSAutomation.classpath">
 		<pathelement location="bin"/>
 		        <path refid="TestNG.libraryclasspath"/>
 		        <pathelement location="Lib/cglib-nodep-3.2.4.jar"/>
@@ -74,6 +74,9 @@
 		        <pathelement location="Lib/testng-result-parser.jar"/>
 		        <pathelement location="Lib/testng.jar"/>
 		        <pathelement location="Lib/ventyx-testng-core.jar"/>
+		        <pathelement location="Lib/ant-contrib-1.0b3.jar"/>
+		        <pathelement location="Lib/opencsv-1.8.jar"/>
+		        <pathelement location="Lib/jxl-2.6.12.jar"/>
 	    </path>
     <!-- end of should be overwritten -->
     <target name="help">
