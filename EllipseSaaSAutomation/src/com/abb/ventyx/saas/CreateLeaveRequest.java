@@ -8,13 +8,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 
+import com.abb.ventyx.saas.objects.pagedefinitions.ApplicationName;
 import com.abb.ventyx.utilities.BaseTestCase;
 
 public class CreateLeaveRequest extends BaseTestCase {
 
 	@Test(description = "User be able to sign in to SaaS system with a corrected email")
 	public void CreateLeaveRequest() throws InterruptedException {
-
+		loginToApplication(ApplicationName.LEAVE_REQUEST);
 		driver.findElement(By.cssSelector("#searchLeaveRequest > span.v-button-wrap > span.v-button-caption")).click();
 		WebElement newLeaveRequest = driver.findElement(By.id("New Leave Request"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", newLeaveRequest);
