@@ -20,7 +20,7 @@ public class ScreenAction {
 		(new WebDriverWait(driver, 90)).until(ExpectedConditions.invisibilityOfElementLocated(obj));
 	}
 
-	public void waitObjVisible(By obj) {
+	public static void waitObjVisible(WebDriver driver, By obj) {
 		(new WebDriverWait(driver, 20)).until(ExpectedConditions.presenceOfElementLocated(obj));
 	}
 
