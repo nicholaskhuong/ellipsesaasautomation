@@ -1,4 +1,4 @@
-package com.abb.ventyx.saas.RequestLeave;
+package com.abb.ventyx.saas.requestleave;
 
 import java.util.List;
 
