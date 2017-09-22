@@ -8,7 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.abb.ventyx.saas.objects.pagedefinitions.ApplicationName;
-import com.abb.ventyx.saas.objects.pagedefinitions.LoginPageDefinition;
+import com.abb.ventyx.saas.objects.pagedefinitions.LeaveBalancePageDefinition;
 import com.abb.ventyx.utilities.ALM;
 import com.abb.ventyx.utilities.BaseTestCase;
 import com.abb.ventyx.utilities.Credentials;
@@ -61,9 +61,9 @@ public class ReviewLeaveRequest_Step1 extends BaseTestCase {
 	
 	@Test(groups="LeaveRquestDetails", description = "Select SHOW ALL REQUESTS button", dependsOnGroups="LeaveBalanceSummary")
 	public void selectSHOWALLREQUESTSOnLeaveBalancePageT() {
-		Assert.assertEquals(driver.findElement(By.id(LoginPageDefinition.SHOW_ALL_REQUESTS_BUTTON_ID)).getText(), "SHOW ALL REQUESTS");
-		Assert.assertTrue(driver.findElement(By.id(LoginPageDefinition.SHOW_ALL_REQUESTS_BUTTON_ID)).isEnabled());
-		driver.findElement(By.id(LoginPageDefinition.SHOW_ALL_REQUESTS_BUTTON_ID)).click();
+		Assert.assertEquals(driver.findElement(By.id(LeaveBalancePageDefinition.SHOW_ALL_REQUESTS_BUTTON_ID)).getText(), "SHOW ALL REQUESTS");
+		Assert.assertTrue(driver.findElement(By.id(LeaveBalancePageDefinition.SHOW_ALL_REQUESTS_BUTTON_ID)).isEnabled());
+		driver.findElement(By.id(LeaveBalancePageDefinition.SHOW_ALL_REQUESTS_BUTTON_ID)).click();
 		ScreenAction.waitObjVisible(driver, By.id("leaveStartDate"));
 		//Assert.assertEquals(driver.findElement(By.xpath("//*[@id='saas-3522304']/div/div[2]/div/div[2]/div/div[1]/div[1]/span")).getText(), "Leave Requests");//Still error
 		
