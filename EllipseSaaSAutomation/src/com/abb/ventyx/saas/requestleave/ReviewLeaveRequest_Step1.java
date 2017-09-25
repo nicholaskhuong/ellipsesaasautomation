@@ -27,7 +27,7 @@ public class ReviewLeaveRequest_Step1 extends BaseTestCase {
 		Assert.assertEquals(driver.findElement(By.xpath("//div[@id='fgLeaveBalanceList']/div/div/div")).getText(), "Forecast Date");
 	}
 
-	@Test(groups="LeaveBalanceSummary",description = "Assert Days and Hours for Leave Balance Summay screen", dependsOnMethods="accessLeaveRequest")
+	@Test(description = "Assert Days and Hours for Leave Balance Summay screen", dependsOnMethods="accessRequestLeave")
 	public void assertAnnualVacationLeaveOnLeaveBalancePage() {
 		List<WebElement> leaveBalanceDays = driver.findElements(By.id("leaveBalanceDays"));
 		List<WebElement> leaveBalanceHours = driver.findElements(By.id("leaveBalanceHours"));
