@@ -4,10 +4,7 @@
   	<test name="Review Leave Request Step 1">
 		<classes>
 				<class name="com.abb.ventyx.saas.requestleave.ReviewLeaveRequest_Step1" />
-		</classes>
-  	</test> <!-- Test -->
-  	<test name="Review Leave Request Step 3">
-		<classes>
+		
 				<class name="com.abb.ventyx.saas.requestleave.ReviewLeaveRequest_Step3" />
 		</classes>
   	</test> <!-- Test -->
