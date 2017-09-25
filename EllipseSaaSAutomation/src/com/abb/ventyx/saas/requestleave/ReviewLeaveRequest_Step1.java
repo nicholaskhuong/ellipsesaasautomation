@@ -26,7 +26,8 @@ public class ReviewLeaveRequest_Step1 extends BaseTestCase {
 		Assert.assertEquals(driver.findElement(By.xpath("//*[@id='saas-3522304']/div/div[2]/div/div[1]/div/div[1]/div[1]/span")).getText(), "Leave Balance");
 		Assert.assertEquals(driver.findElement(By.xpath("//div[@id='fgLeaveBalanceList']/div/div/div")).getText(), "Forecast Date");
 	}
-	@Test(description = "Assert Days and Hours for Leave Balance Summay screen", dependsOnMethods="accessRequestLeave")
+
+	@Test(groups="LeaveBalanceSummary",description = "Assert Days and Hours for Leave Balance Summay screen", dependsOnMethods="accessLeaveRequest")
 	public void assertAnnualVacationLeaveOnLeaveBalancePage() {
 		List<WebElement> leaveBalanceDays = driver.findElements(By.id("leaveBalanceDays"));
 		List<WebElement> leaveBalanceHours = driver.findElements(By.id("leaveBalanceHours"));
@@ -91,7 +92,5 @@ public class ReviewLeaveRequest_Step1 extends BaseTestCase {
 		Assert.assertEquals(leaveDays.get(0).getAttribute("value"),"1.0000");
 		Assert.assertEquals(leaveStatusDesc.get(0).getAttribute("value"),"Approved Leave");
 	}
-
-	
 	
 }
