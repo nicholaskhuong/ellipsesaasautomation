@@ -21,13 +21,13 @@ import com.abb.ventyx.utilities.ScreenAction;
 public class ReviewLeaveRequest_Step3 extends BaseTestCase {
 	
 	@Test(description = "Access to Leave Request Application")
-	public void accessLeaveRequest() {
+	public void accessRequestLeave() {
 		loginToApplication(ApplicationName.LEAVE_REQUEST);
 		ScreenAction.waitObjVisible(driver, By.id("leaveBalanceDays"));
 		Assert.assertEquals(driver.findElement(By.xpath("//*[@id='saas-3522304']/div/div[2]/div/div[1]/div/div[1]/div[1]/span")).getText(), "Leave Balance");
 		Assert.assertEquals(driver.findElement(By.xpath("//div[@id='fgLeaveBalanceList']/div/div/div")).getText(), "Forecast Date");
 	}
-	@Test(groups="LeaveBalanceSummary_S2",description = "Assert Days and Hours for Annual Leave", dependsOnMethods="accessLeaveRequest")
+	@Test(description = "Assert Days and Hours for Annual Leave", dependsOnMethods="accessRequestLeave")
 	public void assertAnnualVacationLeaveOnLeaveBalancePage() {
 		List<WebElement> leaveBalanceDays = driver.findElements(By.id("leaveBalanceDays"));
 		List<WebElement> leaveBalanceHours = driver.findElements(By.id("leaveBalanceHours"));
@@ -38,7 +38,7 @@ public class ReviewLeaveRequest_Step3 extends BaseTestCase {
 		Assert.assertEquals(leaveBalanceHours.get(0).getAttribute("value"),"0.1180");
 	}
 	
-	@Test(groups="LeaveBalanceSummary_S2",description = "Assert Days and Hours for Long Service Leave", dependsOnMethods="accessLeaveRequest")
+	@Test(description = "Assert Days and Hours for Long Service Leave", dependsOnMethods="assertAnnualVacationLeaveOnLeaveBalancePage", alwaysRun=true)
 	public void assertLongServiceLeaveOnLeaveBalancePage() {
 		List<WebElement> leaveBalanceDays = driver.findElements(By.id("leaveBalanceDays"));
 		List<WebElement> leaveBalanceHours = driver.findElements(By.id("leaveBalanceHours"));
@@ -49,7 +49,7 @@ public class ReviewLeaveRequest_Step3 extends BaseTestCase {
 		Assert.assertEquals(leaveBalanceHours.get(1).getAttribute("value"),"2.2500");
 	}
 	
-	@Test(groups="LeaveBalanceSummary_S2", description = "Assert Days and Hours for Sick Leave", dependsOnMethods="accessLeaveRequest")
+	@Test( description = "Assert Days and Hours for Sick Leave", dependsOnMethods="assertLongServiceLeaveOnLeaveBalancePage",alwaysRun=true)
 	public void assertSickLeaveOnLeaveBalancePage() {
 		List<WebElement> leaveBalanceDays = driver.findElements(By.id("leaveBalanceDays"));
 		List<WebElement> leaveBalanceHours = driver.findElements(By.id("leaveBalanceHours"));
@@ -60,7 +60,7 @@ public class ReviewLeaveRequest_Step3 extends BaseTestCase {
 		Assert.assertEquals( leaveBalanceHours.get(2).getAttribute("value"),"0.1175");
 	}
 	
-	@Test(description = "input Forecast Date on next pay period ", dependsOnGroups="LeaveBalanceSummary_S2")
+	@Test(description = "input Forecast Date on next pay period ", dependsOnMethods="assertSickLeaveOnLeaveBalancePage",alwaysRun=true)
 	public void inputForecastDate() {
 		//Current Pay End Date: 26/06/2016
 		
@@ -97,7 +97,7 @@ public class ReviewLeaveRequest_Step3 extends BaseTestCase {
 		Assert.assertEquals(leaveBalanceHours.get(0).getAttribute("value"),"-7.7640");
 	}
 	
-	@Test(description = "Assert Days and Hours for Annual Leave after input forecast date", dependsOnMethods="inputForecastDate")
+	@Test(description = "Assert Days and Hours for Annual Leave after input forecast date", dependsOnMethods="assertAnnualVacationLeaveAfterInputForecastDate", alwaysRun=true)
 	public void assertLongServiceLeavefterInputForecastDate() {
 		
 		List<WebElement> leaveBalanceDays = driver.findElements(By.id("leaveBalanceDays"));
@@ -106,7 +106,7 @@ public class ReviewLeaveRequest_Step3 extends BaseTestCase {
 		Assert.assertEquals(leaveBalanceHours.get(1).getAttribute("value"),"4.5000");
 	}
 	
-	@Test(description = "Assert Days and Hours for Annual Leave after input forecast date", dependsOnMethods="inputForecastDate")
+	@Test(description = "Assert Days and Hours for Annual Leave after input forecast date", dependsOnMethods="assertLongServiceLeavefterInputForecastDate",alwaysRun=true)
 	public void assertSickLeaveAfterInputForecastDate() {
 		
 		List<WebElement> leaveBalanceDays = driver.findElements(By.id("leaveBalanceDays"));
