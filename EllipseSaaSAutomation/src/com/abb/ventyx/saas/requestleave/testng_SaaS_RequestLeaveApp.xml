@@ -6,6 +6,12 @@
 				<class name="com.abb.ventyx.saas.requestleave.ReviewLeaveRequest_Step1" />
 		
 				<class name="com.abb.ventyx.saas.requestleave.ReviewLeaveRequest_Step3" />
+				
+				<class name="com.abb.ventyx.saas.requestleave.ReviewLeaveRequest_Step4" />
+				
+				<class name="com.abb.ventyx.saas.requestleave.ReviewLeaveRequest_Step5" />
+				
+				<class name="com.abb.ventyx.saas.requestleave.ReviewLeaveRequest_Step6" />
 		</classes>
   	</test> <!-- Test -->
   	
