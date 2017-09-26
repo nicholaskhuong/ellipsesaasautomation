@@ -142,9 +142,9 @@ public class Reporter implements IReporter {
 					}
 					for (TestMethodResultAdapter resultSecond : addMethodResultsToClass(secondMethodList)) {
 						if (!resultSecond.getTestClass().equals(classs.getTestOriginnalClassName())) {
-							methodID++;
 							resultSecond.setId(String.format("%s%s%s", classs.getId(), "sp", methodID));
 							classs.addMethod(resultSecond);
+							methodID++;
 						}
 
 					}
