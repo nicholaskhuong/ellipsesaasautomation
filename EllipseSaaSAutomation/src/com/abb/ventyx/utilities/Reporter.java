@@ -1,12 +1,10 @@
 package com.abb.ventyx.utilities;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import org.testng.IReporter;
 import org.testng.ISuite;
@@ -21,7 +19,6 @@ import com.abb.ventyx.utilities.report.TestPackageResultAdapter;
 import com.abb.ventyx.utilities.report.TestStep;
 import com.abb.ventyx.utilities.report.TestSuite;
 import com.abb.ventyx.utilities.report.TestSuiteResultAdapter;
-import com.google.common.io.Files;
 import com.google.gson.Gson;
 
 public class Reporter implements IReporter {
@@ -34,7 +31,7 @@ public class Reporter implements IReporter {
 	public ReportData theFinalReportData = new ReportData();
 
 	public String reportFolder = Constants.REPORT_FOLDER;
-	
+
 	@Override
 	public void generateReport(List<XmlSuite> xmlSuites, List<ISuite> suites, String outputDirectory) {
 
@@ -42,9 +39,10 @@ public class Reporter implements IReporter {
 		// Iterating over each suite included in the test
 		// System.out.println(new Gson().toJson(allResults));
 
-		//System.out.println("TK ALL RESULT = " + new Gson().toJson(allResults));
-//		List<ITestResult> allTestResults;
-		
+		// System.out.println("TK ALL RESULT = " + new
+		// Gson().toJson(allResults));
+		// List<ITestResult> allTestResults;
+
 		allResults = new ArrayList<>();
 		Serializion serializer = new Serializion();
 		allResults = serializer.getAllTestResult();
@@ -55,64 +53,62 @@ public class Reporter implements IReporter {
 		createTestClassesAdapter();
 		assignTestMethodResult();
 
-		//System.out.println(new Gson().toJson(allPackages));
-
-		
+		// System.out.println(new Gson().toJson(allPackages));
 
 		generateTheFinalReport();
 
-//		for (ISuite suite : suites) {
-			// Following code gets the suite name
-//			String suiteName = suite.getName();
+		// for (ISuite suite : suites) {
+		// Following code gets the suite name
+		// String suiteName = suite.getName();
 
-			// Suite method name
-//			List<ITestNGMethod> suiteTestMethods = suite.getAllMethods();
+		// Suite method name
+		// List<ITestNGMethod> suiteTestMethods = suite.getAllMethods();
 
-//			for (ITestNGMethod mt : suiteTestMethods) {
-//				 System.out.println(mt.getMethodName());
-//			}
+		// for (ITestNGMethod mt : suiteTestMethods) {
+		// System.out.println(mt.getMethodName());
+		// }
 
-			// Getting the results for the said suite
-//			Map<String, ISuiteResult> suiteResults = suite.getResults();
-//			for (ISuiteResult sr : suiteResults.values()) {
+		// Getting the results for the said suite
+		// Map<String, ISuiteResult> suiteResults = suite.getResults();
+		// for (ISuiteResult sr : suiteResults.values()) {
 
-//				ITestContext tc = sr.getTestContext();
-				// //System.out.println("Object = " + gson.toJson(sr));
-				// System.out.println(
-				// "Passed tests for suite '" + suiteName + "' is:" +
-				// tc.getPassedTests().getAllResults().size());
-				// System.out.println(
-				// "Failed tests for suite '" + suiteName + "' is:" +
-				// tc.getFailedTests().getAllResults().size());
-				// System.out.println("Skipped tests for suite '" + suiteName +
-				// "' is:"
-				// + tc.getSkippedTests().getAllResults().size());
+		// ITestContext tc = sr.getTestContext();
+		// //System.out.println("Object = " + gson.toJson(sr));
+		// System.out.println(
+		// "Passed tests for suite '" + suiteName + "' is:" +
+		// tc.getPassedTests().getAllResults().size());
+		// System.out.println(
+		// "Failed tests for suite '" + suiteName + "' is:" +
+		// tc.getFailedTests().getAllResults().size());
+		// System.out.println("Skipped tests for suite '" + suiteName +
+		// "' is:"
+		// + tc.getSkippedTests().getAllResults().size());
 
-				// Process passed results first
+		// Process passed results first
 
-				// IResultMap passMap = tc.getPassedTests();
-				// List<ITestResult> lsPassResults = new
-				// ArrayList<>(passMap.getAllResults());
-				//
-				// IResultMap failMap = tc.getFailedTests();
-				// List<ITestResult> lsFailResults = new
-				// ArrayList<>(failMap.getAllResults());
-				//
-				// IResultMap skipMap = tc.getSkippedTests();
-				// List<ITestResult> lsSkipResults = new
-				// ArrayList<>(skipMap.getAllResults());
-				//
-				// allTestResults = new ArrayList<>(lsPassResults);
-				// allTestResults.addAll(lsFailResults);
-				// allTestResults.addAll(lsSkipResults);
-				//
-				// for (ITestResult resultk : allTestResults) {
-				// TestResultAdapter adapter = new TestResultAdapter(resultk);
-				// System.out.println(new Gson().toJson(new TestStep(adapter)));
-				// }
+		// IResultMap passMap = tc.getPassedTests();
+		// List<ITestResult> lsPassResults = new
+		// ArrayList<>(passMap.getAllResults());
+		//
+		// IResultMap failMap = tc.getFailedTests();
+		// List<ITestResult> lsFailResults = new
+		// ArrayList<>(failMap.getAllResults());
+		//
+		// IResultMap skipMap = tc.getSkippedTests();
+		// List<ITestResult> lsSkipResults = new
+		// ArrayList<>(skipMap.getAllResults());
+		//
+		// allTestResults = new ArrayList<>(lsPassResults);
+		// allTestResults.addAll(lsFailResults);
+		// allTestResults.addAll(lsSkipResults);
+		//
+		// for (ITestResult resultk : allTestResults) {
+		// TestResultAdapter adapter = new TestResultAdapter(resultk);
+		// System.out.println(new Gson().toJson(new TestStep(adapter)));
+		// }
 
-//			}
-//		}
+		// }
+		// }
 	}
 
 	private void assignTestMethodResult() {
@@ -120,19 +116,60 @@ public class Reporter implements IReporter {
 			for (TestSuiteResultAdapter suite : pack.getSuites()) {
 				for (TestClassResultAdapter classs : suite.getClasses()) {
 					int methodID = 1;
+					ArrayList<TestMethodResultAdapter> secondMethodList = new ArrayList<>();
 					for (TestMethodResultAdapter result : allResults) {
-						if (result.getTestSuite().equals(suite.getSuiteName())
-								&& result.getTestName().equals(classs.getTestClassName())) {
-							result.setId(String.format("%s%s%s", classs.getId(),"sp", methodID));
-							result.setText(String.format("%s%s%s", methodID,"-", result.getTestClass()));
-							result.setAction(result.getMethodName());
-							classs.addMethod(result);
-							methodID++;
+						if (result.getTestSuite().equals(suite.getSuiteName()) && result.getTestName().equals(classs.getTestClassName())) {
+
+							if (result.getTestClass().equals(classs.getTestOriginnalClassName())) {
+								result.setId(String.format("%s%s%s", classs.getId(), "sp", methodID));
+								result.setText(String.format("%s%s%s", methodID, "-", result.getTestClass()));
+								result.setAction(result.getMethodName());
+								classs.addMethod(result);
+								methodID++;
+
+							} else {
+								result.setId(String.format("%s%s%s", classs.getId(), "sp", methodID));
+								result.setText(String.format("%s%s%s", methodID, "-", result.getTestClass()));
+								result.setAction(result.getTestClass().substring(result.getTestClass().lastIndexOf(".") + 1,
+										result.getTestClass().length())
+										+ "." + result.getMethodName());
+								secondMethodList.add(result);
+
+							}
+
 						}
+
+					}
+					for (TestMethodResultAdapter resultSecond : addMethodResultsToClass(secondMethodList)) {
+						if (!resultSecond.getTestClass().equals(classs.getTestOriginnalClassName())) {
+							methodID++;
+							resultSecond.setId(String.format("%s%s%s", classs.getId(), "sp", methodID));
+							classs.addMethod(resultSecond);
+						}
+
 					}
 				}
 			}
 		}
+
+	}
+
+	private ArrayList<TestMethodResultAdapter> addMethodResultsToClass(ArrayList<TestMethodResultAdapter> secondMethodList) {
+		ArrayList<TestMethodResultAdapter> returnList = new ArrayList<>();
+		ArrayList<String> classList = new ArrayList<>();
+		for (TestMethodResultAdapter resultSecond : secondMethodList) {
+			if (!classList.contains(resultSecond.getTestClass())) {
+				classList.add(resultSecond.getTestClass());
+			}
+		}
+		for (String classItem : classList) {
+			for (TestMethodResultAdapter resultSecond : secondMethodList) {
+				if (classItem.equals(resultSecond.getTestClass())) {
+					returnList.add(resultSecond);
+				}
+			}
+		}
+		return returnList;
 
 	}
 
@@ -141,11 +178,11 @@ public class Reporter implements IReporter {
 			for (TestSuiteResultAdapter suite : pack.getSuites()) {
 				int classID = 0;
 				for (TestMethodResultAdapter result : allResults) {
-					if (result.getTestSuite().equals(suite.getSuiteName())
-							&& !isClassExists(suite, result.getTestName())) {
+					if (result.getTestSuite().equals(suite.getSuiteName()) && !isClassExists(suite, result.getTestName())) {
 						TestClassResultAdapter classs = new TestClassResultAdapter();
-						classs.setId(String.format("%s%s%s",suite.getId(),"tc",classID));
+						classs.setId(String.format("%s%s%s", suite.getId(), "tc", classID));
 						classs.setTestClassName(result.getTestName());
+						classs.setTestOriginnalClassName(result.getTestClass());
 						classs.setALMID(result.getALMID());
 						suite.addClass(classs);
 						classID++;
@@ -161,10 +198,9 @@ public class Reporter implements IReporter {
 			int suiteID = 0;
 
 			for (TestMethodResultAdapter result : allResults) {
-				if (!isSuiteExists(pack, result.getTestSuite())
-						&& result.getPackageName().equals(pack.getPackageName())) {
+				if (!isSuiteExists(pack, result.getTestSuite()) && result.getPackageName().equals(pack.getPackageName())) {
 					TestSuiteResultAdapter tempSuite = new TestSuiteResultAdapter();
-					tempSuite.setId(String.format("%s%s%s",pack.getId(),"ts",suiteID));
+					tempSuite.setId(String.format("%s%s%s", pack.getId(), "ts", suiteID));
 					tempSuite.setSuiteName(result.getTestSuite());
 					pack.addSuite(tempSuite);
 					suiteID++;
@@ -289,11 +325,9 @@ public class Reporter implements IReporter {
 						step.setActualvalue(methodResultAdapter.getActualvalue());
 						step.setAction(methodResultAdapter.getAction());
 						step.setStatus(methodResultAdapter.getStatus());
-						if (methodResultAdapter.getScreenshot().trim().isEmpty() || "".equals(methodResultAdapter.getScreenshot().trim()))
-						{
+						if (methodResultAdapter.getScreenshot().trim().isEmpty() || "".equals(methodResultAdapter.getScreenshot().trim())) {
 							step.setScreenShot("");
-						}
-						else{
+						} else {
 							step.setScreenShot(methodResultAdapter.getScreenshot());
 						}
 						lsSteps.add(step);
@@ -339,22 +373,21 @@ public class Reporter implements IReporter {
 				testSuite.setSteps(String.valueOf(totalTestStuiteSteps));
 				testSuite.setStatus(totalTCFail == 0 ? "1" : "0");
 				lsSuite.add(testSuite);
-				
+
 				totalPackageTime = totalPackageTime + totalTimeTestSuite;
 
 			}
-			if (lsSuite.size()>0)
-			{
+			if (lsSuite.size() > 0) {
 				packageS.setTestsuite(lsSuite);
 				packageS.setStatus(packageStatus ? "1" : "0");
 				packageS.setTotal(String.valueOf((totalTestSuiteFail + totalTestSuitePass)));
 				packageS.setPass(String.valueOf(totalTestSuitePass));
 				packageS.setFail(String.valueOf(totalTestSuiteFail));
-				
+
 				packageS.setTimestamp(lsSuite.get(0).getTimestamp());
 				packageS.setGtime(String.valueOf(((float) (totalPackageTime / 1000))));
 				packageS.setTime(String.valueOf(((float) (totalPackageTime / 1000))));
-				
+
 				lsPackages.add(packageS);
 			}
 			totalReportTime = totalReportTime + totalPackageTime;
@@ -362,31 +395,30 @@ public class Reporter implements IReporter {
 
 		theFinalReportData.setPackage_xyz(lsPackages);
 		theFinalReportData.setTime(String.valueOf(((float) (totalReportTime / 1000))));
-		try{
-		theFinalReportData.setAutomation_url(System.getProperty("test.server.url"));
-		theFinalReportData.setSeleniumHubURL(System.getProperty("test.selenium.server").replace("http://", ""));
-		}catch(Exception e) {
+		try {
+			theFinalReportData.setAutomation_url(System.getProperty("test.server.url"));
+			theFinalReportData.setSeleniumHubURL(System.getProperty("test.selenium.server").replace("http://", ""));
+		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			theFinalReportData.setAutomation_url("");
 			theFinalReportData.setSeleniumHubURL("");
 		}
-		try{
+		try {
 			theFinalReportData.setTimestamp(lsPackages.get(0).getTimestamp());
-		}catch(Exception e) {
+		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 		theFinalReportData.setTotal(String.valueOf((totalReportPass + totalReportFail)));
 		theFinalReportData.setPass(String.valueOf(totalReportPass));
-		theFinalReportData.setFail(String.valueOf(totalReportFail ));
+		theFinalReportData.setFail(String.valueOf(totalReportFail));
 		theFinalReportData.setStatus(totalReportFail == 0 ? "1" : "0");
 		theFinalReportData.setGtime(theFinalReportData.getTime());
 
 		// System.out.println(new Gson().toJson(theFinalReportData));
-		
 
 		String reportDataAsJSON = new Gson().toJson(theFinalReportData);
-		
-		//System.out.println("TK DEBUG DATA = " + reportDataAsJSON);
+
+		// System.out.println("TK DEBUG DATA = " + reportDataAsJSON);
 
 		reportDataAsJSON = reportDataAsJSON.replace("package_xyz", "package");
 
@@ -407,6 +439,5 @@ public class Reporter implements IReporter {
 
 		System.out.println("Done!!!!!");
 	}
-	
-}
 
+}
