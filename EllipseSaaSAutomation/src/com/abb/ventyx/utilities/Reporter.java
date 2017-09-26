@@ -122,14 +122,12 @@ public class Reporter implements IReporter {
 
 							if (result.getTestClass().equals(classs.getTestOriginnalClassName())) {
 								result.setId(String.format("%s%s%s", classs.getId(), "sp", methodID));
-								result.setText(String.format("%s%s%s", methodID, "-", result.getTestClass()));
+								result.setText(String.format("Step %s", methodID));
 								result.setAction(result.getMethodName());
 								classs.addMethod(result);
 								methodID++;
 
 							} else {
-								result.setId(String.format("%s%s%s", classs.getId(), "sp", methodID));
-								result.setText(String.format("%s%s%s", methodID, "-", result.getTestClass()));
 								result.setAction(result.getTestClass().substring(result.getTestClass().lastIndexOf(".") + 1,
 										result.getTestClass().length())
 										+ "." + result.getMethodName());
@@ -143,6 +141,7 @@ public class Reporter implements IReporter {
 					for (TestMethodResultAdapter resultSecond : addMethodResultsToClass(secondMethodList)) {
 						if (!resultSecond.getTestClass().equals(classs.getTestOriginnalClassName())) {
 							resultSecond.setId(String.format("%s%s%s", classs.getId(), "sp", methodID));
+							resultSecond.setText(String.format("Step %s", methodID));
 							classs.addMethod(resultSecond);
 							methodID++;
 						}
@@ -266,6 +265,7 @@ public class Reporter implements IReporter {
 		long totalReportTime = 0;
 		int totalReportPass = 0;
 		int totalReportFail = 0;
+		int totalReportStep = 0;
 		ArrayList<Package> lsPackages = new ArrayList<>();
 
 		for (TestPackageResultAdapter packageResultAdapter : allPackages) {
@@ -274,6 +274,7 @@ public class Reporter implements IReporter {
 			int totalTestSuitePass = 0;
 			int totalTestSuiteFail = 0;
 			long totalPackageTime = 0;
+			int totalStepPackage = 0;
 			Package packageS = new Package();
 			packageS.setText(packageResultAdapter.getPackageName());
 			packageS.setId(packageResultAdapter.getId());
@@ -319,7 +320,7 @@ public class Reporter implements IReporter {
 					for (TestMethodResultAdapter methodResultAdapter : classs.getMethods()) {
 						TestStep step = new TestStep();
 						step.setId(methodResultAdapter.getId());
-						step.setText(methodResultAdapter.getMethodName());
+						step.setText(methodResultAdapter.getText());
 						step.setLabel(methodResultAdapter.getLabel());
 						step.setValue(methodResultAdapter.getValue());
 						step.setActualvalue(methodResultAdapter.getActualvalue());
@@ -375,8 +376,10 @@ public class Reporter implements IReporter {
 				lsSuite.add(testSuite);
 
 				totalPackageTime = totalPackageTime + totalTimeTestSuite;
+				totalStepPackage = totalReportStep + totalStepPackage;
 
 			}
+
 			if (lsSuite.size() > 0) {
 				packageS.setTestsuite(lsSuite);
 				packageS.setStatus(packageStatus ? "1" : "0");
@@ -387,10 +390,12 @@ public class Reporter implements IReporter {
 				packageS.setTimestamp(lsSuite.get(0).getTimestamp());
 				packageS.setGtime(String.valueOf(((float) (totalPackageTime / 1000))));
 				packageS.setTime(String.valueOf(((float) (totalPackageTime / 1000))));
+				packageS.setSteps(String.valueOf(totalStepPackage));
 
 				lsPackages.add(packageS);
 			}
 			totalReportTime = totalReportTime + totalPackageTime;
+			totalReportStep = totalReportStep + totalStepPackage;
 		}
 
 		theFinalReportData.setPackage_xyz(lsPackages);
@@ -408,6 +413,7 @@ public class Reporter implements IReporter {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
+		theFinalReportData.setSteps(String.valueOf(totalReportStep));
 		theFinalReportData.setTotal(String.valueOf((totalReportPass + totalReportFail)));
 		theFinalReportData.setPass(String.valueOf(totalReportPass));
 		theFinalReportData.setFail(String.valueOf(totalReportFail));
@@ -439,5 +445,4 @@ public class Reporter implements IReporter {
 
 		System.out.println("Done!!!!!");
 	}
-
 }
