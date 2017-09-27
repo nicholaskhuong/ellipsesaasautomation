@@ -65,7 +65,7 @@ public class ReviewLeaveRequest_Step4 extends BaseTestCase {
 		//Review forecast date on next 4 years 26/06/2020
 		
 		WebElement forecastDate = driver.findElement(By.cssSelector(LeaveBalancePageDefinition.FORECAST_DATE_TEXT_ID));
-		forecastDate.sendKeys("26062020");
+		forecastDate.sendKeys("06262020");
 		
 		int maxLoop = 0;
 		  
