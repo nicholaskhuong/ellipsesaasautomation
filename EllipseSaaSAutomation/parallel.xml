@@ -5,8 +5,8 @@
     <property name="report.tmp" value="${report.dir}/tmp" />
     <property name="saas.dir" value="src/com/abb/ventyx/saas/" />
     <property name="requestleave.dir" value="src/com/abb/ventyx/saas/requestleave/" />
-    <property name="supplier" value="src/com/abb/ventyx/axis/supplier" />
-    <property name="support" value="src/com/abb/ventyx/axis/support" />
+    <property name="issuestock" value="src/com/abb/ventyx/saas/issuestock" />
+    <property name="support" value="src/com/abb/ventyx/saas/support" />
 	<property environment="env"/>
     <!-- define properties and paths for the current run -->
     <path id="other.source.path">
@@ -36,9 +36,9 @@
             </fileset>
         </sort>
     </path>   
-    <path id="supplier.source.path">
+    <path id="issuestock.source.path">
         <sort>
-            <fileset dir="${supplier.dir}">
+            <fileset dir="${issuestock.dir}">
                 <include name="**/testng_*.xml" />                
             </fileset>
         </sort>
@@ -63,10 +63,10 @@
 				<path refid="support.source.path" />
 			</path>
 		</case>
-		<case value="supplier">
-			<property name="src.dir" value="${supplier.dir}" />
+		<case value="issuestock">
+			<property name="src.dir" value="${issuestock.dir}" />
 			<path id="test.set.source.path">
-				<path refid="supplier.source.path" />
+				<path refid="issuestock.source.path" />
 			</path>
 		</case>
 		<case value="requestleave">
@@ -89,13 +89,13 @@
 	
     <target name="test.parallel">    
         <!-- check test.set has a valid value -->
-        <assert message="Unrecognized value (${test.set}) for 'test.set'. Must be one of: all, other, saas, supplier, requestleave.">
+        <assert message="Unrecognized value (${test.set}) for 'test.set'. Must be one of: all, other, saas, issuestock, requestleave.">
             <bool>
                 <or>
                     <equals arg1="${test.set}" arg2="other" />
                     <equals arg1="${test.set}" arg2="all" />
                     <equals arg1="${test.set}" arg2="saas" />
-                    <equals arg1="${test.set}" arg2="supplier" />
+                    <equals arg1="${test.set}" arg2="issuestock" />
                     <equals arg1="${test.set}" arg2="requestleave" />
                 </or>
             </bool>
