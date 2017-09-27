@@ -18,7 +18,7 @@ import com.abb.ventyx.utilities.ScreenAction;
 
 @ALM(id = "1867")
 @Credentials(user = "SPR002", password = "", district = "R100", position = "HRMAN")
-public class ReviewLeaveRequest_Step4 extends BaseTestCase {
+public class ReviewLeaveRequest_Step03 extends BaseTestCase {
 	
 	@Test(description = "Access to Leave Request Application")
 	public void accessRequestLeave() {
@@ -62,10 +62,10 @@ public class ReviewLeaveRequest_Step4 extends BaseTestCase {
 	
 	@Test(description = "input Forecast Date on next pay period ", dependsOnMethods="assertSickLeaveOnLeaveBalancePage",alwaysRun=true)
 	public void inputForecastDate() {
-		//Review forecast date on next 4 years 26/06/2020
+		//Current Pay End Date: 26/06/2016
 		
 		WebElement forecastDate = driver.findElement(By.cssSelector(LeaveBalancePageDefinition.FORECAST_DATE_TEXT_ID));
-		forecastDate.sendKeys("06262020");
+		forecastDate.sendKeys("06262016");
 		
 		int maxLoop = 0;
 		  
@@ -84,7 +84,7 @@ public class ReviewLeaveRequest_Step4 extends BaseTestCase {
 		  }
 		  existError=ScreenAction.isElementPresent(driver,By.cssSelector("#saas-3522304-overlays > div.v-Notification.error.v-Notification-error > div > div > h1"));
 		  Assert.assertTrue(existError==false, " No error message returned");
-		  Assert.assertEquals(forecastDate.getAttribute("value"), "2020-06-26");
+		  Assert.assertEquals(forecastDate.getAttribute("value"), "2016-06-26");
 	}
 	
 	@Test(description = "Assert Days and Hours for Annual Leave after input forecast date", dependsOnMethods="inputForecastDate")
@@ -93,8 +93,8 @@ public class ReviewLeaveRequest_Step4 extends BaseTestCase {
 		List<WebElement> leaveBalanceDays = driver.findElements(By.id("leaveBalanceDays"));
 		List<WebElement> leaveBalanceHours = driver.findElements(By.id("leaveBalanceHours"));
 		
-		Assert.assertEquals(leaveBalanceDays.get(0).getAttribute("value"),"0.5690");
-		Assert.assertEquals(leaveBalanceHours.get(0).getAttribute("value"),"4.5520");
+		Assert.assertEquals(leaveBalanceDays.get(0).getAttribute("value"),"-0.9705");
+		Assert.assertEquals(leaveBalanceHours.get(0).getAttribute("value"),"-7.7640");
 	}
 	
 	@Test(description = "Assert Days and Hours for Annual Leave after input forecast date", dependsOnMethods="assertAnnualVacationLeaveAfterInputForecastDate", alwaysRun=true)
@@ -102,8 +102,8 @@ public class ReviewLeaveRequest_Step4 extends BaseTestCase {
 		
 		List<WebElement> leaveBalanceDays = driver.findElements(By.id("leaveBalanceDays"));
 		List<WebElement> leaveBalanceHours = driver.findElements(By.id("leaveBalanceHours"));
-		Assert.assertEquals(leaveBalanceDays.get(1).getAttribute("value"),"29.9130");
-		Assert.assertEquals(leaveBalanceHours.get(1).getAttribute("value"),"239.3036");
+		Assert.assertEquals(leaveBalanceDays.get(1).getAttribute("value"),"0.5625");
+		Assert.assertEquals(leaveBalanceHours.get(1).getAttribute("value"),"4.5000");
 	}
 	
 	@Test(description = "Assert Days and Hours for Annual Leave after input forecast date", dependsOnMethods="assertLongServiceLeavefterInputForecastDate",alwaysRun=true)
@@ -112,7 +112,7 @@ public class ReviewLeaveRequest_Step4 extends BaseTestCase {
 		List<WebElement> leaveBalanceDays = driver.findElements(By.id("leaveBalanceDays"));
 		List<WebElement> leaveBalanceHours = driver.findElements(By.id("leaveBalanceHours"));
 		
-		Assert.assertEquals(leaveBalanceDays.get(2).getAttribute("value"),"18.7510");
-		Assert.assertEquals(leaveBalanceHours.get(2).getAttribute("value"),"150.0080");
+		Assert.assertEquals(leaveBalanceDays.get(2).getAttribute("value"),"0.3526");
+		Assert.assertEquals(leaveBalanceHours.get(2).getAttribute("value"),"2.8208");
 	}
 }

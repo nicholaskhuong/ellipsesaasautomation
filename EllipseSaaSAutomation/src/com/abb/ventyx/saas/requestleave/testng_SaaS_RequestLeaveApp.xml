@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Request Leave" parallel="none">
-  	<test name="Review Leave Request Step 1">
+<suite name="Request Leave">
+  	<test name="Review Leave Request">
 		<classes>
-				<class name="com.abb.ventyx.saas.requestleave.ReviewLeaveRequest_Step1" />
+				<class name="com.abb.ventyx.saas.requestleave.ReviewLeaveRequest_Step01" />
 		
-				<class name="com.abb.ventyx.saas.requestleave.ReviewLeaveRequest_Step3" />
+				<class name="com.abb.ventyx.saas.requestleave.ReviewLeaveRequest_Step03" />
 				
-				<class name="com.abb.ventyx.saas.requestleave.ReviewLeaveRequest_Step4" />
+				<class name="com.abb.ventyx.saas.requestleave.ReviewLeaveRequest_Step04" />
 				
-				<class name="com.abb.ventyx.saas.requestleave.ReviewLeaveRequest_Step5" />
+				<class name="com.abb.ventyx.saas.requestleave.ReviewLeaveRequest_Step05" />
 				
-				<class name="com.abb.ventyx.saas.requestleave.ReviewLeaveRequest_Step6" />
+				<class name="com.abb.ventyx.saas.requestleave.ReviewLeaveRequest_Step06" />
 		</classes>
   	</test> <!-- Test -->
   	
