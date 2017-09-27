@@ -1,21 +1,14 @@
 package com.abb.ventyx.saas.requestleave;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.abb.ventyx.saas.objects.pagedefinitions.ApplicationName;
-import com.abb.ventyx.saas.objects.pagedefinitions.LeaveBalancePageDefinition;
 import com.abb.ventyx.utilities.ALM;
 import com.abb.ventyx.utilities.BaseTestCase;
 import com.abb.ventyx.utilities.Credentials;
@@ -34,40 +27,8 @@ public class ReviewLeaveRequest_Step06 extends BaseTestCase {
 		Assert.assertEquals(driver.findElement(By.xpath("//div[@id='fgLeaveBalanceList']/div/div/div")).getText(), "Forecast Date");
 	}
 
-	@Test(description = "Assert Days and Hours for Leave Balance Summay screen", dependsOnMethods="accessRequestLeave")
-	public void assertAnnualVacationLeaveOnLeaveBalancePage() {
-		List<WebElement> leaveBalanceDays = driver.findElements(By.id("leaveBalanceDays"));
-		List<WebElement> leaveBalanceHours = driver.findElements(By.id("leaveBalanceHours"));
-		
-		Assert.assertEquals(driver.findElement(By.xpath("//*[@id='gwt-uid-3']/div")).getText(), "Days");
-		Assert.assertEquals(leaveBalanceDays.get(0).getAttribute("value"),"0.0148");
-		Assert.assertEquals(driver.findElement(By.xpath("//*[@id='gwt-uid-5']/div")).getText(), "Hours");
-		Assert.assertEquals(leaveBalanceHours.get(0).getAttribute("value"),"0.1180");
-	}
 	
-	@Test(description = "Assert Days and Hours for Long Service Leave", dependsOnMethods="assertAnnualVacationLeaveOnLeaveBalancePage", alwaysRun=true)
-	public void assertLongServiceLeaveOnLeaveBalancePage() {
-		List<WebElement> leaveBalanceDays = driver.findElements(By.id("leaveBalanceDays"));
-		List<WebElement> leaveBalanceHours = driver.findElements(By.id("leaveBalanceHours"));
-		
-		Assert.assertEquals(driver.findElement(By.xpath("//*[@id='gwt-uid-7']/div")).getText(), "Days");
-		Assert.assertEquals(leaveBalanceDays.get(1).getAttribute("value"),"0.2813");
-		Assert.assertEquals(driver.findElement(By.xpath("//*[@id='gwt-uid-9']/div")).getText(), "Hours");
-		Assert.assertEquals(leaveBalanceHours.get(1).getAttribute("value"),"2.2500");
-	}
-	
-	@Test( description = "Assert Days and Hours for Sick Leave", dependsOnMethods="assertLongServiceLeaveOnLeaveBalancePage",alwaysRun=true)
-	public void assertSickLeaveOnLeaveBalancePage() {
-		List<WebElement> leaveBalanceDays = driver.findElements(By.id("leaveBalanceDays"));
-		List<WebElement> leaveBalanceHours = driver.findElements(By.id("leaveBalanceHours"));
-		
-		Assert.assertEquals(driver.findElement(By.xpath("//*[@id='gwt-uid-11']/div")).getText(), "Days");
-		Assert.assertEquals(leaveBalanceDays.get(2).getAttribute("value"),"0.0147");
-		Assert.assertEquals(driver.findElement(By.xpath("//*[@id='gwt-uid-13']/div")).getText(), "Hours");
-		Assert.assertEquals( leaveBalanceHours.get(2).getAttribute("value"),"0.1175");
-	}
-	
-	@Test(description = "Select Setting icon on Leave Balance Page  ", dependsOnMethods="assertSickLeaveOnLeaveBalancePage",alwaysRun = true)
+	@Test(description = "Select Setting icon on Leave Balance Page  ", dependsOnMethods="accessRequestLeave")
 	public void selectSettingIconOnLeaveBalancePage() {
 		    driver.findElement(By.cssSelector("#menuNavigation > span > span.v-menubar-menuitem-caption > span")).click();
 		    driver.findElement(By.xpath("//div[@id='saas-3522304-overlays']/div[2]/div/div/span/span/span")).click();
@@ -100,15 +61,15 @@ public class ReviewLeaveRequest_Step06 extends BaseTestCase {
 		//Assert.assertEquals(driver.findElement(By.xpath("//*[@id='saas-3522304']/div/div[2]/div/div[2]/div/div[1]/div[1]/span")).getText(), "Leave Requests");//Still error
 	}	
 	
-	@Test(description = "Assert row count leave request type", dependsOnMethods="selectShowAllRequestOnLeaveBalancePage",alwaysRun=true)
+	@Test(description = "Assert row count leave request type", dependsOnMethods="selectShowAllRequestOnLeaveBalancePage")
 	public void assertRowCountOnLeaveRequestPage() {
 		ScreenAction.waitObjVisible(driver, By.id("leaveStartDate"));
 		List<WebElement> leaveStartDate = driver.findElements(By.id("leaveStartDate"));
 		Assert.assertEquals(leaveStartDate.size(),9);
 	}
 
-	@Test(description = "Show leave request type ", dependsOnMethods="selectShowAllRequestOnLeaveBalancePage",alwaysRun = true)
-	public void showLeaveRequestType() {
+	@Test(description = "Assert leave request types ", dependsOnMethods="assertRowCountOnLeaveRequestPage",alwaysRun = true)
+	public void assertLeaveRequestType() {
 		ScreenAction.waitObjVisible(driver, By.id("leaveStartDate"));
 		List<WebElement> bookedLeaveCode = driver.findElements(By.id("bookedLeaveCode"));
 		List<WebElement> bookedLeaveDesc = driver.findElements(By.id("bookedLeaveDesc"));

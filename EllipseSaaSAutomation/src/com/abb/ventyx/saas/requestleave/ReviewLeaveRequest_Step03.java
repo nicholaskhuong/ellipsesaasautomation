@@ -27,40 +27,8 @@ public class ReviewLeaveRequest_Step03 extends BaseTestCase {
 		Assert.assertEquals(driver.findElement(By.xpath("//*[@id='saas-3522304']/div/div[2]/div/div[1]/div/div[1]/div[1]/span")).getText(), "Leave Balance");
 		Assert.assertEquals(driver.findElement(By.xpath("//div[@id='fgLeaveBalanceList']/div/div/div")).getText(), "Forecast Date");
 	}
-	@Test(description = "Assert Days and Hours for Annual Leave", dependsOnMethods="accessRequestLeave")
-	public void assertAnnualVacationLeaveOnLeaveBalancePage() {
-		List<WebElement> leaveBalanceDays = driver.findElements(By.id("leaveBalanceDays"));
-		List<WebElement> leaveBalanceHours = driver.findElements(By.id("leaveBalanceHours"));
-		
-		Assert.assertEquals(driver.findElement(By.xpath("//*[@id='gwt-uid-3']/div")).getText(), "Days");
-		Assert.assertEquals(leaveBalanceDays.get(0).getAttribute("value"),"0.0148");
-		Assert.assertEquals(driver.findElement(By.xpath("//*[@id='gwt-uid-5']/div")).getText(), "Hours");
-		Assert.assertEquals(leaveBalanceHours.get(0).getAttribute("value"),"0.1180");
-	}
 	
-	@Test(description = "Assert Days and Hours for Long Service Leave", dependsOnMethods="assertAnnualVacationLeaveOnLeaveBalancePage", alwaysRun=true)
-	public void assertLongServiceLeaveOnLeaveBalancePage() {
-		List<WebElement> leaveBalanceDays = driver.findElements(By.id("leaveBalanceDays"));
-		List<WebElement> leaveBalanceHours = driver.findElements(By.id("leaveBalanceHours"));
-		
-		Assert.assertEquals(driver.findElement(By.xpath("//*[@id='gwt-uid-7']/div")).getText(), "Days");
-		Assert.assertEquals(leaveBalanceDays.get(1).getAttribute("value"),"0.2813");
-		Assert.assertEquals(driver.findElement(By.xpath("//*[@id='gwt-uid-9']/div")).getText(), "Hours");
-		Assert.assertEquals(leaveBalanceHours.get(1).getAttribute("value"),"2.2500");
-	}
-	
-	@Test( description = "Assert Days and Hours for Sick Leave", dependsOnMethods="assertLongServiceLeaveOnLeaveBalancePage",alwaysRun=true)
-	public void assertSickLeaveOnLeaveBalancePage() {
-		List<WebElement> leaveBalanceDays = driver.findElements(By.id("leaveBalanceDays"));
-		List<WebElement> leaveBalanceHours = driver.findElements(By.id("leaveBalanceHours"));
-		
-		Assert.assertEquals(driver.findElement(By.xpath("//*[@id='gwt-uid-11']/div")).getText(), "Days");
-		Assert.assertEquals(leaveBalanceDays.get(2).getAttribute("value"),"0.0147");
-		Assert.assertEquals(driver.findElement(By.xpath("//*[@id='gwt-uid-13']/div")).getText(), "Hours");
-		Assert.assertEquals( leaveBalanceHours.get(2).getAttribute("value"),"0.1175");
-	}
-	
-	@Test(description = "input Forecast Date on next pay period ", dependsOnMethods="assertSickLeaveOnLeaveBalancePage",alwaysRun=true)
+	@Test(description = "input Forecast Date on next pay period ", dependsOnMethods="accessRequestLeave")
 	public void inputForecastDate() {
 		//Current Pay End Date: 26/06/2016
 		
