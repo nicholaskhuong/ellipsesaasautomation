@@ -6,7 +6,12 @@
     <property name="saas.dir" value="src/com/abb/ventyx/saas/" />
     <property name="requestleave.dir" value="src/com/abb/ventyx/saas/requestleave/" />
     <property name="pickstock" value="src/com/abb/ventyx/saas/pickstock" />
-    <property name="support" value="src/com/abb/ventyx/saas/support" />
+    <property name="approvals" value="src/com/abb/ventyx/saas/approvals" />
+    <property name="approveleave" value="src/com/abb/ventyx/saas/approveleave" />
+    <property name="executework" value="src/com/abb/ventyx/saas/executework" />
+    <property name="receivegoods" value="src/com/abb/ventyx/saas/receivegoods" />
+    <property name="initiatework" value="src/com/abb/ventyx/saas/initiatework" />
+    <property name="workrequest" value="src/com/abb/ventyx/saas/workrequest" />
 	<property environment="env"/>
     <!-- define properties and paths for the current run -->
     <path id="other.source.path">
@@ -29,9 +34,44 @@
             </fileset>
         </sort>
     </path>    
-    <path id="support.source.path">
+    <path id="approvals.source.path">
         <sort>
-            <fileset dir="${support.dir}">
+            <fileset dir="${approvals.dir}">
+                <include name="**/testng_*.xml" />                
+            </fileset>
+        </sort>
+    </path>     
+    <path id="approveleave.source.path">
+        <sort>
+            <fileset dir="${approveleave.dir}">
+                <include name="**/testng_*.xml" />                
+            </fileset>
+        </sort>
+    </path>   
+    <path id="executework.source.path">
+        <sort>
+            <fileset dir="${executework.dir}">
+                <include name="**/testng_*.xml" />                
+            </fileset>
+        </sort>
+    </path>      
+    <path id="initiatework.source.path">
+        <sort>
+            <fileset dir="${initiatework.dir}">
+                <include name="**/testng_*.xml" />                
+            </fileset>
+        </sort>
+    </path>       
+    <path id="workrequest.source.path">
+        <sort>
+            <fileset dir="${workrequest.dir}">
+                <include name="**/testng_*.xml" />                
+            </fileset>
+        </sort>
+    </path>     
+    <path id="receivegoods.source.path">
+        <sort>
+            <fileset dir="${receivegoods.dir}">
                 <include name="**/testng_*.xml" />                
             </fileset>
         </sort>
@@ -57,10 +97,40 @@
 				<path refid="saas.source.path" />
 			</path>
 		</case>
-		<case value="support">
-			<property name="src.dir" value="${support.dir}" />
+		<case value="approvals">
+			<property name="src.dir" value="${approvals.dir}" />
 			<path id="test.set.source.path">
-				<path refid="support.source.path" />
+				<path refid="approvals.source.path" />
+			</path>
+		</case>
+		<case value="approveleave">
+			<property name="src.dir" value="${approveleave.dir}" />
+			<path id="test.set.source.path">
+				<path refid="approveleave.source.path" />
+			</path>
+		</case>
+		<case value="executework">
+			<property name="src.dir" value="${executework.dir}" />
+			<path id="test.set.source.path">
+				<path refid="executework.source.path" />
+			</path>
+		</case>
+		<case value="initiatework">
+			<property name="src.dir" value="${initiatework.dir}" />
+			<path id="test.set.source.path">
+				<path refid="initiatework.source.path" />
+			</path>
+		</case>
+		<case value="workrequest">
+			<property name="src.dir" value="${workrequest.dir}" />
+			<path id="test.set.source.path">
+				<path refid="workrequest.source.path" />
+			</path>
+		</case>
+		<case value="receivegoods">
+			<property name="src.dir" value="${receivegoods.dir}" />
+			<path id="test.set.source.path">
+				<path refid="receivegoods.source.path" />
 			</path>
 		</case>
 		<case value="pickstock">
@@ -96,7 +166,13 @@
                     <equals arg1="${test.set}" arg2="all" />
                     <equals arg1="${test.set}" arg2="saas" />
                     <equals arg1="${test.set}" arg2="pickstock" />
+                    <equals arg1="${test.set}" arg2="receivegoods" />
+                    <equals arg1="${test.set}" arg2="approvals" />
+                    <equals arg1="${test.set}" arg2="approveleave" />
                     <equals arg1="${test.set}" arg2="requestleave" />
+                    <equals arg1="${test.set}" arg2="executework" />
+                    <equals arg1="${test.set}" arg2="initiatework" />
+                    <equals arg1="${test.set}" arg2="workrequest" />
                 </or>
             </bool>
         </assert>
