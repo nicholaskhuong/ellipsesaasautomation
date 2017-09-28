@@ -26,11 +26,10 @@ public class ScreenAction {
 		(new WebDriverWait(driver, 20)).until(ExpectedConditions.presenceOfElementLocated(obj));
 	}
 	
-	public static void waitObjVisible(WebDriver driver, By obj, long timeoutInSecond) {
+	public void waitObjVisible(WebDriver driver, By obj, long timeoutInSecond) {
 		(new WebDriverWait(driver,timeoutInSecond)).until(ExpectedConditions.visibilityOfElementLocated(obj));
 		
 	}
-	
 	
 	public void waitObjVisibleAndClick(By obj) {
 		WebElement element = (new WebDriverWait(driver, 20)).until(ExpectedConditions.presenceOfElementLocated(obj));
@@ -53,7 +52,13 @@ public class ScreenAction {
 		txtField.clear();
 		txtField.sendKeys(value);
 	}
-
+	
+	public void inputTextField(By obj, String value) {
+		WebElement txtField = driver.findElement(obj);
+		txtField.clear();
+		txtField.sendKeys(value);
+	}
+	
 	public void clickCheckBoxN(int n) {
 		List<WebElement> listCheckbox = driver.findElements(By.xpath("//input[@type='checkbox']"));
 		listCheckbox.get(n).click();
@@ -95,15 +100,15 @@ public class ScreenAction {
 	
 	public void inputDate(WebDriver driver, By obj, String mmddyyyy_date){
 		WebElement forecastDate = driver.findElement(obj);
-		forecastDate.sendKeys(mmddyyyy_date);
+	
 		int maxLoop = 0;
-		  
 		boolean existError=ScreenAction.isElementPresent(driver,By.cssSelector("#saas-3522304-overlays > div.v-Notification.error.v-Notification-error > div > div > h1"));
-		while (existError) {
-		  
+		while (maxLoop < 15) {
+			
 			  maxLoop += 1;
+			  forecastDate.sendKeys(mmddyyyy_date);
 		 
-			  if (maxLoop < 10) {
+			  if (existError) {
 			    Actions action = new Actions(driver);
 			    action.sendKeys(Keys.ESCAPE).build().perform();
 			   } 
@@ -119,7 +124,7 @@ public class ScreenAction {
 		
 	}
 	
-	public static String getSelectedText(WebDriver driver, String Id) {
+	public String getSelectedText(WebDriver driver, String Id) {
 		Select select = new Select(driver.findElement(By.cssSelector(Id)));
 		return select.getFirstSelectedOption().getText();
 	}
