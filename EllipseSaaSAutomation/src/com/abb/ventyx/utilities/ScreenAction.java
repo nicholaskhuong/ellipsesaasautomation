@@ -120,7 +120,22 @@ public class ScreenAction {
 			}
 		}
 	}
-
+	
+	public void clickTapToClose(WebDriver driver, By obj) {
+		  int maxLoop = 0;
+		  boolean existError = false;
+		  while (maxLoop < 4) {
+		   maxLoop += 1;
+		   existError = ScreenAction.isElementPresent(driver,
+		     By.cssSelector("#saas-3522304-overlays > div.v-Notification.error.v-Notification-error > div > div > h1"), 1);
+		   if (existError) {
+		    Actions action = new Actions(driver);
+		    action.sendKeys(Keys.ESCAPE).build().perform();
+		   } else {
+		    break;
+		   }
+		  }
+		 }	
 	public void selectByText(WebDriver driver, By obj, String input) {
 		Select select = new Select(driver.findElement(obj));
 		select.selectByVisibleText(input);

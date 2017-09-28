@@ -32,22 +32,10 @@ public class IssueStockSearchbyRequisitionNumbers_Steps03_05 extends BaseTestCas
 	public void accessPickStock() {
 		loginToApplication(ApplicationName.PICK_STOCK);
 		Assert.assertEquals(driver.findElement(By.xpath("//*[@id='saas-3522304']/div/div[2]/div/div[1]/div/div[1]/div[1]/span")).getText(), "Pick Tasks");
-		int maxLoop = 0;
+		ScreenAction errorAction = new ScreenAction(driver);
+		errorAction.clickTapToClose(driver,By.cssSelector("#saas-3522304-overlays > div.v-Notification.error.v-Notification-error > div > div > h1"));
 		boolean existError=ScreenAction.isElementPresent(driver,By.cssSelector("#saas-3522304-overlays > div.v-Notification.error.v-Notification-error > div > div > h1"));
-		while (existError) {
-		  
-			  maxLoop += 1;
-		 
-			  if (maxLoop < 5) {
-			    Actions action = new Actions(driver);
-			    action.sendKeys(Keys.ESCAPE).build().perform();
-			   } 
-			  else {
-			    break;
-			   }
-		  }
-		  existError=ScreenAction.isElementPresent(driver,By.cssSelector("#saas-3522304-overlays > div.v-Notification.error.v-Notification-error > div > div > h1"));
-		  Assert.assertFalse(existError, "Application has error message");
+		Assert.assertFalse(existError, "Application has error message");
 	}
 
 	@Test(description = "Select Setting icon on Pick Tasks Page  ", dependsOnMethods="accessPickStock",alwaysRun = true)
