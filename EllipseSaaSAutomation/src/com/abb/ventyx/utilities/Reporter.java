@@ -322,7 +322,7 @@ public class Reporter implements IReporter {
 						step.setId(methodResultAdapter.getId());
 						step.setText(methodResultAdapter.getText());
 						step.setLabel(methodResultAdapter.getLabel());
-						step.setValue(methodResultAdapter.getValue());
+						step.setValue("");
 						step.setActualvalue(methodResultAdapter.getActualvalue());
 						step.setAction(methodResultAdapter.getAction());
 						step.setStatus(methodResultAdapter.getStatus());
