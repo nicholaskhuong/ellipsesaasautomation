@@ -105,12 +105,11 @@ public class ScreenAction {
 
 	public void inputDate(WebDriver driver, By obj, String mmddyyyy_date) {
 		WebElement forecastDate = driver.findElement(obj);
-
+		forecastDate.sendKeys(mmddyyyy_date);
 		int maxLoop = 0;
 		boolean existError = false;
 		while (maxLoop < 15) {
 			maxLoop += 1;
-			forecastDate.sendKeys(mmddyyyy_date);
 			existError = ScreenAction.isElementPresent(driver,
 					By.cssSelector("#saas-3522304-overlays > div.v-Notification.error.v-Notification-error > div > div > h1"), 3);
 			if (existError) {
