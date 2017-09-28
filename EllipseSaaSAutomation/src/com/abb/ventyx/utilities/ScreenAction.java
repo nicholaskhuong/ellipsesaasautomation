@@ -1,6 +1,7 @@
 package com.abb.ventyx.utilities;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -26,7 +27,12 @@ public class ScreenAction {
 	public static void waitObjVisible(WebDriver driver, By obj) {
 		(new WebDriverWait(driver, 20)).until(ExpectedConditions.presenceOfElementLocated(obj));
 	}
-
+	
+	public static void waitObjVisible(WebDriver driver, By obj, long timeoutInSecond) {
+		(new WebDriverWait(driver,timeoutInSecond)).until(ExpectedConditions.visibilityOfElementLocated(obj));
+		
+	}
+	
 	
 	public void waitObjVisibleAndClick(By obj) {
 		WebElement element = (new WebDriverWait(driver, 20)).until(ExpectedConditions.presenceOfElementLocated(obj));
@@ -83,15 +89,6 @@ public class ScreenAction {
 	public static boolean isElementPresent(WebDriver driver, By by) {
 		try {
 			WebElement error = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(by));
-			return error.isDisplayed();
-		} catch (Exception e) {
-			return false;
-		}
-	}
-	
-	public static boolean isElementPresent(WebDriver driver, By by, long timeout) {
-		try {
-			WebElement error = (new WebDriverWait(driver, timeout)).until(ExpectedConditions.presenceOfElementLocated(by));
 			return error.isDisplayed();
 		} catch (Exception e) {
 			return false;
