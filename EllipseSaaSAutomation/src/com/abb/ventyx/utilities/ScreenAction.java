@@ -109,10 +109,10 @@ public class ScreenAction {
 		int maxLoop = 0;
 		boolean existError = false;
 		while (maxLoop < 15) {
-			existError = ScreenAction.isElementPresent(driver,
-					By.cssSelector("#saas-3522304-overlays > div.v-Notification.error.v-Notification-error > div > div > h1"), 3);
 			maxLoop += 1;
 			forecastDate.sendKeys(mmddyyyy_date);
+			existError = ScreenAction.isElementPresent(driver,
+					By.cssSelector("#saas-3522304-overlays > div.v-Notification.error.v-Notification-error > div > div > h1"), 3);
 			if (existError) {
 				Actions action = new Actions(driver);
 				action.sendKeys(Keys.ESCAPE).build().perform();
