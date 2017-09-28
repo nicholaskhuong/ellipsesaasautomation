@@ -21,7 +21,7 @@ import com.abb.ventyx.utilities.BaseTestCase;
 import com.abb.ventyx.utilities.Credentials;
 import com.abb.ventyx.utilities.ScreenAction;
 
-@ALM(id = "1867")
+@ALM(id = "1019")
 @Credentials(user = "SPR002", password = "", district = "R100", position = "HRMAN")
 public class IssueStockSearchbyRequisitionNumbers_Step06 extends BaseTestCase {
 	
@@ -54,6 +54,7 @@ public class IssueStockSearchbyRequisitionNumbers_Step06 extends BaseTestCase {
 	
 	@Test(description = "Input value for Pick Stock Setting ", dependsOnMethods="selectSettingIconOnPickTasksPage",alwaysRun = true)
 	public void inputValueOnPickTasksSettingPage() throws Throwable {	
+		//TODO: for sleep
 		Thread.sleep(3000);
 	    int maxLoop = 0;
 		boolean dropDown= true;
@@ -81,7 +82,6 @@ public class IssueStockSearchbyRequisitionNumbers_Step06 extends BaseTestCase {
 	    Select orderBy = new Select(driver.findElement(By.cssSelector("#orderBy > select")));
 		orderBy.selectByVisibleText("Requisition");
 		driver.findElement(By.cssSelector("#saveBtn > span > span")).click();
-	    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
 	
 	@Test(description = "Show Pick Tasks type ", dependsOnMethods="inputValueOnPickTasksSettingPage",alwaysRun = true)

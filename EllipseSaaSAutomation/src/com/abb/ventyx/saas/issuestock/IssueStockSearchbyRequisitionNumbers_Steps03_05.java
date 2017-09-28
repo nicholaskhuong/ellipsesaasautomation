@@ -24,7 +24,7 @@ import com.abb.ventyx.utilities.BaseTestCase;
 import com.abb.ventyx.utilities.Credentials;
 import com.abb.ventyx.utilities.ScreenAction;
 
-@ALM(id = "1867")
+@ALM(id = "1019")
 @Credentials(user = "SPR002", password = "", district = "R100", position = "HRMAN")
 public class IssueStockSearchbyRequisitionNumbers_Steps03_05 extends BaseTestCase {
 	
@@ -59,6 +59,7 @@ public class IssueStockSearchbyRequisitionNumbers_Steps03_05 extends BaseTestCas
 	
 	@Test(description = "Input value for Pick Stock Setting ", dependsOnMethods="selectSettingIconOnPickTasksPage",alwaysRun = true)
 	public void inputValueOnPickTasksSettingPage() throws Throwable {	
+		//TODO: for sleep
 		Thread.sleep(3000);
 	    int maxLoop = 0;
 		boolean dropDown= true;
@@ -79,7 +80,6 @@ public class IssueStockSearchbyRequisitionNumbers_Steps03_05 extends BaseTestCas
 	    Select orderBy = new Select(driver.findElement(By.cssSelector("#orderBy > select")));
 		orderBy.selectByVisibleText("Bin");
 		driver.findElement(By.cssSelector("#saveBtn > span > span")).click();
-	    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	 // Assert.assertEquals(driver.findElement(By.xpath("//*[@id='saas-3522304']/div/div[2]/div/div[2]/div/div[1]/div[1]/span")).getText(), "Settings"); Still error
 	}
 	

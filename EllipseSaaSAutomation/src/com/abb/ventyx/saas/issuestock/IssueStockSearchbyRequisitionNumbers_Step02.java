@@ -24,13 +24,12 @@ import com.abb.ventyx.utilities.BaseTestCase;
 import com.abb.ventyx.utilities.Credentials;
 import com.abb.ventyx.utilities.ScreenAction;
 
-@ALM(id = "1867")
+@ALM(id = "1019")
 @Credentials(user = "SPR002", password = "", district = "R100", position = "HRMAN")
 public class IssueStockSearchbyRequisitionNumbers_Step02 extends BaseTestCase {
 	 WebDriver drv;
 	@Test(description = "Access to Pick Stock Application")
 	public void accessPickStock() {
-		
 		loginToApplication(ApplicationName.PICK_STOCK);
 		Assert.assertEquals(driver.findElement(By.xpath("//*[@id='saas-3522304']/div/div[2]/div/div[1]/div/div[1]/div[1]/span")).getText(), "Pick Tasks");
 		int maxLoop = 0;
@@ -55,13 +54,13 @@ public class IssueStockSearchbyRequisitionNumbers_Step02 extends BaseTestCase {
 	public void selectSettingIconOnPickTasksPage() {
 		    driver.findElement(By.cssSelector("#menuNavigation > span > span.v-menubar-menuitem-caption > span")).click();
 		    driver.findElement(By.xpath("//div[@id='saas-3522304-overlays']/div[2]/div/div/span/span/span")).click();
-		    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		 // Assert.assertEquals(driver.findElement(By.xpath("//*[@id='saas-3522304']/div/div[2]/div/div[1]/div/div[1]/div[1]/span")).getText(), "Pick Tasks"); Still error
 	}
 	
 	@Test(description = "Input value for Pick Stock Setting ", dependsOnMethods="selectSettingIconOnPickTasksPage",alwaysRun = true)
 	public void inputValueOnPickTasksSettingPage() throws Throwable {	
-		Thread.sleep(3000);
+	//TODO: for sleep
+		Thread.sleep(3000); 
 		int maxLoop = 0;
 		boolean dropDown= true;
 		while (maxLoop < 3) {
@@ -80,7 +79,6 @@ public class IssueStockSearchbyRequisitionNumbers_Step02 extends BaseTestCase {
 	    Select orderBy = new Select(driver.findElement(By.cssSelector("#orderBy > select")));
 		orderBy.selectByVisibleText("Requisition");
 		driver.findElement(By.cssSelector("#saveBtn > span > span")).click();
-	    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
 	
 	@Test(description = "Show Pick Tasks type ", dependsOnMethods="inputValueOnPickTasksSettingPage",alwaysRun = true)
