@@ -10,7 +10,9 @@ import org.testng.annotations.Test;
 
 import com.abb.ventyx.saas.objects.pagedefinitions.ApplicationName;
 import com.abb.ventyx.utilities.BaseTestCase;
+import com.abb.ventyx.utilities.Credentials;
 
+@Credentials(user = "SPR002", password = "", district = "R100", position = "HRMAN")
 public class CreateLeaveRequest extends BaseTestCase {
 
 	@Test(description = "User be able to sign in to SaaS system with a corrected email")
