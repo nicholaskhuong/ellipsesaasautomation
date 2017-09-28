@@ -25,7 +25,7 @@ import com.abb.ventyx.utilities.Credentials;
 import com.abb.ventyx.utilities.ScreenAction;
 
 @ALM(id = "1019")
-@Credentials(user = "SPR002", password = "", district = "R100", position = "HRMAN")
+@Credentials(user = "SPR002", password = "", district = "R100", position = "MATMAN")
 public class IssueStockSearchbyRequisitionNumbers_Step02 extends BaseTestCase {
 	 WebDriver drv;
 	@Test(description = "Access to Pick Stock Application")
@@ -47,7 +47,7 @@ public class IssueStockSearchbyRequisitionNumbers_Step02 extends BaseTestCase {
 			   }
 		  }
 		  existError=ScreenAction.isElementPresent(driver,By.cssSelector("#saas-3522304-overlays > div.v-Notification.error.v-Notification-error > div > div > h1"));
-		  Assert.assertTrue(existError==false, " No error message returned");
+		  Assert.assertFalse(existError, "Application has error message");
 	}
 
 	@Test(description = "Select Setting icon on Pick Tasks Page  ", dependsOnMethods="accessPickStock",alwaysRun = true)
