@@ -1,4 +1,4 @@
-package com.abb.ventyx.saas.issuestock;
+package com.abb.ventyx.saas.pickstock;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;

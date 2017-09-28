@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Pick Tasks" parallel="none">
+  	<test name="QuickIssue">
+		<classes>
+		
+				<class name="com.abb.ventyx.saas.quickissue.QuickIssue_Steps03_04" />
+				
+				<class name="com.abb.ventyx.saas.quickissue.QuickIssue_Step05" />
+				
+				<class name="com.abb.ventyx.saas.quickissue.QuickIssue_Step06" />
+				
+				<class name="com.abb.ventyx.saas.quickissue.QuickIssue_Step07" /> <!-- Still error -->
+				
+				<class name="com.abb.ventyx.saas.quickissue.QuickIssue_Step08" />
+				
+				<class name="com.abb.ventyx.saas.quickissue.QuickIssue_Steps09_13" />
+				
+				<class name="com.abb.ventyx.saas.quickissue.QuickIssue_Step14" />  <!-- Still error -->
+				
+				<class name="com.abb.ventyx.saas.quickissue.QuickIssue_Step17" /> <!-- Still error -->
+				
+		
+		</classes>
+  	</test> <!-- Test -->
+  	
+</suite> <!-- Suite -->
