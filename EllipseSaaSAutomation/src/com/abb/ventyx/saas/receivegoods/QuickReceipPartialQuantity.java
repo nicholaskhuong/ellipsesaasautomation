@@ -60,6 +60,7 @@ public class QuickReceipPartialQuantity extends BaseTestCase {
 	//	Assert.assertEquals(driver.findElement(By.xpath(POItemsPageDefinition.NEW_PO_ITEMS_TEXT_ID)).getText(), "PO Items");
 	}
 	
+	//int qty=0;
 	@Test(description = "Display Detail Items", dependsOnMethods="accessToPOItemsPage",alwaysRun = true)
 	public void displayDetailItems () {
 		List<WebElement> documentItem = driver.findElements(By.id(POItemsPageDefinition.PO_ITEM_NUMBER_ID));
@@ -75,14 +76,20 @@ public class QuickReceipPartialQuantity extends BaseTestCase {
 		Assert.assertEquals(partNumber.get(0).getAttribute("value"),"");
 		Assert.assertEquals(stockCode.get(0).getAttribute("value"),"PC0005001");
 		Assert.assertEquals(description.get(0).getAttribute("value"),"POSP");
-		Assert.assertEquals(outstandingQuantityUOP.get(0).getAttribute("value"),outstandingQuantityUOP.get(0).getAttribute("value"));
+		
+		//qty= Integer.valueOf(outstandingQuantityUOP.get(0).getAttribute("value"));
+		Assert.assertEquals(outstandingQuantityUOP.get(0).getAttribute("value"),15.0);
 		Assert.assertEquals(unitOfPurchase.get(0).getAttribute("value"),"AUD");
-		Assert.assertEquals(outstandingQuantityUOI.get(0).getAttribute("value"),outstandingQuantityUOP.get(0).getAttribute("value"));
+		Assert.assertEquals(outstandingQuantityUOI.get(0).getAttribute("value"),15.0);
 		Assert.assertEquals(unitOfIssue.get(0).getAttribute("value"),"AUD");
 	}
 	
 	@Test(description = "Click button PARTIAL on PO Items Page", dependsOnMethods="displayDetailItems",alwaysRun = true)
 	public void clickPARTIALButton() {
+	//	if(qty<15){
+			//click icon back to list page
+			// open detail time 2;
+	//	}
 		List<WebElement> btnPARTIAL = driver.findElements(By.cssSelector(POItemsPageDefinition.btn_PARTIAL_ID));
 		btnPARTIAL.get(0).click();
 	}
@@ -108,25 +115,5 @@ public class QuickReceipPartialQuantity extends BaseTestCase {
 		List<WebElement> lismg =driver.findElements(By.cssSelector(POItemsPageDefinition.MESSAGE_TEXT_ID));
 		Assert.assertEquals(lismg.get(0).getText(),"(INFO) CORE.E06004: Action successfully completed.\n(INFO) 3140.I0687: Purchase Order P05018001 is linked to Purchase Requisition PC0005001. Print Receiving Report.\n(INFO) 3140.I0464: Successfully receipted purchase order. P05018001");
 		lismg.get(0).click();
-	}
-	
-	@Test(description = "Show Item Detail On PO Item Page", dependsOnMethods="displayMessageOnPOItemPage",alwaysRun = true)
-	public void displayItemDetail() {
-		List<WebElement> documentItem = driver.findElements(By.id(POItemsPageDefinition.PO_ITEM_NUMBER_ID));
-		List<WebElement> partNumber = driver.findElements(By.id(POItemsPageDefinition.PART_NUMBER_ID));
-		List<WebElement> stockCode = driver.findElements(By.id(POItemsPageDefinition.STOCK_CODE_ID));
-		List<WebElement> description = driver.findElements(By.id(POItemsPageDefinition.DESCRIPTION_ID));
-		List<WebElement> outstandingQuantityUOP = driver.findElements(By.id(POItemsPageDefinition.OUT_STANDING_QUANTITY_UOP_ID));
-		List<WebElement> unitOfPurchase = driver.findElements(By.id(POItemsPageDefinition.UNIT_OF_PURCHASE_ID));
-		List<WebElement> outstandingQuantityUOI = driver.findElements(By.id(POItemsPageDefinition.OUT_STANDING_QUANTITY_UOI_ID));
-		List<WebElement> unitOfIssue = driver.findElements(By.id(POItemsPageDefinition.UNIT_OF_ISSUE_ID));
-		Assert.assertEquals(documentItem.get(0).getAttribute("value"),"001");
-		Assert.assertEquals(partNumber.get(0).getAttribute("value"),"");
-		Assert.assertEquals(stockCode.get(0).getAttribute("value"),"PC0005001");
-		Assert.assertEquals(description.get(0).getAttribute("value"),"POSP");
-		Assert.assertEquals(outstandingQuantityUOP.get(0).getAttribute("value"),outstandingQuantityUOP.get(0).getAttribute("value"));
-		Assert.assertEquals(unitOfPurchase.get(0).getAttribute("value"),"AUD");
-		Assert.assertEquals(outstandingQuantityUOI.get(0).getAttribute("value"),outstandingQuantityUOP.get(0).getAttribute("value"));
-		Assert.assertEquals(unitOfIssue.get(0).getAttribute("value"),"AUD");
 	}
 }
