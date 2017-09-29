@@ -15,4 +15,13 @@
 		</classes>
   	</test> <!-- Test -->
   	
+	<test name="Create Leave Request">
+	<classes>
+			<class name="com.abb.ventyx.saas.requestleave.CreateLeaveRequest_Step01" />
+	
+			<class name="com.abb.ventyx.saas.requestleave.CreateLeaveRequest_Step02" />
+						
+	</classes>
+  	</test> <!-- Test -->
+  	
 </suite> <!-- Suite -->
