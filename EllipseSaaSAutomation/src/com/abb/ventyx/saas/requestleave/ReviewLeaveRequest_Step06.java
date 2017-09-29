@@ -26,7 +26,6 @@ public class ReviewLeaveRequest_Step06 extends BaseTestCase {
 		Assert.assertEquals(driver.findElement(By.xpath("//*[@id='saas-3522304']/div/div[2]/div/div[1]/div/div[1]/div[1]/span")).getText(), "Leave Balance");
 		Assert.assertEquals(driver.findElement(By.xpath("//div[@id='fgLeaveBalanceList']/div/div/div")).getText(), "Forecast Date");
 	}
-
 	
 	@Test(description = "Select Setting icon on Leave Balance Page  ", dependsOnMethods="accessRequestLeave")
 	public void selectSettingIconOnLeaveBalancePage() {
