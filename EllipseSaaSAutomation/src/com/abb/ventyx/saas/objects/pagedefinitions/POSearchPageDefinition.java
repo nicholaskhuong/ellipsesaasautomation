@@ -5,6 +5,6 @@ public class POSearchPageDefinition {
 	
 	public static final String PO_NUMBER_ID = "purchaseOrderNumber";
 	public static final String PO_ITEM_NUMBER_ID = "purchaseOrderItemNumber";
-	public static final String btn_SEARCH_ID = "#searchBtn > span > span";
+	public static final String SEARCH_BUTTON_ID = "#searchBtn > span > span";
 }
 

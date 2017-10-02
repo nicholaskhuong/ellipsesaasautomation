@@ -52,7 +52,7 @@ public class QuickReceipPartialQuantity_GoodsPO extends BaseTestCase {
 	@Test(description = "Click button SEARCH on PO search Page", dependsOnMethods="inputPurchaseOrderItemNumber",alwaysRun = true)
 	public void clickSEARCHButton() {
 		ScreenAction actionBtn = new ScreenAction(driver);
-		actionBtn.clickBtn(By.cssSelector(POSearchPageDefinition.btn_SEARCH_ID));
+		actionBtn.clickBtn(By.cssSelector(POSearchPageDefinition.SEARCH_BUTTON_ID));
 	}
 	
 	@Test(description = "Access to PO Items Page", dependsOnMethods="clickSEARCHButton",alwaysRun = true)
@@ -90,7 +90,7 @@ public class QuickReceipPartialQuantity_GoodsPO extends BaseTestCase {
 			//click icon back to list page
 			// open detail time 2;
 	//	}
-		List<WebElement> btnPARTIAL = driver.findElements(By.cssSelector(POItemsPageDefinition.btn_PARTIAL_ID));
+		List<WebElement> btnPARTIAL = driver.findElements(By.cssSelector(POItemsPageDefinition.PARTIAL_BUTTON_ID));
 		btnPARTIAL.get(0).click();
 	}
 	
@@ -107,7 +107,7 @@ public class QuickReceipPartialQuantity_GoodsPO extends BaseTestCase {
 	@Test(description = "Click Receive Button On Item Detail Page", dependsOnMethods="inputValueOnItemDetailPage",alwaysRun = true)
 	public void clickRECEIVEButton() {
 		ScreenAction actionBtn = new ScreenAction(driver);
-		actionBtn.clickBtn(By.cssSelector(ItemDetailPageDefinition.btn_RECEIVE_ID));
+		actionBtn.clickBtn(By.cssSelector(ItemDetailPageDefinition.RECEIPT_PEFERENCE_ID));
 	}
 	
 	@Test(description = "Display Message On PO Item Page", dependsOnMethods="clickRECEIVEButton",alwaysRun = true)

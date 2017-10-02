@@ -52,7 +52,7 @@ public class QuickReceipFullQuantity_Goods extends BaseTestCase {
 	@Test(description = "Click button SEARCH on PO search Page", dependsOnMethods="inputPurchaseOrderItemNumber",alwaysRun = true)
 	public void clickSEARCHButton() {
 		ScreenAction actionBtn = new ScreenAction(driver);
-		actionBtn.clickBtn(By.cssSelector(POSearchPageDefinition.btn_SEARCH_ID));
+		actionBtn.clickBtn(By.cssSelector(POSearchPageDefinition.SEARCH_BUTTON_ID));
 	}
 	
 	@Test(description = "Access to PO Items Page", dependsOnMethods="clickSEARCHButton",alwaysRun = true)
@@ -83,7 +83,7 @@ public class QuickReceipFullQuantity_Goods extends BaseTestCase {
 	
 	@Test(description = "Click button FULL on PO Items Page", dependsOnMethods="displayDetailItems",alwaysRun = true)
 	public void clickFULLButton() {
-		List<WebElement> btnFULL = driver.findElements(By.cssSelector(POItemsPageDefinition.btn_FULL_ID));
+		List<WebElement> btnFULL = driver.findElements(By.cssSelector(POItemsPageDefinition.FULL_BUTTON_ID));
 		btnFULL.get(0).click();
 	}
 	
