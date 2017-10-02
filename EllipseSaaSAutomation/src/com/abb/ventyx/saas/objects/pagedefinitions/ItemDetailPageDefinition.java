@@ -16,5 +16,7 @@ public class ItemDetailPageDefinition {
 	public static final String UNIT_OF_PURCHASE_ID = "unitOfPurchase";
 	public static final String PO_NUMBER_ID = "documentNumber";
 	public static final String NUMBER_ITEM_ID = "documentItem";
+	
+	public static final String NEW_BIN_ID = "newBinCode";
 }
 
