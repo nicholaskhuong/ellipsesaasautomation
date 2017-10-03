@@ -20,14 +20,9 @@ import com.abb.ventyx.utilities.ScreenAction;
 @Credentials(user = "SPR002", password = "", district = "R100", position = "HRMAN")
 public class DeleteLeaveRequest_Step01 extends BaseTestCase {
 	
-	ScreenAction screenAction=null;
-	
-	
 	@Test(description = "Access to Leave Request Application")
 	public void accessRequestLeave() {
 		loginToApplication(ApplicationName.LEAVE_REQUEST);
-		
-		screenAction = new ScreenAction(driver);
 		
 		screenAction.waitObjVisible(driver, By.id("leaveBalanceDays"),2);
 		Assert.assertEquals(driver.findElement(By.xpath(LeaveBalancePageDefinition.LEAVE_BALANCE_TITLE_ID)).getText(), "Leave Balance");
@@ -77,7 +72,6 @@ public class DeleteLeaveRequest_Step01 extends BaseTestCase {
 		Assert.assertTrue(driver.findElement(By.id(LeaveBalancePageDefinition.SHOW_ALL_REQUESTS_BUTTON_ID)).isEnabled());
 		screenAction.clickBtn(By.id(LeaveBalancePageDefinition.SHOW_ALL_REQUESTS_BUTTON_ID));
 		
-		ScreenAction screenAction= new ScreenAction(driver);
 		screenAction.waitObjVisible(driver, By.xpath(LeaveRequestsPageDefinition.LEAVE_REQUEST_TITLE_ID), 3);
 		Assert.assertEquals(driver.findElement(By.xpath(LeaveRequestsPageDefinition.LEAVE_REQUEST_TITLE_ID)).getText(), "Leave Requests");
 	}
@@ -89,7 +83,7 @@ public class DeleteLeaveRequest_Step01 extends BaseTestCase {
 		List<WebElement> leaveStartDate = driver.findElements(By.cssSelector(LeaveRequestsPageDefinition.START_DATE_TEXT_ID));
 		List<WebElement> leaveEndDate = driver.findElements(By.cssSelector(LeaveRequestsPageDefinition.END_DATE_TEXT_ID));
 		List<WebElement> leaveDays = driver.findElements(By.id(LeaveRequestsPageDefinition.DAYS_TEXT_ID));
-		List<WebElement> leaveStatusDesc = driver.findElements(By.id(LeaveRequestsPageDefinition.STATUS_TEXT_ID));
+		List<WebElement> leaveStatusDesc = driver.findElements(By.id(LeaveRequestsPageDefinition.STATUS_DESC_TEXT_ID));
 		
 		int index=-1;
 		int totalRows=leaveStartDate.size();
@@ -147,7 +141,7 @@ public class DeleteLeaveRequest_Step01 extends BaseTestCase {
 	@Test(description = "Assert details of first row", dependsOnMethods="assertLeaveRequestsPageDisplay",alwaysRun=true)
 	public void assertEntryDeleted() {
 		List<WebElement> leaveStartDate = driver.findElements(By.cssSelector(LeaveRequestsPageDefinition.START_DATE_TEXT_ID));
-		List<WebElement> leaveStatusDesc = driver.findElements(By.id(LeaveRequestsPageDefinition.STATUS_TEXT_ID));
+		List<WebElement> leaveStatusDesc = driver.findElements(By.id(LeaveRequestsPageDefinition.STATUS_DESC_TEXT_ID));
 		
 		boolean found=false;
 		for (int i = 0; i < leaveStartDate.size(); i++) {

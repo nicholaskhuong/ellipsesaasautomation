@@ -21,14 +21,9 @@ import com.abb.ventyx.utilities.ScreenAction;
 @Credentials(user = "SPR002", password = "", district = "R100", position = "HRMAN")
 public class CreateLeaveRequest_Step02 extends BaseTestCase {
 	
-	ScreenAction screenAction=null;
-	
-	
 	@Test(description = "Access to Leave Request Application")
 	public void accessRequestLeave() {
 		loginToApplication(ApplicationName.LEAVE_REQUEST);
-		
-		screenAction = new ScreenAction(driver);
 		
 		screenAction.waitObjVisible(driver, By.id("leaveBalanceDays"),2);
 		Assert.assertEquals(driver.findElement(By.xpath(LeaveBalancePageDefinition.LEAVE_BALANCE_TITLE_ID)).getText(), "Leave Balance");
@@ -136,7 +131,6 @@ public class CreateLeaveRequest_Step02 extends BaseTestCase {
 	
 	@Test( description = "Click Apply", dependsOnMethods="assertDays_Hours_ForecastDays_ForecastHours", alwaysRun=true)
 	public void clickApply(){
-		screenAction = new ScreenAction(driver);
 		screenAction.clickBtn(By.cssSelector(NewLeaveBalancePageDefinition.APPLY_FOR_UPDATE_BUTTON_ID));
 	}
 	
@@ -185,7 +179,7 @@ public class CreateLeaveRequest_Step02 extends BaseTestCase {
 		List<WebElement> leaveStartDate = driver.findElements(By.cssSelector(LeaveRequestsPageDefinition.START_DATE_TEXT_ID));
 		List<WebElement> leaveEndDate = driver.findElements(By.cssSelector(LeaveRequestsPageDefinition.END_DATE_TEXT_ID));
 		List<WebElement> leaveDays = driver.findElements(By.id(LeaveRequestsPageDefinition.DAYS_TEXT_ID));
-		List<WebElement> leaveStatusDesc = driver.findElements(By.id(LeaveRequestsPageDefinition.STATUS_TEXT_ID));
+		List<WebElement> leaveStatusDesc = driver.findElements(By.id(LeaveRequestsPageDefinition.STATUS_DESC_TEXT_ID));
 		
 		int index=-1;
 		for (int i = 0; i < leaveStartDate.size(); i++) {
