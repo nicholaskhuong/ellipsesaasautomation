@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Request Leave">
+  	<test name="Review Approve Request">
+		<classes>
+				<class name="com.abb.ventyx.saas.approveleave.ReviewLeaveApprove_Step0102" />
+		
+				<class name="com.abb.ventyx.saas.approveleave.ReviewLeaveApprove_Step03" />
+				
+		</classes>
+  	</test> <!-- Test -->
+</suite> <!-- Suite -->
