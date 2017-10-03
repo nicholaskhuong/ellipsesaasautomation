@@ -51,8 +51,7 @@ public class QuickReceiptFullQuantity_NormalPO_OwnedSOH_Step16 extends BaseTestC
 	
 	@Test(description = "Click button SEARCH on PO search Page", dependsOnMethods="inputPurchaseOrderItemNumber",alwaysRun = true)
 	public void clickSEARCHButton() {
-		ScreenAction actionBtn = new ScreenAction(driver);
-		actionBtn.clickBtn(By.cssSelector(POSearchPageDefinition.SEARCH_BUTTON_ID));
+		screenAction.clickBtn(By.cssSelector(POSearchPageDefinition.SEARCH_BUTTON_ID));
 	}
 	
 	@Test(description = "Access to PO Items Page", dependsOnMethods="clickSEARCHButton",alwaysRun = true)
@@ -70,8 +69,6 @@ public class QuickReceiptFullQuantity_NormalPO_OwnedSOH_Step16 extends BaseTestC
 		List<WebElement> unitOfPurchase = driver.findElements(By.id(POItemsPageDefinition.UNIT_OF_PURCHASE_ID));
 		List<WebElement> outstandingQuantityUOI = driver.findElements(By.id(POItemsPageDefinition.OUT_STANDING_QUANTITY_UOI_ID));
 		List<WebElement> unitOfIssue = driver.findElements(By.id(POItemsPageDefinition.UNIT_OF_ISSUE_ID));
-		List<WebElement> partialAction = driver.findElements(By.cssSelector(POItemsPageDefinition.PARTIAL_BUTTON_ID));
-		List<WebElement> fullAction = driver.findElements(By.cssSelector(POItemsPageDefinition.FULL_BUTTON_ID));
 		
 		Assert.assertEquals(documentItem.get(0).getAttribute("value"),"001");
 		Assert.assertEquals(stockCode.get(0).getAttribute("value"),"STC01S");
@@ -82,9 +79,7 @@ public class QuickReceiptFullQuantity_NormalPO_OwnedSOH_Step16 extends BaseTestC
 		Assert.assertEquals(outstandingQuantityUOI.get(0).getAttribute("value"), "30.0");
 		Assert.assertEquals(unitOfIssue.get(0).getAttribute("value"),"EA");
 	
-	//	ScreenAction action = new ScreenAction(driver);
-	//	action.assertButtonEnabled(), false);
-	
-		
+		screenAction.assertButtonEnabled(By.id("partialAction"),0, false);
+		screenAction.assertButtonEnabled(By.id("fullAction"),0, false);
 	}
 }
