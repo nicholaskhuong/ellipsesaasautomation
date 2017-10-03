@@ -78,9 +78,9 @@ public class QuickReceiptPartialQuantity_GoodsPO extends BaseTestCase {
 		Assert.assertEquals(description.get(0).getAttribute("value"),"POSP");
 		
 		//qty= Integer.valueOf(outstandingQuantityUOP.get(0).getAttribute("value"));
-		Assert.assertEquals(outstandingQuantityUOP.get(0).getAttribute("value"),15.0);
+		Assert.assertEquals(outstandingQuantityUOP.get(0).getAttribute("value"),"15.0");
 		Assert.assertEquals(unitOfPurchase.get(0).getAttribute("value"),"AUD");
-		Assert.assertEquals(outstandingQuantityUOI.get(0).getAttribute("value"),15.0);
+		Assert.assertEquals(outstandingQuantityUOI.get(0).getAttribute("value"),"15.0");
 		Assert.assertEquals(unitOfIssue.get(0).getAttribute("value"),"AUD");
 	}
 	
