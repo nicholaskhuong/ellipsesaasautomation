@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Receive Goods" parallel="none">
-  	<test name="Quick Receip Full Quantity">
+  	<test name="Quick Receipt Full Quantity Goods">
 		<classes>
-				<class name="com.abb.ventyx.saas.receive.QuickReceipFullQuantity_Goods" />
+				<class name="com.abb.ventyx.saas.receive.QuickReceiptFullQuantity_Goods" />
 		</classes>
   	</test> <!-- Test -->
   	
