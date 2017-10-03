@@ -18,5 +18,10 @@ public class ItemDetailPageDefinition {
 	public static final String NUMBER_ITEM_ID = "documentItem";
 	
 	public static final String NEW_BIN_ID = "newBinCode";
+	
+	public static final String BIN_CODE_ID = "#binCode > select.v-select-select";
+	
+	
+	public static final String MESSAGE_ERROR_TEXT_ID = "#saas-3522304-overlays > div.v-Notification.error.v-Notification-error > div";
 }
 
