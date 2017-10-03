@@ -48,6 +48,7 @@ public class ScreenAction {
 		listButtons.get(index).click();
 	}
 
+
 	public void inputTextField(String obj, String value) {
 		WebElement txtField = driver.findElement(By.id(obj));
 		txtField.clear();
@@ -124,18 +125,20 @@ public class ScreenAction {
 	public void clickTapToClose(WebDriver driver, By obj) {
 		  int maxLoop = 0;
 		  boolean existError = false;
+		 
 		  while (maxLoop < 4) {
-		   maxLoop += 1;
-		   existError = ScreenAction.isElementPresent(driver,
-		     By.cssSelector("#saas-3522304-overlays > div.v-Notification.error.v-Notification-error > div > div > h1"), 1);
-		   if (existError) {
-		    Actions action = new Actions(driver);
-		    action.sendKeys(Keys.ESCAPE).build().perform();
-		   } else {
-		    break;
-		   }
+			   maxLoop += 1;
+			   existError = ScreenAction.isElementPresent(driver,
+			     By.cssSelector("#saas-3522304-overlays > div.v-Notification.error.v-Notification-error > div > div > h1"), 1);
+			   if (existError) {
+			    Actions action = new Actions(driver);
+			    action.sendKeys(Keys.ESCAPE).build().perform();
+			   } else {
+			    break;
+			   }
 		  }
-		 }	
+	}	
+	
 	public void selectByText(WebDriver driver, By obj, String input) {
 		Select select = new Select(driver.findElement(obj));
 		select.selectByVisibleText(input);
@@ -145,5 +148,27 @@ public class ScreenAction {
 	public String getSelectedText(WebDriver driver, String Id) {
 		Select select = new Select(driver.findElement(By.cssSelector(Id)));
 		return select.getFirstSelectedOption().getText();
+	}
+	
+	
+	public boolean isClickable(By arg0)      
+	{
+		WebElement elm = driver.findElement(arg0);
+		if (elm == null) {
+		    return true;
+		} else {
+		    String atr = elm.getAttribute("aria-disabled");
+		    if (null == atr || atr.isEmpty()) {
+		       return true;
+		    } else {
+		       return false;
+		 
+		  }
+		}
+		
+	}
+	
+	public void assertButtonEnabled(By arg0, boolean arg1) {
+		Assert.assertEquals(isClickable(arg0), arg1);
 	}
 }
