@@ -30,43 +30,8 @@ public class CreateLeaveRequest_UNCO_For_Delete extends BaseTestCase {
 	}
 
 	//Step1: Create Leave Request Single Day  from Balance Page
-	@Test(description = "Assert Days and Hours for Leave Balance Summay screen", dependsOnMethods="accessRequestLeave")
-	public void assertAnnualVacationLeaveOnLeaveBalancePage() {
-		List<WebElement> leaveBalanceDays = driver.findElements(By.id(LeaveBalancePageDefinition.LEAVE_BALANCE_DAYS_TEXT_ID));
-		List<WebElement> leaveBalanceHours = driver.findElements(By.id(LeaveBalancePageDefinition.LEAVE_BALANCE_HOURS_TEXT_ID));
-		
-		Assert.assertEquals(driver.findElement(By.xpath(LeaveBalancePageDefinition.LEAVE_BALANCE_DAYS_LABEL_ID)).getText(), "Days");
-		Assert.assertEquals(leaveBalanceDays.get(0).getAttribute("value"),"0.0148");
-		
-		Assert.assertEquals(driver.findElement(By.xpath(LeaveBalancePageDefinition.LEAVE_BALANCE_HOURS_LABEL_ID)).getText(), "Hours");
-		Assert.assertEquals(leaveBalanceHours.get(0).getAttribute("value"),"0.1180");
-	}
-	
-	@Test(description = "Assert Days and Hours for Long Service Leave", dependsOnMethods="assertAnnualVacationLeaveOnLeaveBalancePage", alwaysRun=true)
-	public void assertLongServiceLeaveOnLeaveBalancePage() {
-		List<WebElement> leaveBalanceDays = driver.findElements(By.id("leaveBalanceDays"));
-		List<WebElement> leaveBalanceHours = driver.findElements(By.id("leaveBalanceHours"));
-		
-		Assert.assertEquals(driver.findElement(By.xpath(LeaveBalancePageDefinition.LEAVE_BALANCE_DAYS_LABEL_ID)).getText(), "Days");
-		Assert.assertEquals(leaveBalanceDays.get(1).getAttribute("value"),"0.2813");
-		
-		Assert.assertEquals(driver.findElement(By.xpath(LeaveBalancePageDefinition.LEAVE_BALANCE_HOURS_LABEL_ID)).getText(), "Hours");
-		Assert.assertEquals(leaveBalanceHours.get(1).getAttribute("value"),"2.2500");
-	}
-	
-	@Test( description = "Assert Days and Hours for Sick Leave", dependsOnMethods="assertLongServiceLeaveOnLeaveBalancePage",alwaysRun=true)
-	public void assertSickLeaveOnLeaveBalancePage() {
-		List<WebElement> leaveBalanceDays = driver.findElements(By.id("leaveBalanceDays"));
-		List<WebElement> leaveBalanceHours = driver.findElements(By.id("leaveBalanceHours"));
 
-		Assert.assertEquals(driver.findElement(By.xpath(LeaveBalancePageDefinition.LEAVE_BALANCE_DAYS_LABEL_ID)).getText(), "Days");
-		Assert.assertEquals(leaveBalanceDays.get(2).getAttribute("value"),"0.0147");
-
-		Assert.assertEquals(driver.findElement(By.xpath(LeaveBalancePageDefinition.LEAVE_BALANCE_HOURS_LABEL_ID)).getText(), "Hours");
-		Assert.assertEquals( leaveBalanceHours.get(2).getAttribute("value"),"0.1175");
-	}
-
-	@Test(description = "Select New Leave Request button", dependsOnMethods="assertSickLeaveOnLeaveBalancePage",alwaysRun=true)
+	@Test(description = "Select New Leave Request button", dependsOnMethods="accessRequestLeave")
 	public void selectNewLeaveRequestOnLeaveBalancePage() {
 		Assert.assertEquals(driver.findElement(By.id(LeaveBalancePageDefinition.NEW_LEAVE_REQUEST_BUTTON_ID)).getText(), "NEW LEAVE REQUEST");
 		Assert.assertTrue(driver.findElement(By.id(LeaveBalancePageDefinition.NEW_LEAVE_REQUEST_BUTTON_ID)).isEnabled());
@@ -104,26 +69,11 @@ public class CreateLeaveRequest_UNCO_For_Delete extends BaseTestCase {
 	
 	@Test( description = "Input Notes", dependsOnMethods="inputEndDate", alwaysRun=true)
 	public void inputNotes(){
-		driver.findElement(By.cssSelector(NewLeaveBalancePageDefinition.NOTES_TEXTAREA_ID)).sendKeys("SaaS.\nCreate leave request testing");
+		driver.findElement(By.cssSelector(NewLeaveBalancePageDefinition.NOTES_TEXTAREA_ID)).sendKeys("SaaS.\nUNCO transactions for delete");
 		
-		Assert.assertEquals(driver.findElement(By.cssSelector(NewLeaveBalancePageDefinition.NOTES_TEXTAREA_ID)).getAttribute("value"), "SaaS.\nCreate leave request testing");
+		Assert.assertEquals(driver.findElement(By.cssSelector(NewLeaveBalancePageDefinition.NOTES_TEXTAREA_ID)).getAttribute("value"), "SaaS.\nUNCO transactions for delete");
 	}
 	
-//	@Test( description = "Assert Day, Hours Forecast Days, Forecast Hours", dependsOnMethods="inputNotes", alwaysRun=true)
-	public void assertDays_Hours_ForecastDays_ForecastHours(){
-		screenAction.waitObjVisible(driver, By.cssSelector(NewLeaveBalancePageDefinition.DAYS_TEXT_ID), 3);
-		Assert.assertEquals(driver.findElement(By.cssSelector(NewLeaveBalancePageDefinition.DAYS_TEXT_ID)).getAttribute("value"), "1.0001");
-		
-		screenAction.waitObjVisible(driver, By.cssSelector(NewLeaveBalancePageDefinition.HOURS_TEXT_ID), 3);
-		Assert.assertEquals(driver.findElement(By.cssSelector(NewLeaveBalancePageDefinition.HOURS_TEXT_ID)).getAttribute("value"), "12.5013");
-		
-		screenAction.waitObjVisible(driver, By.cssSelector(NewLeaveBalancePageDefinition.FORECAST_DAYS_TEXT_ID), 3);
-		Assert.assertEquals(driver.findElement(By.cssSelector(NewLeaveBalancePageDefinition.FORECAST_DAYS_TEXT_ID)).getAttribute("value"), "-2.5332");
-		
-		screenAction.waitObjVisible(driver, By.cssSelector(NewLeaveBalancePageDefinition.FORECAST_HOURS_TEXT_ID), 3);
-		Assert.assertEquals(driver.findElement(By.cssSelector(NewLeaveBalancePageDefinition.FORECAST_HOURS_TEXT_ID)).getAttribute("value"), "-20.2653");
-	}
-		
 	@Test( description = "Click Apply", dependsOnMethods="inputNotes", alwaysRun=true)
 	public void clickApply(){
 		screenAction.clickBtn(By.cssSelector(NewLeaveBalancePageDefinition.APPLY_BUTTON_ID));

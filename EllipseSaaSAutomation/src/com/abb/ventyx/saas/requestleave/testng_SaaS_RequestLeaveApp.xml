@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Request Leave">
-  	<test name="Review Leave Request">
+  	
+  <test name="Review Leave Request">
 		<classes>
 				<class name="com.abb.ventyx.saas.requestleave.ReviewLeaveRequest_Step01" />
 		
@@ -16,12 +17,22 @@
   	</test> <!-- Test -->
   	
 	<test name="Create Leave Request">
-	<classes>
-			<class name="com.abb.ventyx.saas.requestleave.CreateLeaveRequest_Step01" />
-	
-			<class name="com.abb.ventyx.saas.requestleave.CreateLeaveRequest_Step02" />
-						
-	</classes>
+		<classes>
+				<class name="com.abb.ventyx.saas.requestleave.CreateLeaveRequest_Step01" />
+		
+				<class name="com.abb.ventyx.saas.requestleave.CreateLeaveRequest_Step02" />
+							
+		</classes>
   	</test> <!-- Test -->
+
+  <test name="Delete Leave Request">
+		<classes>
+				<class name="com.abb.ventyx.saas.requestleave.DeleteLeaveRequest_Step01" /> 
+		
+				<class name="com.abb.ventyx.saas.requestleave.CreateLeaveRequest_UNCO_For_Delete" />
+				<class name="com.abb.ventyx.saas.requestleave.DeleteLeaveRequest_Step02" />
+							
+		</classes>
+  </test> <!-- Test -->
   	
 </suite> <!-- Suite -->

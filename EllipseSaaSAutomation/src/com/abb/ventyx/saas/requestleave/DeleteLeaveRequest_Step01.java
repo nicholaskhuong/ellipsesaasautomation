@@ -14,7 +14,6 @@ import com.abb.ventyx.saas.objects.pagedefinitions.LeaveRequestsPageDefinition;
 import com.abb.ventyx.utilities.ALM;
 import com.abb.ventyx.utilities.BaseTestCase;
 import com.abb.ventyx.utilities.Credentials;
-import com.abb.ventyx.utilities.ScreenAction;
 
 @ALM(id = "1866")
 @Credentials(user = "SPR002", password = "", district = "R100", position = "HRMAN")
@@ -105,8 +104,9 @@ public class DeleteLeaveRequest_Step01 extends BaseTestCase {
 		
 		screenAction.clickBtn(By.xpath("//*[@id='leaveRequestList']/div/div/div/div/div/div["+(index+1)+"]/div/div/div/div/div[2]"));
 		
-		screenAction.waitObjVisible(driver, By.xpath(LeaveRequestPageDefinition.LEAVE_REQUEST_TITLE_ID), 60);
 		screenAction.waitObjVisible(driver, By.id(LeaveRequestPageDefinition.DELETE_BUTTON_ID), 10);
+		screenAction.assertButtonEnabled(By.id(LeaveRequestPageDefinition.DELETE_BUTTON_ID), true);
+		screenAction.waitObjVisible(driver, By.xpath(LeaveRequestPageDefinition.LEAVE_REQUEST_TITLE_ID), 60);
 		Assert.assertEquals(driver.findElement(By.xpath(LeaveRequestPageDefinition.LEAVE_REQUEST_TITLE_ID)).getText(), "Leave Request");
 		
 	}
@@ -132,13 +132,8 @@ public class DeleteLeaveRequest_Step01 extends BaseTestCase {
 		Assert.assertTrue(lismg.size()==0, errorMessage);
 	}
 	
-	@Test( description = "Assert Leave Requests", dependsOnMethods="assertNoErrorMessage", alwaysRun=true)
-	public void assertLeaveRequestsPageDisplay(){
-		screenAction.waitObjVisible(driver, By.cssSelector(LeaveRequestsPageDefinition.START_DATE_TEXT_ID),3);
-		Assert.assertEquals(driver.findElement(By.xpath(LeaveRequestsPageDefinition.LEAVE_REQUEST_TITLE_ID)).getText(), "Leave Requests");
-	}
 	
-	@Test(description = "Assert details of first row", dependsOnMethods="assertLeaveRequestsPageDisplay",alwaysRun=true)
+	@Test(description = "Assert details of first row", dependsOnMethods="assertNoErrorMessage",alwaysRun=true)
 	public void assertEntryDeleted() {
 		List<WebElement> leaveStartDate = driver.findElements(By.cssSelector(LeaveRequestsPageDefinition.START_DATE_TEXT_ID));
 		List<WebElement> leaveStatusDesc = driver.findElements(By.id(LeaveRequestsPageDefinition.STATUS_DESC_TEXT_ID));

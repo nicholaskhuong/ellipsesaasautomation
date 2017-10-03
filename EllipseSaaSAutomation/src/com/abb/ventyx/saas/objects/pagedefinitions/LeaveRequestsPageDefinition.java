@@ -14,6 +14,8 @@ public class LeaveRequestsPageDefinition {
 	public static final String MESSAGE_TEXT_ID = "#saas-3522304-overlays > div.v-Notification.error.v-Notification-error > div > div > h1";
 	
 	public static final String NEXT_ICON_ID = "//*[@id='leaveRequestList']/div/div/div/div/div/div[2]/div/div/div/div/div[2]";
+	public static final String NEW_LEAVE_REQUEST_BUTTON_ID = "newLeaveRequest2";
+	
 	
 	//Approve leave app
 	
