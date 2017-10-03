@@ -150,14 +150,13 @@ public class ScreenAction {
 		return select.getFirstSelectedOption().getText();
 	}
 	
-	
-	public boolean isClickable(By arg0)      
-	{
-		WebElement elm = driver.findElement(arg0);
-		if (elm == null) {
+	public boolean isClickable(By arg0, int index) {
+		List<WebElement> listButtons = driver.findElements(arg0);
+		
+		if (listButtons.get(index) == null) {
 		    return true;
 		} else {
-		    String atr = elm.getAttribute("aria-disabled");
+		    String atr = listButtons.get(index).getAttribute("aria-disabled");
 		    if (null == atr || atr.isEmpty()) {
 		       return true;
 		    } else {
@@ -168,7 +167,15 @@ public class ScreenAction {
 		
 	}
 	
-	public void assertButtonEnabled(By arg0, boolean arg1) {
-		Assert.assertEquals(isClickable(arg0), arg1);
+	public void assertButtonEnabled(By arg0, int index, boolean arg1) {
+		Assert.assertEquals(isClickable(arg0, index), arg1);
 	}
+	
+	public void assertButtonEnabled(By arg0, boolean arg1) {
+		Assert.assertEquals(isClickable(arg0, 0), arg1);
+	}
+	
+	
+	
+	
 }
