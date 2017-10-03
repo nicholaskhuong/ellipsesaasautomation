@@ -45,6 +45,7 @@ import com.abb.ventyx.utilities.report.TestMethodResultAdapter;
 public class BaseTestCase {
 
 	public WebDriver driver;
+	protected ScreenAction screenAction;
 	public HomePage homePage;
 	public String expectedResult = "";
 	private String testCaseStatus = "pass";
@@ -65,6 +66,9 @@ public class BaseTestCase {
 	private static int startRow = 1;
 	private static int endRow = 1;
 	private static int currentRow = 1;
+	
+	
+	
 	protected HashMap<String, String> data = new HashMap<String, String>();
 
 	public BaseTestCase() {
@@ -100,6 +104,7 @@ public class BaseTestCase {
 			this.expectedResult = "";
 			DriverCreator driverCreator = new DriverCreator(BaseTestCase.getProperties().getProperty("test.browser"));
 			driver = driverCreator.getWebDriver();
+			screenAction = new ScreenAction(driver);
 			try {
 				driver.manage().window().maximize();
 			} catch (UnsupportedCommandException e) {
