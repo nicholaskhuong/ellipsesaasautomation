@@ -10,15 +10,15 @@
 				
 				<class name="com.abb.ventyx.saas.pickstock.QuickIssue_Step06" />
 				
-				//<class name="com.abb.ventyx.saas.pickstock.QuickIssue_Step07" /> <!-- Still error -->
+				<!-- <class name="com.abb.ventyx.saas.pickstock.QuickIssue_Step07" />  Still error -->
 				
 				<class name="com.abb.ventyx.saas.pickstock.QuickIssue_Step08" />
 				
 				<class name="com.abb.ventyx.saas.pickstock.QuickIssue_Steps09_13" />
 				
-				//<class name="com.abb.ventyx.saas.pickstock.QuickIssue_Step14" />  <!-- Still error -->
+				<!-- <class name="com.abb.ventyx.saas.pickstock.QuickIssue_Step14" />  Still error -->
 				
-				//<class name="com.abb.ventyx.saas.pickstock.QuickIssue_Step17" /> <!-- Still error -->
+				<!-- <class name="com.abb.ventyx.saas.pickstock.QuickIssue_Step17" />  Still error -->
 				
 		
 		</classes>
