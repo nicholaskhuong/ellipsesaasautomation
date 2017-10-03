@@ -27,7 +27,7 @@ import com.abb.ventyx.utilities.BaseTestCase;
 import com.abb.ventyx.utilities.Credentials;
 import com.abb.ventyx.utilities.ScreenAction;
 
-@ALM(id = "1025")
+@ALM(id = "1024")
 @Credentials(user = "SPR002", password = "", district = "R100", position = "MATMAN")
 public class QuickReceiptFullQuantity_Goods extends BaseTestCase {
 
