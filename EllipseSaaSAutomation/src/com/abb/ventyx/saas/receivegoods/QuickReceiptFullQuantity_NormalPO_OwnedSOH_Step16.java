@@ -29,7 +29,7 @@ import com.abb.ventyx.utilities.ScreenAction;
 
 @ALM(id = "1026")
 @Credentials(user = "SPR002", password = "", district = "R100", position = "MATMAN")
-public class QuickReceiptFullQuantity_NormalPO_Step16 extends BaseTestCase {
+public class QuickReceiptFullQuantity_NormalPO_OwnedSOH_Step16 extends BaseTestCase {
 
 	@Test(description = "Access to Receive Goods Application")
 	public void accessReceiveGoods() {
@@ -82,9 +82,9 @@ public class QuickReceiptFullQuantity_NormalPO_Step16 extends BaseTestCase {
 		Assert.assertEquals(outstandingQuantityUOI.get(0).getAttribute("value"), "30.0");
 		Assert.assertEquals(unitOfIssue.get(0).getAttribute("value"),"EA");
 	
-		//TODO: Check hide button.
-//		Assert.assertEquals(true, partialAction.get(0).isEnabled());
-//		Assert.assertEquals(true, fullAction.get(0).isEnabled());
+	//	ScreenAction action = new ScreenAction(driver);
+	//	action.assertButtonEnabled(), false);
+	
 		
 	}
 }
