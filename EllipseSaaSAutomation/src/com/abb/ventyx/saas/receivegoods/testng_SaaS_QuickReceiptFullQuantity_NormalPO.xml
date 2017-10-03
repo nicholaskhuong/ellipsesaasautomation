@@ -3,9 +3,9 @@
 <suite name="Receive Goods" parallel="none">
   	<test name="Quick Receipt Full Quantity Normal PO">
 		<classes>
-				<class name="com.abb.ventyx.saas.receive.QuickReceiptFullQuantity_NormalPO_Step4to6" />
+				<class name="com.abb.ventyx.saas.receivegoods.QuickReceiptFullQuantity_NormalPO_Step4to6" />
 				
-				<class name="com.abb.ventyx.saas.receive.QuickReceiptFullQuantity_NormalPO_Step8" />
+				<class name="com.abb.ventyx.saas.receivegoods.QuickReceiptFullQuantity_NormalPO_Step8" />
 	
 		</classes>
   	</test> <!-- Test -->

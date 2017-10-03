@@ -4,7 +4,7 @@
   	<test name="Quick Receipt Partial Quantity GoodsPO">
 		<classes>
 		
-				<class name="com.abb.ventyx.saas.receive.QuickReceiptPartialQuantity_GoodsPO" />
+				<class name="com.abb.ventyx.saas.receivegoods.QuickReceiptPartialQuantity_GoodsPO" />
 		
 		</classes>
   	</test> <!-- Test -->
