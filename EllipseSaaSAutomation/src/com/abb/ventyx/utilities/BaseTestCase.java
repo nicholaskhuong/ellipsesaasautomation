@@ -13,7 +13,6 @@ import java.util.HashMap;
 import java.util.Properties;
 import java.util.Random;
 import java.util.Vector;
-import java.util.concurrent.TimeUnit;
 
 import jxl.Sheet;
 import jxl.Workbook;
@@ -66,9 +65,7 @@ public class BaseTestCase {
 	private static int startRow = 1;
 	private static int endRow = 1;
 	private static int currentRow = 1;
-	
-	
-	
+
 	protected HashMap<String, String> data = new HashMap<String, String>();
 
 	public BaseTestCase() {
@@ -112,7 +109,6 @@ public class BaseTestCase {
 			}
 
 			driver.navigate().to(getServerURL() + "/saas/landing#!LandingView");
-			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 			HomePage homepage = new HomePage(driver);
 			homepage.emailVerification(properties.getProperty(TEST_EMAIL), properties.getProperty(TEST_VEIFY_CODE));
 			homepage.chooseEllipseVersion(properties.getProperty(TEST_ELLIPSE_VERSION));

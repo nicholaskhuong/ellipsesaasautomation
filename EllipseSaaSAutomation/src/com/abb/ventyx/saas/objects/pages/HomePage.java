@@ -57,6 +57,8 @@ public class HomePage extends BasePage {
 	}
 
 	public void chooseEllipseVersion(String ellipseVersion) {
-		new Select(driver.findElement(By.cssSelector("select.v-select-select"))).selectByVisibleText(ellipseVersion);
+		WebElement ellipseVersionSelector = (new WebDriverWait(driver, 20)).until(ExpectedConditions.presenceOfElementLocated(By
+				.cssSelector("select.v-select-select")));
+		new Select(ellipseVersionSelector).selectByVisibleText(ellipseVersion);
 	}
 }
