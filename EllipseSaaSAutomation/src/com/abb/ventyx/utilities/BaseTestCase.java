@@ -22,10 +22,12 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.logging.impl.Log4JLogger;
 import org.apache.log4j.xml.DOMConfigurator;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.UnsupportedCommandException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.support.PropertiesLoaderUtils;
@@ -118,11 +120,12 @@ public class BaseTestCase {
 	}
 
 	public void loginToApplication(String applicationName) {
-		driver.findElement(
-				By.cssSelector(String
-						.format("#%s_%s__%s_ > a > span", applicationName, getEllipse_Version().substring(0, getEllipse_Version().indexOf(" "))
-								.trim(), getEllipse_Version().substring(getEllipse_Version().indexOf(" ") + 1, getEllipse_Version().length()).trim()
-								.replace(".", "_")))).click();
+		WebElement applicationElement = driver.findElement(By.cssSelector(String.format("#%s_%s__%s_ > a > span", applicationName,
+				getEllipse_Version().substring(0, getEllipse_Version().indexOf(" ")).trim(),
+				getEllipse_Version().substring(getEllipse_Version().indexOf(" ") + 1, getEllipse_Version().length()).trim().replace(".", "_"))));
+
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", applicationElement);
+		applicationElement.click();
 		login();
 	}
 
