@@ -59,97 +59,71 @@ public class QuickReceiptFullQuantity_NormalPO_ConsignedSOH extends
 
 	@Test(description = "Display Detail Items", dependsOnMethods = "accessToPOItemsPage", alwaysRun = true)
 	public void displayDetailItems() {
-		List<WebElement> documentItem = driver.findElements(By
-				.id(POItemsPageDefinition.PO_ITEM_NUMBER_ID));
-		List<WebElement> stockCode = driver.findElements(By
-				.id(POItemsPageDefinition.STOCK_CODE_ID));
-		List<WebElement> partNumber = driver.findElements(By
-				.id(POItemsPageDefinition.PART_NUMBER_ID));
-		List<WebElement> description = driver.findElements(By
-				.id(POItemsPageDefinition.DESCRIPTION_ID));
-		List<WebElement> outstandingQuantityUOP = driver.findElements(By
-				.id(POItemsPageDefinition.OUT_STANDING_QUANTITY_UOP_ID));
-		List<WebElement> unitOfPurchase = driver.findElements(By
-				.id(POItemsPageDefinition.UNIT_OF_PURCHASE_ID));
-		List<WebElement> outstandingQuantityUOI = driver.findElements(By
-				.id(POItemsPageDefinition.OUT_STANDING_QUANTITY_UOI_ID));
-		List<WebElement> unitOfIssue = driver.findElements(By
-				.id(POItemsPageDefinition.UNIT_OF_ISSUE_ID));
+		List<WebElement> documentItem = driver.findElements(By.id(POItemsPageDefinition.PO_ITEM_NUMBER_ID));
+		List<WebElement> stockCode = driver.findElements(By.id(POItemsPageDefinition.STOCK_CODE_ID));
+		List<WebElement> partNumber = driver.findElements(By.id(POItemsPageDefinition.PART_NUMBER_ID));
+		List<WebElement> description = driver.findElements(By.id(POItemsPageDefinition.DESCRIPTION_ID));
+		List<WebElement> outstandingQuantityUOP = driver.findElements(By.id(POItemsPageDefinition.OUT_STANDING_QUANTITY_UOP_ID));
+		List<WebElement> unitOfPurchase = driver.findElements(By.id(POItemsPageDefinition.UNIT_OF_PURCHASE_ID));
+		List<WebElement> outstandingQuantityUOI = driver.findElements(By.id(POItemsPageDefinition.OUT_STANDING_QUANTITY_UOI_ID));
+		List<WebElement> unitOfIssue = driver.findElements(By.id(POItemsPageDefinition.UNIT_OF_ISSUE_ID));
 
 		Assert.assertEquals(documentItem.get(0).getAttribute("value"), "001");
 		Assert.assertEquals(stockCode.get(0).getAttribute("value"), "ST003");
 		Assert.assertEquals(partNumber.get(0).getAttribute("value"), "");
-		Assert.assertEquals(description.get(0).getAttribute("value"),
-				"STOCK CODE;");
-		Assert.assertEquals(
-				outstandingQuantityUOP.get(0).getAttribute("value"), "1,000.0");
+		Assert.assertEquals(description.get(0).getAttribute("value"),"STOCK CODE;");
+		Assert.assertEquals(outstandingQuantityUOP.get(0).getAttribute("value"), "1,000.0");
 		Assert.assertEquals(unitOfPurchase.get(0).getAttribute("value"), "EA");
-		Assert.assertEquals(
-				outstandingQuantityUOI.get(0).getAttribute("value"), "1,000.0");
+		Assert.assertEquals(outstandingQuantityUOI.get(0).getAttribute("value"), "1,000.0");
 		Assert.assertEquals(unitOfIssue.get(0).getAttribute("value"), "EA");
 	}
 
 	@Test(description = "Click button FULL on PO Items Page", dependsOnMethods = "displayDetailItems", alwaysRun = true)
 	public void clickFULLButton() {
-		List<WebElement> btnFULL = driver.findElements(By
-				.cssSelector(POItemsPageDefinition.FULL_BUTTON_ID));
+		List<WebElement> btnFULL = driver.findElements(By.cssSelector(POItemsPageDefinition.FULL_BUTTON_ID));
 		btnFULL.get(0).click();
 	}
 
 	@Test(description = "Input Value On Item Detail Page", dependsOnMethods = "clickFULLButton", alwaysRun = true)
-	public void inputValueOnItemDetailPage() {
-		// Assert.assertEquals(driver.findElement(By.xpath(POItemsPageDefinition.NEW_PO_ITEMS_TEXT_ID)).getText(),
-		// "Item Detail"); // Still error
-		List<WebElement> stockCode = driver.findElements(By
-				.id(ItemDetailPageDefinition.STOCK_CODE_ID));
-		List<WebElement> description = driver.findElements(By
-				.id(ItemDetailPageDefinition.DESCRIPTION_ID));
-		List<WebElement> unitOfPurchase = driver.findElements(By
-				.id(ItemDetailPageDefinition.UNIT_OF_PURCHASE_ID));
-		List<WebElement> documentItem = driver.findElements(By
-				.id(ItemDetailPageDefinition.NUMBER_ITEM_ID));
-		List<WebElement> documentNumber = driver.findElements(By
-				.id(ItemDetailPageDefinition.PO_NUMBER_ID));
-		List<WebElement> newBinCode = driver.findElements(By
-				.id(ItemDetailPageDefinition.NEW_BIN_ID));
-		List<WebElement> taskQuantityUOM = driver.findElements(By
-				.id(ItemDetailPageDefinition.TASK_QUANTITY_UOM_ID));
-		List<WebElement> outstandingQuantityUOP = driver.findElements(By
-				.id(ItemDetailPageDefinition.OUT_STANDING_QUANTITY_UOP_ID));
-		List<WebElement> receiptReference = driver.findElements(By
-				.id(ItemDetailPageDefinition.RECEIPT_REFERENCE_ID));
+	public void inputValueOnItemDetailPage(){
+		// Assert.assertEquals(driver.findElement(By.xpath(POItemsPageDefinition.NEW_PO_ITEMS_TEXT_ID)).getText(),"Item Detail"); // Still error
+		screenAction.waitObjVisible(driver, By.id(ItemDetailPageDefinition.PO_NUMBER_ID), 3);
+		List<WebElement> stockCode = driver.findElements(By.id(ItemDetailPageDefinition.STOCK_CODE_ID));
+		List<WebElement> description = driver.findElements(By.id(ItemDetailPageDefinition.DESCRIPTION_ID));
+		List<WebElement> unitOfPurchase = driver.findElements(By.id(ItemDetailPageDefinition.UNIT_OF_PURCHASE_ID));
+		List<WebElement> documentItem = driver.findElements(By.id(ItemDetailPageDefinition.NUMBER_ITEM_ID));
+		List<WebElement> documentNumber = driver.findElements(By.id(ItemDetailPageDefinition.PO_NUMBER_ID));
+		List<WebElement> newBinCode = driver.findElements(By.id(ItemDetailPageDefinition.NEW_BIN_ID));
+		List<WebElement> taskQuantityUOM = driver.findElements(By.id(ItemDetailPageDefinition.TASK_QUANTITY_UOM_ID));
+		List<WebElement> outstandingQuantityUOP = driver.findElements(By.id(ItemDetailPageDefinition.OUT_STANDING_QUANTITY_UOP_ID));
+		List<WebElement> receiptReference = driver.findElements(By.id(ItemDetailPageDefinition.RECEIPT_REFERENCE_ID));
 
 		Assert.assertEquals(stockCode.get(0).getAttribute("value"), "ST003");
-		Assert.assertEquals(description.get(0).getAttribute("value"),
-				"STOCK CODE;");
+		Assert.assertEquals(description.get(0).getAttribute("value"),"STOCK CODE;");
 		Assert.assertEquals(newBinCode.get(0).getAttribute("value"), "");
-		Assert.assertEquals(documentNumber.get(0).getAttribute("value"),
-				"P05062");
+		Assert.assertEquals(documentNumber.get(0).getAttribute("value"),"P05062");
 		Assert.assertEquals(documentItem.get(0).getAttribute("value"), "001");
 		Assert.assertEquals(unitOfPurchase.get(0).getAttribute("value"), "EA");
-		Assert.assertEquals(
-				outstandingQuantityUOP.get(0).getAttribute("value"), "1,000.0");
-		Assert.assertEquals(taskQuantityUOM.get(0).getAttribute("value"),
-				"1000.0");
+		Assert.assertEquals(outstandingQuantityUOP.get(0).getAttribute("value"), "1,000.0");
+		Assert.assertEquals(taskQuantityUOM.get(0).getAttribute("value"),"1000.0");
 		receiptReference.get(0).clear();
 		receiptReference.get(0).sendKeys("04MAY07");
 	}
 
-	// @Test(description = "Click Receive Button On Item Detail Page",
-	// dependsOnMethods="inputValueOnItemDetailPage",alwaysRun = true)
-	// public void clickRECEIVEButton() {
-	// ScreenAction actionBtn = new ScreenAction(driver);
-	// actionBtn.clickBtn(By.cssSelector(ItemDetailPageDefinition.RECEIVE_BUTTON_ID));
-	// }
-	//
-	// @Test(description = "Display Message On PO Item Page",
-	// dependsOnMethods="clickRECEIVEButton",alwaysRun = true)
-	// public void displayMessageOnPOItemPage() {
-	// //Assert.assertEquals(driver.findElement(By.xpath(POItemsPageDefinition.NEW_PO_ITEMS_TEXT_ID)).getText(),
-	// "PO Items"); // Still error
-	// List<WebElement> lismg
-	// =driver.findElements(By.cssSelector(POItemsPageDefinition.MESSAGE_TEXT_ID));
-	// Assert.assertEquals(lismg.get(0).getText(),"The search did not return any results\n(INFO) 3140.I0604: Quantity: 1000, consignment stock received\n(INFO) CORE.E06004: Action successfully completed.\n(INFO) 3140.I0464: Successfully receipted purchase order. P05062001");
-	// lismg.get(0).click();
-	// }
+	 @Test(description = "Click Receive Button On Item Detail Page",
+	 dependsOnMethods="inputValueOnItemDetailPage",alwaysRun = true)
+	 public void clickRECEIVEButton() {
+	 ScreenAction actionBtn = new ScreenAction(driver);
+	 actionBtn.clickBtn(By.cssSelector(ItemDetailPageDefinition.RECEIVE_BUTTON_ID));
+	 }
+	
+	 @Test(description = "Display Message On PO Item Page",
+	 dependsOnMethods="clickRECEIVEButton",alwaysRun = true)
+	 public void displayMessageOnPOItemPage() {
+	 //Assert.assertEquals(driver.findElement(By.xpath(POItemsPageDefinition.NEW_PO_ITEMS_TEXT_ID)).getText(), "PO Items"); // Still error
+	 List<WebElement> lismg
+	 =driver.findElements(By.cssSelector(POItemsPageDefinition.MESSAGE_TEXT_ID));
+	 Assert.assertEquals(lismg.get(0).getText(),"The search did not return any results\n(INFO) 3140.I0604: Quantity: 1000, consignment stock received\n(INFO) CORE.E06004: Action successfully completed.\n(INFO) 3140.I0464: Successfully receipted purchase order. P05062001");
+	 lismg.get(0).click();
+	 }
 }
