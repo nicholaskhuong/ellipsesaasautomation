@@ -16,7 +16,7 @@ import com.abb.ventyx.utilities.ScreenAction;
 
 @ALM(id = "1020")
 @Credentials(user = "SPR002", password = "", district = "R100", position = "MATMAN")
-public class QuickIssue_Step05 extends BaseTestCase {
+public class QuickIssue_FullQty_Step06 extends BaseTestCase {
 
 	@Test(description = "Access to Pick Stock Application")
 	public void accessPickStock() {
@@ -104,19 +104,6 @@ public class QuickIssue_Step05 extends BaseTestCase {
 		List<WebElement> isStockItemComplexManaged = driver.findElements(By
 				.id("isStockItemComplexManaged"));
 
-		// #2
-		Assert.assertEquals(stockCode.get(2).getAttribute("value"), "SAAS002");
-		Assert.assertEquals(binCode.get(2).getAttribute("value"), "BIN");
-		Assert.assertEquals(quantityToIssue.get(2).getAttribute("value"), "30");
-		Assert.assertEquals(unitOfIssue.get(2).getAttribute("value"), "EA");
-		Assert.assertEquals(priorityCode.get(2).getAttribute("value"), "");
-		Assert.assertEquals(documentNumber.get(2).getAttribute("value"),
-				"D01081");
-		Assert.assertEquals(documentItemNumber.get(2).getAttribute("value"),
-				"0001");
-		Assert.assertEquals(
-				isStockItemComplexManaged.get(2).getAttribute("value"), "No");
-
 		// #3
 		Assert.assertEquals(stockCode.get(4).getAttribute("value"), "SAAS003");
 		Assert.assertEquals(binCode.get(4).getAttribute("value"), "BIN1");
@@ -142,5 +129,6 @@ public class QuickIssue_Step05 extends BaseTestCase {
 				"0001");
 		Assert.assertEquals(
 				isStockItemComplexManaged.get(5).getAttribute("value"), "Yes");
+
 	}
 }

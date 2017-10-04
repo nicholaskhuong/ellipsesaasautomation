@@ -16,7 +16,7 @@ import com.abb.ventyx.utilities.ScreenAction;
 
 @ALM(id = "1020")
 @Credentials(user = "SPR002", password = "", district = "R100", position = "HRMAN")
-public class QuickIssue_Steps09to13 extends BaseTestCase {
+public class QuickIssue_FullQty_Steps09to13 extends BaseTestCase {
 	ScreenAction waitAction = new ScreenAction(driver);
 
 	@Test(description = "Access to Pick Stock Application")

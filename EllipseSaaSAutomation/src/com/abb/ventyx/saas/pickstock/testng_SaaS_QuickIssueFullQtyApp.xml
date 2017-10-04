@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Pick Tasks" parallel="none">
-  	<test name="Quick Issue">
+  	<test name="Quick Issue Full Qty">
 		<classes>
 		
-				<class name="com.abb.ventyx.saas.pickstock.QuickIssue_Steps03_04" />
+				<class name="com.abb.ventyx.saas.pickstock.QuickIssue_FullQty_Steps03_04" />
 				
-				<class name="com.abb.ventyx.saas.pickstock.QuickIssue_Step05" />
+				<class name="com.abb.ventyx.saas.pickstock.QuickIssue_FullQty_Step05" />
 				
-				<class name="com.abb.ventyx.saas.pickstock.QuickIssue_Step06" />
+				<class name="com.abb.ventyx.saas.pickstock.QuickIssue_FullQty_Step06" />
 				
 				<!-- <class name="com.abb.ventyx.saas.pickstock.QuickIssue_Step07" />  Still error -->
 				
-				<class name="com.abb.ventyx.saas.pickstock.QuickIssue_Step08" />
+				<class name="com.abb.ventyx.saas.pickstock.QuickIssue_FullQty_Step08" />
 				
-				<class name="com.abb.ventyx.saas.pickstock.QuickIssue_Steps09to13" />
+				<class name="com.abb.ventyx.saas.pickstock.QuickIssue_FullQty_Steps09to13" />
 				
 				<!-- <class name="com.abb.ventyx.saas.pickstock.QuickIssue_Step14" />  Still error -->
 				

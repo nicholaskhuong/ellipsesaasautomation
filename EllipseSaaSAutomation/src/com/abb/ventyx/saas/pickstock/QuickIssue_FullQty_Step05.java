@@ -16,7 +16,7 @@ import com.abb.ventyx.utilities.ScreenAction;
 
 @ALM(id = "1020")
 @Credentials(user = "SPR002", password = "", district = "R100", position = "MATMAN")
-public class QuickIssue_Step08 extends BaseTestCase {
+public class QuickIssue_FullQty_Step05 extends BaseTestCase {
 
 	@Test(description = "Access to Pick Stock Application")
 	public void accessPickStock() {
@@ -104,12 +104,31 @@ public class QuickIssue_Step08 extends BaseTestCase {
 		List<WebElement> isStockItemComplexManaged = driver.findElements(By
 				.id("isStockItemComplexManaged"));
 
-		List<WebElement> closeAction = driver.findElements(By
-				.cssSelector("#closeAction1 > span > span"));
-		List<WebElement> partialPickAction = driver.findElements(By
-				.cssSelector("#partialPickAction > span > span"));
-		List<WebElement> fullPickAction = driver.findElements(By
-				.cssSelector("#fullPickAction > span > span"));
+		// #2
+		Assert.assertEquals(stockCode.get(2).getAttribute("value"), "SAAS002");
+		Assert.assertEquals(binCode.get(2).getAttribute("value"), "BIN");
+		Assert.assertEquals(quantityToIssue.get(2).getAttribute("value"), "30");
+		Assert.assertEquals(unitOfIssue.get(2).getAttribute("value"), "EA");
+		Assert.assertEquals(priorityCode.get(2).getAttribute("value"), "");
+		Assert.assertEquals(documentNumber.get(2).getAttribute("value"),
+				"D01081");
+		Assert.assertEquals(documentItemNumber.get(2).getAttribute("value"),
+				"0001");
+		Assert.assertEquals(
+				isStockItemComplexManaged.get(2).getAttribute("value"), "No");
+
+		// #3
+		Assert.assertEquals(stockCode.get(4).getAttribute("value"), "SAAS003");
+		Assert.assertEquals(binCode.get(4).getAttribute("value"), "BIN1");
+		Assert.assertEquals(quantityToIssue.get(4).getAttribute("value"), "30");
+		Assert.assertEquals(unitOfIssue.get(4).getAttribute("value"), "EA");
+		Assert.assertEquals(priorityCode.get(4).getAttribute("value"), "");
+		Assert.assertEquals(documentNumber.get(4).getAttribute("value"),
+				"K01159");
+		Assert.assertEquals(documentItemNumber.get(4).getAttribute("value"),
+				"0001");
+		Assert.assertEquals(
+				isStockItemComplexManaged.get(4).getAttribute("value"), "Yes");
 
 		// #1
 		Assert.assertEquals(stockCode.get(5).getAttribute("value"), "TYZ1");
@@ -123,10 +142,5 @@ public class QuickIssue_Step08 extends BaseTestCase {
 				"0001");
 		Assert.assertEquals(
 				isStockItemComplexManaged.get(5).getAttribute("value"), "Yes");
-
-		Assert.assertTrue(closeAction.get(5).isEnabled());
-		Assert.assertTrue(partialPickAction.get(5).isEnabled());
-		Assert.assertTrue(fullPickAction.get(5).isEnabled());
-
 	}
 }
