@@ -28,6 +28,8 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.UnsupportedCommandException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.support.PropertiesLoaderUtils;
@@ -120,9 +122,11 @@ public class BaseTestCase {
 	}
 
 	public void loginToApplication(String applicationName) {
-		WebElement applicationElement = driver.findElement(By.cssSelector(String.format("#%s_%s__%s_ > a > span", applicationName,
-				getEllipse_Version().substring(0, getEllipse_Version().indexOf(" ")).trim(),
-				getEllipse_Version().substring(getEllipse_Version().indexOf(" ") + 1, getEllipse_Version().length()).trim().replace(".", "_"))));
+		WebElement applicationElement = (new WebDriverWait(driver, 20))
+				.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(String
+						.format("#%s_%s__%s_ > a > span", applicationName, getEllipse_Version().substring(0, getEllipse_Version().indexOf(" "))
+								.trim(), getEllipse_Version().substring(getEllipse_Version().indexOf(" ") + 1, getEllipse_Version().length()).trim()
+								.replace(".", "_")))));
 
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", applicationElement);
 		applicationElement.click();
