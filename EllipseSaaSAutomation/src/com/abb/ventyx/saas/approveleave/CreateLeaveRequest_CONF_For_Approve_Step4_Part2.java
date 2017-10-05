@@ -17,7 +17,7 @@ import com.abb.ventyx.utilities.BaseTestCase;
 import com.abb.ventyx.utilities.Credentials;
 import com.abb.ventyx.utilities.ScreenAction;
 
-@ALM(id = "1868")
+@ALM(id = "1869")
 @Credentials(user = "PAULINEH", password = "", district = "R100", position = "HRMAN")
 public class CreateLeaveRequest_CONF_For_Approve_Step4_Part2 extends BaseTestCase {
 	

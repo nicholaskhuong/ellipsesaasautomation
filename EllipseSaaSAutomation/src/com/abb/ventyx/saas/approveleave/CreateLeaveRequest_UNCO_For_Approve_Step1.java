@@ -17,7 +17,7 @@ import com.abb.ventyx.utilities.BaseTestCase;
 import com.abb.ventyx.utilities.Credentials;
 import com.abb.ventyx.utilities.ScreenAction;
 
-@ALM(id = "1864")
+@ALM(id = "1869")
 @Credentials(user = "SPR003", password = "", district = "R100", position = "SAASPOS_01")
 public class CreateLeaveRequest_UNCO_For_Approve_Step1 extends BaseTestCase {
 	

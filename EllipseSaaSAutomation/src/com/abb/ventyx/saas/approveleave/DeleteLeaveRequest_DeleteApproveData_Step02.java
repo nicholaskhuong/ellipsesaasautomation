@@ -15,7 +15,7 @@ import com.abb.ventyx.utilities.ALM;
 import com.abb.ventyx.utilities.BaseTestCase;
 import com.abb.ventyx.utilities.Credentials;
 
-@ALM(id = "1866")
+@ALM(id = "1869")
 @Credentials(user = "SPR003", password = "", district = "R100", position = "HRMAN")
 public class DeleteLeaveRequest_DeleteApproveData_Step02 extends BaseTestCase {
 	
