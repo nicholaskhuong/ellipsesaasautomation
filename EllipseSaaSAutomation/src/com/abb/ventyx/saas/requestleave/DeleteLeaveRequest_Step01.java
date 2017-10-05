@@ -94,7 +94,7 @@ public class DeleteLeaveRequest_Step01 extends BaseTestCase {
 			}
 		}
 		
-		Assert.assertTrue(index>0, "No records found");
+		Assert.assertTrue(index>-1, "Records not found");
 		Assert.assertEquals(bookedLeaveCode.get(index).getAttribute("value"),"A");
 		Assert.assertEquals(bookedLeaveDesc.get(index).getAttribute("value"),"ANNUAL LEAVE");
 		Assert.assertEquals(leaveStartDate.get(index).getAttribute("value"),"2016-06-26");

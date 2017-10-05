@@ -100,7 +100,7 @@ public class DeleteLeaveRequest_Step02 extends BaseTestCase {
 				break;
 			}
 		}
-		
+		Assert.assertTrue(index>-1, "Records not found");
 		screenAction.clickBtn(By.xpath("//*[@id='leaveRequestList']/div/div/div/div/div/div["+(index+1)+"]/div/div/div/div/div[2]"));
 		
 		screenAction.waitObjVisible(driver, By.id(LeaveRequestPageDefinition.DELETE_BUTTON_ID), 10);
