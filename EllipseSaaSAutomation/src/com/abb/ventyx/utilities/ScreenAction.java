@@ -140,6 +140,8 @@ public class ScreenAction {
 	}	
 	
 	public void selectByText(WebDriver driver, By obj, String input) {
+		(new WebDriverWait(driver, 20)).until(ExpectedConditions.presenceOfElementLocated(obj));
+		
 		Select select = new Select(driver.findElement(obj));
 		select.selectByVisibleText(input);
 
