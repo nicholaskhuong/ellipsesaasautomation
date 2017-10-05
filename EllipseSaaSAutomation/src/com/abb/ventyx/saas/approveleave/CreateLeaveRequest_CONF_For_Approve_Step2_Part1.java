@@ -73,10 +73,17 @@ public class CreateLeaveRequest_CONF_For_Approve_Step2_Part1 extends BaseTestCas
 	@Test( description = "Input End Date", dependsOnMethods="inputNotes", alwaysRun=true)
 	public void inputEndDate(){
 		screenAction.inputDate(driver, By.cssSelector(NewLeaveBalancePageDefinition.END_DATE_DATEPICKER_ID), "06032016");
+		
+		screenAction.waitObjVisible(driver, By.cssSelector(LeaveBalancePageDefinition.MESSAGE_TEXT_ID), 10);
+		
+		List<WebElement> lismg=driver.findElements(By.cssSelector(LeaveBalancePageDefinition.MESSAGE_TEXT_ID));
+		
+		if(lismg.size()>0){
+			screenAction.clickTapToClose(driver, By.cssSelector(LeaveBalancePageDefinition.MESSAGE_TEXT_ID));
+		}
+		
 		Assert.assertEquals(driver.findElement(By.cssSelector(NewLeaveBalancePageDefinition.END_DATE_DATEPICKER_ID)).getAttribute("value"), "2016-06-03");
 	}
-	
-	
 	
 	@Test( description = "Click Apply", dependsOnMethods="inputEndDate", alwaysRun=true)
 	public void clickApply(){

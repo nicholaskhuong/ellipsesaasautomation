@@ -139,7 +139,7 @@ public class CreateLeaveRequest_CONF_For_Approve_Step2_Part2 extends BaseTestCas
 	@Test(description = "Assert row count ", dependsOnMethods="assertNoErrorMessageAfterConfirmed",alwaysRun=true)
 	public void assertStatusChangedToCONF() {	
 		List<WebElement> startDate = driver.findElements(By.cssSelector(LeaveRequestsPageDefinition.START_DATE_TEXT_ID));
-		List<WebElement> statusDesc = driver.findElements(By.cssSelector(LeaveRequestsPageDefinition.STATUS_DESC_TEXT_ID));
+		List<WebElement> statusDesc = driver.findElements(By.id(LeaveRequestsPageDefinition.STATUS_DESC_TEXT_ID));
 		
 		
 		
