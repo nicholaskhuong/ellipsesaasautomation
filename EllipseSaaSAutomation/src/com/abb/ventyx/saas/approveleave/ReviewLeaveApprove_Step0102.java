@@ -59,21 +59,24 @@ public class ReviewLeaveApprove_Step0102 extends BaseTestCase {
 		
 		screenAction.clickBtn(By.id(SettingPageDefinition.WORK_GROUP_BUTTON_ID));
 		
-		screenAction.waitObjVisible(driver, By.id(SettingPageDefinition.WORK_GROUP_FILTER_ID),3);
+		screenAction.waitObjVisible(driver, By.id(SettingPageDefinition.WORK_GROUP_FILTER_ID),5);
 		
 		screenAction.inputTextField(By.id(SettingPageDefinition.WORK_GROUP_FILTER_ID), "SWG");
 		
-		screenAction.waitObjVisible(driver, By.xpath(SettingPageDefinition.WORK_GROUP_LIST_ID),10);
+		screenAction.waitObjVisible(driver, By.xpath(SettingPageDefinition.WORK_GROUP_LIST_ID),20);
 		
 		screenAction.clickBtn(By.xpath(SettingPageDefinition.WORK_GROUP_LIST_ID));
 		
-		Assert.assertTrue(ScreenAction.isElementPresent(driver,By.id(SettingPageDefinition.WORK_GROUP_BUTTON_ID),2));
+		Assert.assertTrue(ScreenAction.isElementPresent(driver,By.id(SettingPageDefinition.WORK_GROUP_BUTTON_ID),5));
 		
 		Assert.assertEquals(driver.findElement(By.id(SettingPageDefinition.CREW_BUTTON_ID)).getText(),"");
 		Assert.assertEquals(driver.findElement(By.id(SettingPageDefinition.POSITION_BUTTON_ID)).getText(),"");
 		Assert.assertEquals(driver.findElement(By.cssSelector(SettingPageDefinition.POSITION_LEVELS_TEXTFIELD_ID)).getAttribute("value"),"");
-		Assert.assertEquals(screenAction.getSelectedText(driver, SettingPageDefinition.PERSONNEL_GROUP_DROPDOWN_ID).trim(),"");
+		
 		Assert.assertTrue(driver.findElement(By.cssSelector(SettingPageDefinition.APPLY_BUTTON_ID)).isEnabled());		
+		Assert.assertTrue(driver.findElement(By.id(SettingPageDefinition.DELETE_WORK_GROUP_BUTTON_ID)).isEnabled());
+		Assert.assertEquals(driver.findElement(By.cssSelector(SettingPageDefinition.PERSONNEL_GROUP_DROPDOWN_ID)).getAttribute("value"),"1");
+		
 		Assert.assertEquals(driver.findElement(By.id(SettingPageDefinition.WORK_GROUP_BUTTON_ID)).getText(), "SWG Sarah test WG");
 	}
 	
