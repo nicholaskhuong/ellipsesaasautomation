@@ -52,7 +52,7 @@ public class IssueStockSearchbyRequisitionNumbers_Step06 extends BaseTestCase {
 	@Test(description = "Input value for Pick Stock Setting ", dependsOnMethods = "selectSettingIconOnPickTasksPage", alwaysRun = true)
 	public void inputValueOnPickTasksSettingPage() throws Throwable {
 		// TODO: for sleep
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		int maxLoop = 0;
 		boolean dropDown = true;
 		while (maxLoop < 3) {
@@ -60,7 +60,7 @@ public class IssueStockSearchbyRequisitionNumbers_Step06 extends BaseTestCase {
 			dropDown = ScreenAction.isElementPresent(driver,
 					By.cssSelector("select.v-select-select"));
 			if (dropDown) {
-				Thread.sleep(3000);
+				Thread.sleep(2000);
 				new Select(driver.findElement(By
 						.cssSelector("select.v-select-select")))
 						.selectByVisibleText("<More Data>");
@@ -73,19 +73,20 @@ public class IssueStockSearchbyRequisitionNumbers_Step06 extends BaseTestCase {
 				.selectByVisibleText("W001 - WAREHOUSE 1 FOR R100 DST");
 
 		driver.findElement(By.id("assignedToEmployee")).click();
+		
 		// Assert.assertEquals(driver.findElement(By.xpath("//*[@id="login-popup"]/div/div/div[3]/div/div/div[1]/div[1]/span")).getText(),
 		// "Search and select"); Still error
+		
+		screenAction.waitObjVisible(driver, By.id("assignedToEmployee.popover.filter"), 5);
 		driver.findElement(By.id("assignedToEmployee.popover.filter")).clear();
-		driver.findElement(By.id("assignedToEmployee.popover.filter"))
-				.sendKeys("GP6732");
+		driver.findElement(By.id("assignedToEmployee.popover.filter")).sendKeys("GP6732");
+		screenAction.waitObjVisible(driver, By.xpath("//*[@id='assignedToEmployee.popover.list']/div[2]/div[1]/table/tbody/tr/td/div"), 20);
+		driver.findElement(By.xpath("//*[@id='assignedToEmployee.popover.list']/div[2]/div[1]/table/tbody/tr/td/div")).click();
 
-		driver.findElement(
-				By.xpath("//*[@id='assignedToEmployee.popover.list']/div[2]/div[1]/table/tbody/tr/td/div"))
-				.click();
-
-		Select orderBy = new Select(driver.findElement(By
-				.cssSelector("#orderBy > select")));
-		orderBy.selectByVisibleText("Requisition");
+		Select orderBy = new Select(driver.findElement(By.cssSelector("#orderBy > select")));
+		orderBy.selectByVisibleText("Bin");
+		
+		screenAction.waitObjVisible(driver, By.id("saveBtn"), 5);
 		driver.findElement(By.cssSelector("#saveBtn > span > span")).click();
 	}
 
@@ -93,6 +94,8 @@ public class IssueStockSearchbyRequisitionNumbers_Step06 extends BaseTestCase {
 	public void showPickTasksFollowAssignedTo() {
 		// Assert.assertEquals(driver.findElement(By.xpath("//*[@id='saas-3522304']/div/div[2]/div/div[1]/div/div[1]/div[1]/span")).getText(),
 		// "Pick Tasks"); Still error
+		screenAction.waitObjVisible(driver, By.id("stockCode"), 5);
+		
 		List<WebElement> stockCode = driver.findElements(By.id("stockCode"));
 		List<WebElement> binCode = driver.findElements(By.id("binCode"));
 		List<WebElement> quantityToIssue = driver.findElements(By
@@ -108,30 +111,31 @@ public class IssueStockSearchbyRequisitionNumbers_Step06 extends BaseTestCase {
 		List<WebElement> isStockItemComplexManaged = driver.findElements(By
 				.id("isStockItemComplexManaged"));
 
-		Assert.assertEquals(stockCode.get(0).getAttribute("value"), "DS0038");
-		Assert.assertEquals(binCode.get(0).getAttribute("value"), "BIN1");
-		Assert.assertEquals(quantityToIssue.get(0).getAttribute("value"), "2");
+
+
+		Assert.assertEquals(stockCode.get(0).getAttribute("value"), "JSTEST3");
+		Assert.assertEquals(binCode.get(0).getAttribute("value"), "");
+		Assert.assertEquals(quantityToIssue.get(0).getAttribute("value"), "1");
 		Assert.assertEquals(unitOfIssue.get(0).getAttribute("value"), "EA");
 		Assert.assertEquals(priorityCode.get(0).getAttribute("value"), "HIGH");
 		Assert.assertEquals(documentNumber.get(0).getAttribute("value"),
-				"A00244");
+				"E00650");
 		Assert.assertEquals(documentItemNumber.get(0).getAttribute("value"),
-				"0001");
+				"0002");
 		Assert.assertEquals(
 				isStockItemComplexManaged.get(0).getAttribute("value"), "Yes");
 
-		Assert.assertEquals(stockCode.get(1).getAttribute("value"), "JSTEST3");
-		Assert.assertEquals(binCode.get(1).getAttribute("value"), "");
-		Assert.assertEquals(quantityToIssue.get(1).getAttribute("value"), "1");
+		Assert.assertEquals(stockCode.get(1).getAttribute("value"), "DS0038");
+		Assert.assertEquals(binCode.get(1).getAttribute("value"), "BIN1");
+		Assert.assertEquals(quantityToIssue.get(1).getAttribute("value"), "2");
 		Assert.assertEquals(unitOfIssue.get(1).getAttribute("value"), "EA");
 		Assert.assertEquals(priorityCode.get(1).getAttribute("value"), "HIGH");
 		Assert.assertEquals(documentNumber.get(1).getAttribute("value"),
-				"E00650");
+				"A00244");
 		Assert.assertEquals(documentItemNumber.get(1).getAttribute("value"),
-				"0002");
+				"0001");
 		Assert.assertEquals(
 				isStockItemComplexManaged.get(1).getAttribute("value"), "Yes");
-
 	}
 
 }

@@ -3,13 +3,13 @@ package com.abb.ventyx.saas.pickstock;
 import java.util.List;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.abb.ventyx.saas.objects.pagedefinitions.ApplicationName;
+import com.abb.ventyx.saas.objects.pagedefinitions.PickTasksPageDefinition;
 import com.abb.ventyx.utilities.ALM;
 import com.abb.ventyx.utilities.BaseTestCase;
 import com.abb.ventyx.utilities.Credentials;
@@ -18,24 +18,14 @@ import com.abb.ventyx.utilities.ScreenAction;
 @ALM(id = "1019")
 @Credentials(user = "SPR002", password = "", district = "R100", position = "MATMAN")
 public class IssueStockSearchbyRequisitionNumbers_Step02 extends BaseTestCase {
-	WebDriver drv;
 
 	@Test(description = "Access to Pick Stock Application")
 	public void accessPickStock() {
 		loginToApplication(ApplicationName.PICK_STOCK);
-		Assert.assertEquals(
-				driver.findElement(
-						By.xpath("//*[@id='saas-3522304']/div/div[2]/div/div[1]/div/div[1]/div[1]/span"))
-						.getText(), "Pick Tasks");
+		Assert.assertEquals(driver.findElement(By.xpath(PickTasksPageDefinition.PICK_TASKS_TEXT_ID)).getText(), "Pick Tasks");
 		ScreenAction errorAction = new ScreenAction(driver);
-		errorAction
-				.clickTapToClose(
-						driver,
-						By.cssSelector("#saas-3522304-overlays > div.v-Notification.error.v-Notification-error > div > div > h1"));
-		boolean existError = ScreenAction
-				.isElementPresent(
-						driver,
-						By.cssSelector("#saas-3522304-overlays > div.v-Notification.error.v-Notification-error > div > div > h1"));
+		errorAction.clickTapToClose(driver,By.cssSelector(PickTasksPageDefinition.MESSAGE_TEXT_ID));
+		boolean existError = ScreenAction.isElementPresent(driver,By.cssSelector(PickTasksPageDefinition.MESSAGE_TEXT_ID));
 		Assert.assertFalse(existError, "Application has error message");
 	}
 
@@ -76,6 +66,7 @@ public class IssueStockSearchbyRequisitionNumbers_Step02 extends BaseTestCase {
 		Select orderBy = new Select(driver.findElement(By
 				.cssSelector("#orderBy > select")));
 		orderBy.selectByVisibleText("Requisition");
+		
 		driver.findElement(By.cssSelector("#saveBtn > span > span")).click();
 	}
 
@@ -83,6 +74,8 @@ public class IssueStockSearchbyRequisitionNumbers_Step02 extends BaseTestCase {
 	public void showPickasks() {
 		// Assert.assertEquals(driver.findElement(By.xpath("//*[@id='saas-3522304']/div/div[2]/div/div[1]/div/div[1]/div[1]/span")).getText(),
 		// "Pick Tasks"); Still error
+		screenAction.waitObjVisible(driver, By.id("stockCode"), 5);
+		
 		List<WebElement> stockCode = driver.findElements(By.id("stockCode"));
 		List<WebElement> binCode = driver.findElements(By.id("binCode"));
 		List<WebElement> quantityToIssue = driver.findElements(By

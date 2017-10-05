@@ -9,6 +9,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.abb.ventyx.saas.objects.pagedefinitions.ApplicationName;
+import com.abb.ventyx.saas.objects.pagedefinitions.PickTasksPageDefinition;
 import com.abb.ventyx.utilities.ALM;
 import com.abb.ventyx.utilities.BaseTestCase;
 import com.abb.ventyx.utilities.Credentials;
@@ -22,19 +23,10 @@ public class IssueStockSearchbyRequisitionNumbers_Steps03_05 extends
 	@Test(description = "Access to Pick Stock Application")
 	public void accessPickStock() {
 		loginToApplication(ApplicationName.PICK_STOCK);
-		Assert.assertEquals(
-				driver.findElement(
-						By.xpath("//*[@id='saas-3522304']/div/div[2]/div/div[1]/div/div[1]/div[1]/span"))
-						.getText(), "Pick Tasks");
+		Assert.assertEquals(driver.findElement(By.xpath(PickTasksPageDefinition.PICK_TASKS_TEXT_ID)).getText(), "Pick Tasks");
 		ScreenAction errorAction = new ScreenAction(driver);
-		errorAction
-				.clickTapToClose(
-						driver,
-						By.cssSelector("#saas-3522304-overlays > div.v-Notification.error.v-Notification-error > div > div > h1"));
-		boolean existError = ScreenAction
-				.isElementPresent(
-						driver,
-						By.cssSelector("#saas-3522304-overlays > div.v-Notification.error.v-Notification-error > div > div > h1"));
+		errorAction.clickTapToClose(driver,By.cssSelector(PickTasksPageDefinition.MESSAGE_TEXT_ID));
+		boolean existError = ScreenAction.isElementPresent(driver,By.cssSelector(PickTasksPageDefinition.MESSAGE_TEXT_ID));
 		Assert.assertFalse(existError, "Application has error message");
 	}
 
@@ -85,6 +77,8 @@ public class IssueStockSearchbyRequisitionNumbers_Steps03_05 extends
 	public void showPickTasksType() {
 		// Assert.assertEquals(driver.findElement(By.xpath("//*[@id='saas-3522304']/div/div[2]/div/div[1]/div/div[1]/div[1]/span")).getText(),
 		// "Pick Tasks"); Still error
+		screenAction.waitObjVisible(driver, By.id("stockCode"), 5);
+		
 		List<WebElement> stockCode = driver.findElements(By.id("stockCode"));
 		List<WebElement> binCode = driver.findElements(By.id("binCode"));
 		List<WebElement> quantityToIssue = driver.findElements(By

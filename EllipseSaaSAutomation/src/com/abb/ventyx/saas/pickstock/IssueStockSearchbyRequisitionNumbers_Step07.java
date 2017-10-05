@@ -73,19 +73,20 @@ public class IssueStockSearchbyRequisitionNumbers_Step07 extends BaseTestCase {
 				.selectByVisibleText("W001 - WAREHOUSE 1 FOR R100 DST");
 
 		driver.findElement(By.id("assignedToEmployee")).click();
+		
 		// Assert.assertEquals(driver.findElement(By.xpath("//*[@id="login-popup"]/div/div/div[3]/div/div/div[1]/div[1]/span")).getText(),
 		// "Search and select"); Still error
+		
+		screenAction.waitObjVisible(driver, By.id("assignedToEmployee.popover.filter"), 5);
 		driver.findElement(By.id("assignedToEmployee.popover.filter")).clear();
-		driver.findElement(By.id("assignedToEmployee.popover.filter"))
-				.sendKeys("GP6732");
+		driver.findElement(By.id("assignedToEmployee.popover.filter")).sendKeys("GP6732");
+		screenAction.waitObjVisible(driver, By.xpath("//*[@id='assignedToEmployee.popover.list']/div[2]/div[1]/table/tbody/tr/td/div"), 20);
+		driver.findElement(By.xpath("//*[@id='assignedToEmployee.popover.list']/div[2]/div[1]/table/tbody/tr/td/div")).click();
 
-		driver.findElement(
-				By.xpath("//*[@id='assignedToEmployee.popover.list']/div[2]/div[1]/table/tbody/tr/td/div"))
-				.click();
-
-		Select orderBy = new Select(driver.findElement(By
-				.cssSelector("#orderBy > select")));
+		Select orderBy = new Select(driver.findElement(By.cssSelector("#orderBy > select")));
 		orderBy.selectByVisibleText("Bin");
+		
+		screenAction.waitObjVisible(driver, By.id("saveBtn"), 5);
 		driver.findElement(By.cssSelector("#saveBtn > span > span")).click();
 	}
 
@@ -93,6 +94,7 @@ public class IssueStockSearchbyRequisitionNumbers_Step07 extends BaseTestCase {
 	public void showPickTasksFollowAssignedTo() {
 		// Assert.assertEquals(driver.findElement(By.xpath("//*[@id='saas-3522304']/div/div[2]/div/div[1]/div/div[1]/div[1]/span")).getText(),
 		// "Pick Tasks"); Still error
+		screenAction.waitObjVisible(driver, By.id("stockCode"), 5);
 		List<WebElement> stockCode = driver.findElements(By.id("stockCode"));
 		List<WebElement> binCode = driver.findElements(By.id("binCode"));
 		List<WebElement> quantityToIssue = driver.findElements(By
