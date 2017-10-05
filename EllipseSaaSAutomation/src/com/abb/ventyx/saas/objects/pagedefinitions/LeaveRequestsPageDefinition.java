@@ -15,6 +15,7 @@ public class LeaveRequestsPageDefinition {
 	
 	public static final String NEXT_ICON_ID = "//*[@id='leaveRequestList']/div/div/div/div/div/div[2]/div/div/div/div/div[2]";
 	public static final String NEW_LEAVE_REQUEST_BUTTON_ID = "newLeaveRequest2";
+	public static final String ROW_SELECT_BUTTON_ID = "rowSelectButton";
 	
 	
 	//Approve leave app

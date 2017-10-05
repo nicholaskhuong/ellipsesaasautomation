@@ -18,7 +18,7 @@ import com.abb.ventyx.utilities.ScreenAction;
 
 @ALM(id = "1868")
 @Credentials(user = "PAULINEH", password = "", district = "R100", position = "HRMAN")
-public class ApproveLeaveApprovals_Step01 extends BaseTestCase {
+public class ApproveLeaveApprovals_Step02 extends BaseTestCase {
 	
 	protected int row=-1;
 	
@@ -29,7 +29,7 @@ public class ApproveLeaveApprovals_Step01 extends BaseTestCase {
 		Assert.assertEquals(driver.findElement(By.xpath(LeaveRequestsPageDefinition.APPROVE_LEAVE_REQUESTS_TITLE_ID)).getText(), "Leave Requests");
 	}
 	
-	//Step 1: Approve Leave with Status = UNCO from Leave Requests page.
+	//Step 2: Approve Leave with Status = CONF from Leave Requests page.
 	@Test(description = "Select Setting icon on Leave Balance Page  ", dependsOnMethods="accessApproveLeave")
 	public void selectSettingIcon() {
 		screenAction.waitObjInvisible(By.id(LoginPageDefinition.LOGIN_BUTTON_ID));
@@ -46,8 +46,8 @@ public class ApproveLeaveApprovals_Step01 extends BaseTestCase {
 	    driver.findElement(By.cssSelector(SettingPageDefinition.MENU_NAVIGATE_ID)).click();
 	    driver.findElement(By.xpath(SettingPageDefinition.SETTING_ID)).click();
 	    
-	    screenAction.waitObjVisible(driver, By.id(SettingPageDefinition.WORK_GROUP_BUTTON_ID),10);
-	    Assert.assertTrue(ScreenAction.isElementPresent(driver, By.id(SettingPageDefinition.WORK_GROUP_BUTTON_ID),10));
+	    screenAction.waitObjVisible(driver, By.id(SettingPageDefinition.WORK_GROUP_BUTTON_ID),3);
+	    Assert.assertTrue(ScreenAction.isElementPresent(driver, By.id(SettingPageDefinition.WORK_GROUP_BUTTON_ID),3));
 	
 	}
 	
@@ -56,15 +56,15 @@ public class ApproveLeaveApprovals_Step01 extends BaseTestCase {
 		
 		screenAction.clickBtn(By.id(SettingPageDefinition.WORK_GROUP_BUTTON_ID));
 		
-		screenAction.waitObjVisible(driver, By.id(SettingPageDefinition.WORK_GROUP_FILTER_ID),5);
+		screenAction.waitObjVisible(driver, By.id(SettingPageDefinition.WORK_GROUP_FILTER_ID),3);
 		
 		screenAction.inputTextField(By.id(SettingPageDefinition.WORK_GROUP_FILTER_ID), "SWG");
 		
-		screenAction.waitObjVisible(driver, By.xpath(SettingPageDefinition.WORK_GROUP_LIST_ID),20);
+		screenAction.waitObjVisible(driver, By.xpath(SettingPageDefinition.WORK_GROUP_LIST_ID),10);
 		
 		screenAction.clickBtn(By.xpath(SettingPageDefinition.WORK_GROUP_LIST_ID));
 		
-		Assert.assertTrue(ScreenAction.isElementPresent(driver,By.id(SettingPageDefinition.WORK_GROUP_BUTTON_ID),5));
+		Assert.assertTrue(ScreenAction.isElementPresent(driver,By.id(SettingPageDefinition.WORK_GROUP_BUTTON_ID),2));
 		
 		Assert.assertEquals(driver.findElement(By.id(SettingPageDefinition.CREW_BUTTON_ID)).getText(),"");
 		Assert.assertEquals(driver.findElement(By.id(SettingPageDefinition.POSITION_BUTTON_ID)).getText(),"");
@@ -88,7 +88,7 @@ public class ApproveLeaveApprovals_Step01 extends BaseTestCase {
 	}
 	
 	@Test(description = "Assert row count ", dependsOnMethods="clickButtonApply",alwaysRun=true)
-	public void assertUNCOTransaction() {	
+	public void assertCONFTransaction() {	
 		
 		List<WebElement> employee = driver.findElements(By.id(LeaveRequestsPageDefinition.EMPLOYEE_TEXTFIELD_ID));
 		List<WebElement> statusDesc = driver.findElements(By.id(LeaveRequestsPageDefinition.STATUS_DESC_TEXT_ID));
@@ -98,7 +98,7 @@ public class ApproveLeaveApprovals_Step01 extends BaseTestCase {
 		
 		for (int i = 0; i < startDate.size(); i++) {
 			
-			if(("2016-06-01".equals(startDate.get(i).getAttribute("value")))
+			if(("2016-06-03".equals(startDate.get(i).getAttribute("value")))
 					&& ("SPR003".equals(employee.get(i).getAttribute("value"))) ){
 				row=i;	
 				break;
@@ -106,14 +106,14 @@ public class ApproveLeaveApprovals_Step01 extends BaseTestCase {
 		}
 		
 		Assert.assertEquals(employee.get(row).getAttribute("value"),"SPR003");
-		Assert.assertEquals(statusDesc.get(row).getAttribute("value"),"Unconfirmed Leave");
-		Assert.assertEquals(startDate.get(row).getAttribute("value"),"2016-06-01");
-		Assert.assertEquals(endDate.get(row).getAttribute("value"),"2016-06-01");
-		Assert.assertEquals(days.get(row).getAttribute("value"),"0.4000");
+		Assert.assertEquals(statusDesc.get(row).getAttribute("value"),"Confirmed Leave");
+		Assert.assertEquals(startDate.get(row).getAttribute("value"),"2016-06-03");
+		Assert.assertEquals(endDate.get(row).getAttribute("value"),"2016-06-03");
+		Assert.assertEquals(days.get(row).getAttribute("value"),"1.0001");
 	
 	}
 	
-	@Test(description = "Assert row count ", dependsOnMethods="assertUNCOTransaction",alwaysRun=true)
+	@Test(description = "Assert row count ", dependsOnMethods="assertCONFTransaction",alwaysRun=true)
 	public void selectButtonApprove() {	
 		screenAction.assertButtonEnabled(By.id(LeaveRequestsPageDefinition.APPROVE_BUTTON_ID), true);
 		
@@ -135,6 +135,7 @@ public class ApproveLeaveApprovals_Step01 extends BaseTestCase {
 	}
 	
 	
+
 	@Test(description = "Assert row count ", dependsOnMethods="assertNoErrorMessage",alwaysRun=true)
 	public void assertEntryApprovedNoExistInLeaveRequests() {	
 		List<WebElement> startDate = driver.findElements(By.cssSelector(LeaveRequestsPageDefinition.START_DATE_TEXT_ID));
@@ -143,8 +144,8 @@ public class ApproveLeaveApprovals_Step01 extends BaseTestCase {
 		int index=-1;
 		for (int i = 0; i < startDate.size(); i++) {
 			
-			if(("2016-06-01".equals(startDate.get(i).getAttribute("value"))) 
-					&& ("Unconfirmed Leave".equals(statusDesc.get(i).getAttribute("value"))) ){
+			if(("2016-06-03".equals(startDate.get(i).getAttribute("value"))) 
+					&& ("Confirmed Leave".equals(statusDesc.get(i).getAttribute("value"))) ){
 				index=i;	
 				break;
 			}

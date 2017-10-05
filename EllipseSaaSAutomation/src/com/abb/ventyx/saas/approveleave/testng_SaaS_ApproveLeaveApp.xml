@@ -1,12 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Approve Leave">
-  	<test name="Review Approve Request">
+  		<test name="Approve Leave Approve">
 		<classes>
-				<class name="com.abb.ventyx.saas.approveleave.ReviewLeaveApprove_Step0102" />
-		
-				<class name="com.abb.ventyx.saas.approveleave.ReviewLeaveApprove_Step03" />
+			<!-- Scripts to prepare data for approve test case-->
+				<class name="com.abb.ventyx.saas.approveleave.CreateLeaveRequest_UNCO_For_Approve_Step1" />
+				<class name="com.abb.ventyx.saas.approveleave.CreateLeaveRequest_CONF_For_Approve_Step2_Part1" />
+				<class name="com.abb.ventyx.saas.approveleave.CreateLeaveRequest_CONF_For_Approve_Step2_Part2" />
+				<class name="com.abb.ventyx.saas.approveleave.CreateLeaveRequest_UNCO_For_Approve_Step3" />
+				<class name="com.abb.ventyx.saas.approveleave.CreateLeaveRequest_CONF_For_Approve_Step4_Part1" />
+				<class name="com.abb.ventyx.saas.approveleave.CreateLeaveRequest_CONF_For_Approve_Step4_Part2" />
+					
+				<!-- Scripts to approve-->
+				<class name="com.abb.ventyx.saas.approveleave.ApproveLeaveApprovals_Step01" />
+				<class name="com.abb.ventyx.saas.approveleave.ApproveLeaveApprovals_Step02" />
+				<class name="com.abb.ventyx.saas.approveleave.ApproveLeaveApprovals_Step03" />
+				<class name="com.abb.ventyx.saas.approveleave.ApproveLeaveApprovals_Step04" />
 				
+				<!-- Scripts to delete prepare data-->
+				<class name="com.abb.ventyx.saas.approveleave.DeleteLeaveRequest_DeleteApproveData_Step01" />
+				<class name="com.abb.ventyx.saas.approveleave.DeleteLeaveRequest_DeleteApproveData_Step02" />
+				<class name="com.abb.ventyx.saas.approveleave.DeleteLeaveRequest_DeleteApproveData_Step03" />
+				<class name="com.abb.ventyx.saas.approveleave.DeleteLeaveRequest_DeleteApproveData_Step04" />
 		</classes>
   	</test> <!-- Test -->
+  	
 </suite> <!-- Suite -->
