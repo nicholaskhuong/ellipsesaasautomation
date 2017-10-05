@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Pick Stock" parallel="none">
+  	<test name="Issue Stock">
+		<classes>
+				<class name="com.abb.ventyx.saas.pickstock.IssueStockSearchbyRequisitionNumbers_Step02" />
+				
+				<class name="com.abb.ventyx.saas.pickstock.IssueStockSearchbyRequisitionNumbers_Steps03_05" />
+				
+				<class name="com.abb.ventyx.saas.pickstock.IssueStockSearchbyRequisitionNumbers_Step06" />
+				
+				<class name="com.abb.ventyx.saas.pickstock.IssueStockSearchbyRequisitionNumbers_Step07" />
+		
+		</classes>
+  	</test> <!-- Test -->
+  	
+  	<test name="Quick Issue Full Qty">
+		<classes>
+				<class name="com.abb.ventyx.saas.pickstock.QuickIssue_FullQty_Steps03_04" />
+				
+				<class name="com.abb.ventyx.saas.pickstock.QuickIssue_FullQty_Step05" />
+				
+				<class name="com.abb.ventyx.saas.pickstock.QuickIssue_FullQty_Step06" />
+				
+				<!-- <class name="com.abb.ventyx.saas.pickstock.QuickIssue_Step07" />  Still error -->
+				
+				<class name="com.abb.ventyx.saas.pickstock.QuickIssue_FullQty_Step08" />
+				
+				<class name="com.abb.ventyx.saas.pickstock.QuickIssue_FullQty_Steps09to13" />
+				
+				<!-- <class name="com.abb.ventyx.saas.pickstock.QuickIssue_Step14" />  Still error -->
+				
+				<!-- <class name="com.abb.ventyx.saas.pickstock.QuickIssue_Step17" />  Still error -->
+		</classes>
+  	</test> <!-- Test -->
+  	
+  	<test name="Quick Issue Partial Qty">
+		<classes>
+		
+				<class name="com.abb.ventyx.saas.pickstock.QuickIssue_PartialQty_Step04" />
+				
+				<class name="com.abb.ventyx.saas.pickstock.QuickIssue_PartialQty_Step05" />
+				
+				<class name="com.abb.ventyx.saas.pickstock.QuickIssue_PartialQty_Step06" />
+				
+				<class name="com.abb.ventyx.saas.pickstock.QuickIssue_PartialQty_Step07_08" />
+				
+				<class name="com.abb.ventyx.saas.pickstock.QuickIssue_PartialQty_Step09" />
+				
+				<class name="com.abb.ventyx.saas.pickstock.QuickIssue_PartialQty_Steps21to24" />
+				
+				<class name="com.abb.ventyx.saas.pickstock.QuickIssue_PartialQty_Step25" />
+				
+		</classes>
+  	</test> <!-- Test -->
+  	
+</suite> <!-- Suite -->
