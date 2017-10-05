@@ -58,6 +58,7 @@ public class QuickReceiptFullQuantity_NormalPO_OwnedSOH_Step12_13 extends
 
 	@Test(description = "Display Detail Items", dependsOnMethods = "accessToPOItemsPage", alwaysRun = true)
 	public void displayDetailItems() {
+		screenAction.waitObjVisible(driver, By.id(POItemsPageDefinition.PO_ITEM_NUMBER_ID), 5);
 		List<WebElement> documentItem = driver.findElements(By
 				.id(POItemsPageDefinition.PO_ITEM_NUMBER_ID));
 		List<WebElement> stockCode = driver.findElements(By
