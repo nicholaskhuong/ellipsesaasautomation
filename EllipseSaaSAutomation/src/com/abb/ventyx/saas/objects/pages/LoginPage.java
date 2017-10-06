@@ -29,7 +29,7 @@ public class LoginPage extends BasePage {
 		InputController.inputToTextFiled(getDistrictTextField(), district);
 		InputController.inputToTextFiled(getPositionTextField(), position);
 		getLoginButton().click();
-		return ScreenAction.isElementPresent(driver, By.cssSelector(HomePageDefinition.HOME_LINK), 60);
+		return ScreenAction.isElementPresent(driver, By.xpath(HomePageDefinition.HOME_LINK), 60);
 	}
 
 	// Get ELELEMENTS
