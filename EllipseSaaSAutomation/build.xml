@@ -147,6 +147,8 @@
         	<jvmarg value="-Dtest.set=${test.set}" />
         	<jvmarg value="-Dother.source.expression=${other.source.expression}" />
         	<jvmarg value="-Dtest.developer.mode=${test.developer.mode}" />
+        	<jvmarg value="-Dtest.server.platform=${test.server.platform}" />
+        	<jvmarg value="-Dtest.selenium.grid=${test.selenium.grid}" />
             <classpath>
                 <path refid="test.classpath" />
                 <pathelement location="${bin.dir}"/>
