@@ -6,10 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.abb.ventyx.saas.objects.pagedefinitions.HomePageDefinition;
 import com.abb.ventyx.saas.objects.pagedefinitions.LoginPageDefinition;
 import com.abb.ventyx.utilities.InputController;
-import com.abb.ventyx.utilities.ScreenAction;
 
 public class LoginPage extends BasePage {
 
@@ -22,14 +20,14 @@ public class LoginPage extends BasePage {
 		super(BasePage.driver);
 	}
 
-	public boolean login(String username, String password, String district, String position) {
+	public void login(String username, String password, String district, String position) {
 
 		InputController.inputToTextFiled(getUsernameTextField(), username);
 		InputController.inputToTextFiled(getPasswordTextField(), password);
 		InputController.inputToTextFiled(getDistrictTextField(), district);
 		InputController.inputToTextFiled(getPositionTextField(), position);
 		getLoginButton().click();
-		return ScreenAction.isElementPresent(driver, By.xpath(HomePageDefinition.HOME_LINK), 60);
+
 	}
 
 	// Get ELELEMENTS

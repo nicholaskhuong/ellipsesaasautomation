@@ -41,6 +41,7 @@ import org.testng.annotations.DataProvider;
 
 import au.com.bytecode.opencsv.CSVReader;
 
+import com.abb.ventyx.saas.objects.pagedefinitions.HomePageDefinition;
 import com.abb.ventyx.saas.objects.pages.HomePage;
 import com.abb.ventyx.saas.objects.pages.LoginPage;
 import com.abb.ventyx.utilities.report.TestMethodResultAdapter;
@@ -134,6 +135,7 @@ public class BaseTestCase {
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", applicationElement);
 		applicationElement.click();
 		login();
+		ScreenAction.isElementPresent(driver, By.xpath(HomePageDefinition.HOME_LINK), 60);
 	}
 
 	public void login() {
