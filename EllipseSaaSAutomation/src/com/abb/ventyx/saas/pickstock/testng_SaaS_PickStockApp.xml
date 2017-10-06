@@ -22,7 +22,7 @@
 				
 				<class name="com.abb.ventyx.saas.pickstock.QuickIssue_FullQty_Step06" />
 				
-			    <class name="com.abb.ventyx.saas.pickstock.QuickIssue_Step07" /> 
+				<class name="com.abb.ventyx.saas.pickstock.QuickIssue_FullQty_Step07" />
 				
 				<class name="com.abb.ventyx.saas.pickstock.QuickIssue_FullQty_Step08" />
 				
