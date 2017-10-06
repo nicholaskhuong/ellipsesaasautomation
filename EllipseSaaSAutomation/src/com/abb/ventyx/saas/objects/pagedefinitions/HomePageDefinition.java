@@ -9,4 +9,6 @@ public class HomePageDefinition {
 	// Application list
 	public static final String LEAVE_REQUEST_EL89SUP = "#LeaveRequest_EL89SUP__8_9_ > a > span";
 	public static final String APPROVAL_EL83SUP = "#Approvals_EL83SUP__8_3_ > a > span";
+	public static final String HOME_LINK = "#infoPageNavigation > span > span.v-icon.FontAwesome";
+
 }
