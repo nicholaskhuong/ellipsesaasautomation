@@ -52,7 +52,7 @@ public class DeleteLeaveRequest_DeleteApproveData_Step02 extends BaseTestCase {
 		int totalRows=leaveStartDate.size();
 		for (int i = 0; i <= totalRows; i++) {
 			
-			if("2016-06-03".equals(leaveStartDate.get(i).getAttribute("value"))){
+			if("2016-05-29".equals(leaveStartDate.get(i).getAttribute("value"))){
 				index=i;	
 				break;
 			}
@@ -61,7 +61,7 @@ public class DeleteLeaveRequest_DeleteApproveData_Step02 extends BaseTestCase {
 		Assert.assertTrue(index>-1, "Records not found");
 		Assert.assertEquals(bookedLeaveCode.get(index).getAttribute("value"),"A");
 		Assert.assertEquals(bookedLeaveDesc.get(index).getAttribute("value"),"ANNUAL LEAVE");
-		Assert.assertEquals(leaveStartDate.get(index).getAttribute("value"),"2016-06-03");
+		Assert.assertEquals(leaveStartDate.get(index).getAttribute("value"),"2016-05-29");
 		Assert.assertEquals(leaveDays.get(index).getAttribute("value"),"0.4000");
 		Assert.assertEquals(leaveStatusDesc.get(index).getAttribute("value"),"Approved/Processed");
 		
@@ -104,7 +104,7 @@ public class DeleteLeaveRequest_DeleteApproveData_Step02 extends BaseTestCase {
 		boolean found=false;
 		for (int i = 0; i < leaveStartDate.size(); i++) {
 			
-			if(("2016-06-03".equals(leaveStartDate.get(i).getAttribute("value"))) 
+			if(("2016-05-29".equals(leaveStartDate.get(i).getAttribute("value"))) 
 			   &&("PROC".equals(leaveStatusDesc.get(i).getAttribute("value"))) ){
 				found=true;
 				break;

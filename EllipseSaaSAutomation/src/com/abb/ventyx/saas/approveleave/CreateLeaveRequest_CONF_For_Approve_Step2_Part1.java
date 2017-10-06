@@ -59,8 +59,8 @@ public class CreateLeaveRequest_CONF_For_Approve_Step2_Part1 extends BaseTestCas
 	
 	@Test( description = "Input Start Date", dependsOnMethods="selectRequestCode", alwaysRun=true)
 	public void inputStartDate(){
-		screenAction.inputDate(driver,By.cssSelector(NewLeaveBalancePageDefinition.START_DATE_DATEPICKER_ID), "06032016");
-		Assert.assertEquals(driver.findElement(By.cssSelector(NewLeaveBalancePageDefinition.START_DATE_DATEPICKER_ID)).getAttribute("value"), "2016-06-03");
+		screenAction.inputDate(driver,By.cssSelector(NewLeaveBalancePageDefinition.START_DATE_DATEPICKER_ID), "05292016");
+		Assert.assertEquals(driver.findElement(By.cssSelector(NewLeaveBalancePageDefinition.START_DATE_DATEPICKER_ID)).getAttribute("value"), "2016-05-29");
 	}
 	
 	@Test( description = "Input Notes", dependsOnMethods="inputStartDate", alwaysRun=true)
@@ -72,13 +72,13 @@ public class CreateLeaveRequest_CONF_For_Approve_Step2_Part1 extends BaseTestCas
 	
 	@Test( description = "Input End Date", dependsOnMethods="inputNotes", alwaysRun=true)
 	public void inputEndDate(){
-		screenAction.inputDate(driver, By.cssSelector(NewLeaveBalancePageDefinition.END_DATE_DATEPICKER_ID), "06032016");
+		screenAction.inputDate(driver, By.cssSelector(NewLeaveBalancePageDefinition.END_DATE_DATEPICKER_ID), "05292016");
 		
 		boolean isErrorReturned=ScreenAction.isElementPresent(driver, By.cssSelector(LeaveBalancePageDefinition.MESSAGE_TEXT_ID), 30);
 		if(isErrorReturned){
 			screenAction.clickTapToClose(driver, By.cssSelector(LeaveBalancePageDefinition.MESSAGE_TEXT_ID));
 		}
-		Assert.assertEquals(driver.findElement(By.cssSelector(NewLeaveBalancePageDefinition.END_DATE_DATEPICKER_ID)).getAttribute("value"), "2016-06-03");
+		Assert.assertEquals(driver.findElement(By.cssSelector(NewLeaveBalancePageDefinition.END_DATE_DATEPICKER_ID)).getAttribute("value"), "2016-05-29");
 	}
 	
 	@Test( description = "Click Apply", dependsOnMethods="inputEndDate", alwaysRun=true)
@@ -126,7 +126,7 @@ public class CreateLeaveRequest_CONF_For_Approve_Step2_Part1 extends BaseTestCas
 		
 		for (int i = 0; i < leaveStartDate.size(); i++) {
 			
-			if("2016-06-03".equals(leaveStartDate.get(i).getAttribute("value"))){
+			if("2016-05-29".equals(leaveStartDate.get(i).getAttribute("value"))){
 				row=i;	
 				break;
 			}
@@ -135,8 +135,8 @@ public class CreateLeaveRequest_CONF_For_Approve_Step2_Part1 extends BaseTestCas
 		Assert.assertTrue(row!=-1, "Records not found");
 		Assert.assertEquals(bookedLeaveCode.get(row).getAttribute("value"),"A");
 		Assert.assertEquals(bookedLeaveDesc.get(row).getAttribute("value"),"ANNUAL LEAVE");
-		Assert.assertEquals(leaveStartDate.get(row).getAttribute("value"),"2016-06-03");
-		Assert.assertEquals(leaveEndDate.get(row).getAttribute("value"),"2016-06-03");
+		Assert.assertEquals(leaveStartDate.get(row).getAttribute("value"),"2016-05-29");
+		Assert.assertEquals(leaveEndDate.get(row).getAttribute("value"),"2016-05-29");
 		Assert.assertEquals(leaveDays.get(row).getAttribute("value"),"1.0001");
 		Assert.assertEquals(leaveStatusDesc.get(row).getAttribute("value"),"Unconfirmed Leave");
 	}

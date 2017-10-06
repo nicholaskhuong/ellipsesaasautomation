@@ -98,7 +98,7 @@ public class ApproveLeaveApprovals_Step02 extends BaseTestCase {
 		
 		for (int i = 0; i < startDate.size(); i++) {
 			
-			if(("2016-06-03".equals(startDate.get(i).getAttribute("value")))
+			if(("2016-05-29".equals(startDate.get(i).getAttribute("value")))
 					&& ("SPR003".equals(employee.get(i).getAttribute("value"))) ){
 				row=i;	
 				break;
@@ -107,8 +107,8 @@ public class ApproveLeaveApprovals_Step02 extends BaseTestCase {
 		
 		Assert.assertEquals(employee.get(row).getAttribute("value"),"SPR003");
 		Assert.assertEquals(statusDesc.get(row).getAttribute("value"),"Confirmed Leave");
-		Assert.assertEquals(startDate.get(row).getAttribute("value"),"2016-06-03");
-		Assert.assertEquals(endDate.get(row).getAttribute("value"),"2016-06-03");
+		Assert.assertEquals(startDate.get(row).getAttribute("value"),"2016-05-29");
+		Assert.assertEquals(endDate.get(row).getAttribute("value"),"2016-05-29");
 		Assert.assertEquals(days.get(row).getAttribute("value"),"1.0001");
 	
 	}
@@ -144,7 +144,7 @@ public class ApproveLeaveApprovals_Step02 extends BaseTestCase {
 		int index=-1;
 		for (int i = 0; i < startDate.size(); i++) {
 			
-			if(("2016-06-03".equals(startDate.get(i).getAttribute("value"))) 
+			if(("2016-05-29".equals(startDate.get(i).getAttribute("value"))) 
 					&& ("Confirmed Leave".equals(statusDesc.get(i).getAttribute("value"))) ){
 				index=i;	
 				break;

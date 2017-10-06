@@ -47,7 +47,7 @@ public class CreateLeaveRequest_CONF_For_Approve_Step2_Part2 extends BaseTestCas
 	    driver.findElement(By.cssSelector(SettingPageDefinition.MENU_NAVIGATE_ID)).click();
 	    driver.findElement(By.xpath(SettingPageDefinition.SETTING_ID)).click();
 	    
-	    screenAction.waitObjVisible(driver, By.id(SettingPageDefinition.WORK_GROUP_BUTTON_ID),3);
+	    screenAction.waitObjVisible(driver, By.id(SettingPageDefinition.WORK_GROUP_BUTTON_ID),30);
 	    Assert.assertTrue(ScreenAction.isElementPresent(driver, By.id(SettingPageDefinition.WORK_GROUP_BUTTON_ID),3));
 	
 	}
@@ -99,7 +99,7 @@ public class CreateLeaveRequest_CONF_For_Approve_Step2_Part2 extends BaseTestCas
 		
 		for (int i = 0; i < startDate.size(); i++) {
 			
-			if(("2016-06-03".equals(startDate.get(i).getAttribute("value")))
+			if(("2016-05-29".equals(startDate.get(i).getAttribute("value")))
 					&& ("SPR003".equals(employee.get(i).getAttribute("value"))) ){
 				row=i;	
 				break;
@@ -108,8 +108,8 @@ public class CreateLeaveRequest_CONF_For_Approve_Step2_Part2 extends BaseTestCas
 		
 		Assert.assertEquals(employee.get(row).getAttribute("value"),"SPR003");
 		Assert.assertEquals(statusDesc.get(row).getAttribute("value"),"Unconfirmed Leave");
-		Assert.assertEquals(startDate.get(row).getAttribute("value"),"2016-06-03");
-		Assert.assertEquals(endDate.get(row).getAttribute("value"),"2016-06-03");
+		Assert.assertEquals(startDate.get(row).getAttribute("value"),"2016-05-29");
+		Assert.assertEquals(endDate.get(row).getAttribute("value"),"2016-05-29");
 		Assert.assertEquals(days.get(row).getAttribute("value"),"1.0001");
 	
 	}
@@ -138,15 +138,14 @@ public class CreateLeaveRequest_CONF_For_Approve_Step2_Part2 extends BaseTestCas
 	
 	@Test(description = "Assert row count ", dependsOnMethods="assertNoErrorMessageAfterConfirmed",alwaysRun=true)
 	public void assertStatusChangedToCONF() {	
+		screenAction.waitObjVisible(driver, By.id(LeaveRequestsPageDefinition.STATUS_DESC_TEXT_ID), 10);
 		List<WebElement> startDate = driver.findElements(By.cssSelector(LeaveRequestsPageDefinition.START_DATE_TEXT_ID));
 		List<WebElement> statusDesc = driver.findElements(By.id(LeaveRequestsPageDefinition.STATUS_DESC_TEXT_ID));
-		
-		
 		
 		int index=-1;
 		for (int i = 0; i < startDate.size(); i++) {
 			
-			if(("2016-06-03".equals(startDate.get(i).getAttribute("value")))
+			if(("2016-05-29".equals(startDate.get(i).getAttribute("value")))
 				&&("Confirmed Leave".equals(statusDesc.get(i).getAttribute("value")))){
 				index=i;	
 				break;
@@ -154,7 +153,7 @@ public class CreateLeaveRequest_CONF_For_Approve_Step2_Part2 extends BaseTestCas
 		}
 		
 		Assert.assertTrue(index!=-1, "Records not found");
-		Assert.assertEquals(startDate.get(index).getAttribute("value"),"2016-06-03");
+		Assert.assertEquals(startDate.get(index).getAttribute("value"),"2016-05-29");
 		Assert.assertEquals(statusDesc.get(index).getAttribute("value"),"Confirmed Leave");
 	}
 }
