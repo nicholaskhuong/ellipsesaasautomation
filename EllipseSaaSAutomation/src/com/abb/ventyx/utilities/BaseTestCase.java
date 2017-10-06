@@ -122,7 +122,7 @@ public class BaseTestCase {
 	}
 
 	public void loginToApplication(String applicationName) {
-		WebElement applicationElement = (new WebDriverWait(driver, 20))
+		WebElement applicationElement = (new WebDriverWait(driver, 60))
 				.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(String
 						.format("#%s_%s__%s_ > a > span", applicationName, getEllipse_Version().substring(0, getEllipse_Version().indexOf(" "))
 								.trim(), getEllipse_Version().substring(getEllipse_Version().indexOf(" ") + 1, getEllipse_Version().length()).trim()

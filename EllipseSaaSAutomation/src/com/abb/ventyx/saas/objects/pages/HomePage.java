@@ -25,7 +25,7 @@ public class HomePage extends BasePage {
 	}
 
 	public void codeVerification(String code) {
-		if (ScreenAction.isElementPresent(driver, By.id(HomePageDefinition.VCODE_TEXTFIELD_ID))) {
+		if (ScreenAction.isElementPresent(driver, By.id(HomePageDefinition.VCODE_TEXTFIELD_ID), 30)) {
 			WebElement vCode = driver.findElement(By.id(HomePageDefinition.VCODE_TEXTFIELD_ID));
 			InputController.inputToTextFiled(vCode, code);
 			clickVerifyButton();
