@@ -59,6 +59,7 @@ public class QuickReceiptPartialQuantity_GoodsPO extends BaseTestCase {
 	// int qty=0;
 	@Test(description = "Display Detail Items", dependsOnMethods = "accessToPOItemsPage", alwaysRun = true)
 	public void displayDetailItems() {
+		screenAction.waitObjVisible(driver, By.id(POItemsPageDefinition.PO_ITEM_NUMBER_ID), 3);
 		List<WebElement> documentItem = driver.findElements(By
 				.id(POItemsPageDefinition.PO_ITEM_NUMBER_ID));
 		List<WebElement> partNumber = driver.findElements(By
@@ -106,6 +107,7 @@ public class QuickReceiptPartialQuantity_GoodsPO extends BaseTestCase {
 	public void inputValueOnItemDetailPage() {
 		// Assert.assertEquals(driver.findElement(By.xpath(ItemDetailPageDefinition.NEW_ITEM_DETAIL_TEXT_ID)).getText(),
 		// "Item Detail");
+		screenAction.waitObjVisible(driver, By.id(ItemDetailPageDefinition.RECEIPT_QTY_ID), 3);
 		WebElement taskQuantityUOM = driver.findElement(By
 				.id(ItemDetailPageDefinition.RECEIPT_QTY_ID));
 		taskQuantityUOM.sendKeys("5");
