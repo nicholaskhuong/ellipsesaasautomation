@@ -28,7 +28,7 @@ public class Serializion {
 		ArrayList<TestMethodResultAdapter> result = new ArrayList<>();
 
 		try {
-			FileInputStream fileIn = new FileInputStream(System.getProperty("user.dir") + "\\result.ser");
+			FileInputStream fileIn = new FileInputStream(String.format("%s%s%s", System.getProperty("user.dir"), File.separator, "result.ser"));
 			ObjectInputStream in = new ObjectInputStream(fileIn);
 			result = (ArrayList<TestMethodResultAdapter>) in.readObject();
 			in.close();
@@ -36,7 +36,7 @@ public class Serializion {
 		} catch (IOException i) {
 			i.printStackTrace();
 
-		} catch (Exception c) {
+		} catch (ClassNotFoundException c) {
 			System.out.println("Error when reading data from disk");
 			c.printStackTrace();
 		}
@@ -44,7 +44,7 @@ public class Serializion {
 	}
 
 	public void saveToDisk(TestMethodResultAdapter result) {
-		File resultFile = new File(System.getProperty("user.dir") + "\\result.ser");
+		File resultFile = new File(String.format("%s%s%s", System.getProperty("user.dir"), File.separator, "result.ser"));
 		if (!resultFile.exists()) {
 			resultFromDisks.add(result);
 		} else {
@@ -53,7 +53,7 @@ public class Serializion {
 		}
 
 		try {
-			FileOutputStream fileOut = new FileOutputStream(System.getProperty("user.dir") + "\\result.ser");
+			FileOutputStream fileOut = new FileOutputStream(String.format("%s%s%s", System.getProperty("user.dir"), File.separator, "result.ser"));
 			ObjectOutputStream out = new ObjectOutputStream(fileOut);
 			out.writeObject(resultFromDisks);
 			out.close();
