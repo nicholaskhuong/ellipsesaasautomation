@@ -105,7 +105,8 @@ public class BaseTestCase {
 				currentCredentials = defaultCredentials;
 			}
 			this.expectedResult = "";
-			DriverCreator driverCreator = new DriverCreator(BaseTestCase.getProperties().getProperty("test.browser"));
+			DriverCreator driverCreator = new DriverCreator(BaseTestCase.getProperties().getProperty("test.browser"),
+					getProperty(TEST_SERVER_FLATFORM));
 			driver = driverCreator.getWebDriver();
 			screenAction = new ScreenAction(driver);
 			try {
