@@ -83,6 +83,7 @@ public class QuickIssue_FullQty_Steps09to13 extends BaseTestCase {
 	public void showPickTasks() {
 		// Assert.assertEquals(driver.findElement(By.xpath("//*[@id='saas-3522304']/div/div[2]/div/div[1]/div/div[1]/div[1]/span")).getText(),
 		// "Pick Tasks"); Still error
+		screenAction.waitObjVisible(driver, By.id("binCode"), 3);
 		List<WebElement> stockCode = driver.findElements(By.id("stockCode"));
 		List<WebElement> binCode = driver.findElements(By.id("binCode"));
 		List<WebElement> quantityToIssue = driver.findElements(By
@@ -96,13 +97,13 @@ public class QuickIssue_FullQty_Steps09to13 extends BaseTestCase {
 		List<WebElement> documentItemNumber = driver.findElements(By
 				.id("documentItemNumber"));
 
-		Assert.assertEquals(stockCode.get(3).getAttribute("value"), "SAAS001");
+		Assert.assertEquals(stockCode.get(3).getAttribute("value"), "TYZ2");
 		Assert.assertEquals(binCode.get(3).getAttribute("value"), "");
 		Assert.assertEquals(quantityToIssue.get(3).getAttribute("value"), "20");
 		Assert.assertEquals(unitOfIssue.get(3).getAttribute("value"), "EA");
 		Assert.assertEquals(priorityCode.get(3).getAttribute("value"), "");
 		Assert.assertEquals(documentNumber.get(3).getAttribute("value"),
-				"F01146");
+				"G01163");
 		Assert.assertEquals(documentItemNumber.get(3).getAttribute("value"),
 				"0001");
 	}
@@ -112,7 +113,7 @@ public class QuickIssue_FullQty_Steps09to13 extends BaseTestCase {
 	public void clickFullPickButton() {
 		List<WebElement> fullPickAction = driver.findElements(By
 				.cssSelector("#fullPickAction > span > span"));
-		fullPickAction.get(2).click();
+		fullPickAction.get(3).click();
 		// Thread.sleep(3000);
 	}
 
@@ -120,7 +121,6 @@ public class QuickIssue_FullQty_Steps09to13 extends BaseTestCase {
 	public void showPickTasksDetails() {
 		// Assert.assertEquals(driver.findElement(By.xpath("//*[@id='saas-3522304']/div/div[2]/div/div[1]/div/div[1]/div[1]/span")).getText(),
 		// "Pick Task Details"); Still error
-		waitAction.waitObjVisible(driver, By.id("stockCode"), 3);
 		List<WebElement> stockCode = driver.findElements(By.id("stockCode"));
 		List<WebElement> quantityToIssue = driver.findElements(By
 				.id("quantityToIssue"));
@@ -131,15 +131,13 @@ public class QuickIssue_FullQty_Steps09to13 extends BaseTestCase {
 		List<WebElement> documentItemNumber = driver.findElements(By
 				.id("documentItemNumber"));
 
-		Assert.assertEquals(stockCode.get(3).getAttribute("value"), "SAAS001");
-		Assert.assertEquals(driver.findElement(By.id("catalogueItemName"))
-				.getAttribute("value"), "SAAS01 NAME");
+		Assert.assertEquals(stockCode.get(3).getAttribute("value"), "TYZ2");
 		Assert.assertEquals(quantityToIssue.get(3).getAttribute("value"), "20");
 		Assert.assertEquals(unitOfIssue.get(3).getAttribute("value"), "EA");
 		Assert.assertEquals(driver.findElement(By.id("quantityPicked"))
 				.getAttribute("value"), "20");
 		Assert.assertEquals(documentNumber.get(3).getAttribute("value"),
-				"F01146");
+				"G01163");
 		Assert.assertEquals(documentItemNumber.get(3).getAttribute("value"),
 				"0001");
 

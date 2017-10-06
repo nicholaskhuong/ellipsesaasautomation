@@ -9,6 +9,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.abb.ventyx.saas.objects.pagedefinitions.ApplicationName;
+import com.abb.ventyx.saas.objects.pagedefinitions.PickTasksPageDefinition;
 import com.abb.ventyx.utilities.ALM;
 import com.abb.ventyx.utilities.BaseTestCase;
 import com.abb.ventyx.utilities.Credentials;
@@ -16,34 +17,22 @@ import com.abb.ventyx.utilities.ScreenAction;
 
 @ALM(id = "1020")
 @Credentials(user = "SPR002", password = "", district = "R100", position = "MATMAN")
-public class QuickIssue_FullQty_Step05 extends BaseTestCase {
+public class QuickIssue_FullQty_Step07 extends BaseTestCase {
 
 	@Test(description = "Access to Pick Stock Application")
 	public void accessPickStock() {
 		loginToApplication(ApplicationName.PICK_STOCK);
-		Assert.assertEquals(driver.findElement(
-						By.xpath("//*[@id='saas-3522304']/div/div[2]/div/div[1]/div/div[1]/div[1]/span"))
-						.getText(), "Pick Tasks");
+		Assert.assertEquals(driver.findElement(By.xpath(PickTasksPageDefinition.PICK_TASKS_TEXT_ID)).getText(), "Pick Tasks");
 		ScreenAction errorAction = new ScreenAction(driver);
-		errorAction
-				.clickTapToClose(
-						driver,
-						By.cssSelector("#saas-3522304-overlays > div.v-Notification.error.v-Notification-error > div > div > h1"));
-		boolean existError = ScreenAction
-				.isElementPresent(
-						driver,
-						By.cssSelector("#saas-3522304-overlays > div.v-Notification.error.v-Notification-error > div > div > h1"));
+		errorAction.clickTapToClose(driver,By.cssSelector(PickTasksPageDefinition.MESSAGE_TEXT_ID));
+		boolean existError = ScreenAction.isElementPresent(driver,By.cssSelector(PickTasksPageDefinition.MESSAGE_TEXT_ID));
 		Assert.assertFalse(existError, "Application has error message");
 	}
 
 	@Test(description = "Select Setting icon on Pick Tasks Page  ", dependsOnMethods = "accessPickStock", alwaysRun = true)
 	public void selectSettingIconOnPickTasksPage() {
-		driver.findElement(
-				By.cssSelector("#menuNavigation > span > span.v-menubar-menuitem-caption > span"))
-				.click();
-		driver.findElement(
-				By.xpath("//div[@id='saas-3522304-overlays']/div[2]/div/div/span/span/span"))
-				.click();
+		driver.findElement(By.cssSelector(PickTasksPageDefinition.MENU_NAVIGATION_ID)).click();
+		driver.findElement(By.xpath(PickTasksPageDefinition.ICON_SETTING_BUTON_ID)).click();
 		// Assert.assertEquals(driver.findElement(By.xpath("//*[@id='saas-3522304']/div/div[2]/div/div[1]/div/div[1]/div[1]/span")).getText(),
 		// "Pick Tasks"); Still error
 	}
@@ -116,30 +105,8 @@ public class QuickIssue_FullQty_Step05 extends BaseTestCase {
 		Assert.assertEquals(
 				isStockItemComplexManaged.get(2).getAttribute("value"), "No");
 
-		// #3
-		Assert.assertEquals(stockCode.get(4).getAttribute("value"), "SAAS003");
-		Assert.assertEquals(binCode.get(4).getAttribute("value"), "BIN1");
-		Assert.assertEquals(quantityToIssue.get(4).getAttribute("value"), "30");
-		Assert.assertEquals(unitOfIssue.get(4).getAttribute("value"), "EA");
-		Assert.assertEquals(priorityCode.get(4).getAttribute("value"), "");
-		Assert.assertEquals(documentNumber.get(4).getAttribute("value"),
-				"K01159");
-		Assert.assertEquals(documentItemNumber.get(4).getAttribute("value"),
-				"0001");
-		Assert.assertEquals(
-				isStockItemComplexManaged.get(4).getAttribute("value"), "Yes");
-
-		// #1
-		Assert.assertEquals(stockCode.get(5).getAttribute("value"), "TYZ1");
-		Assert.assertEquals(binCode.get(5).getAttribute("value"), "");
-		Assert.assertEquals(quantityToIssue.get(5).getAttribute("value"), "20");
-		Assert.assertEquals(unitOfIssue.get(5).getAttribute("value"), "EA");
-		Assert.assertEquals(priorityCode.get(5).getAttribute("value"), "");
-		Assert.assertEquals(documentNumber.get(5).getAttribute("value"),
-				"K01162");
-		Assert.assertEquals(documentItemNumber.get(5).getAttribute("value"),
-				"0001");
-		Assert.assertEquals(
-				isStockItemComplexManaged.get(5).getAttribute("value"), "Yes");
+		screenAction.assertButtonEnabled(By.id(PickTasksPageDefinition.CLOSE_BUTTON_ID), 2, false);
+		screenAction.assertButtonEnabled(By.id(PickTasksPageDefinition.PARTIAL_PICK_BUTTON_ID), 2, false);
+		screenAction.assertButtonEnabled(By.id(PickTasksPageDefinition.FULL_PICK_BUTTON_ID), 2, false);
 	}
 }
