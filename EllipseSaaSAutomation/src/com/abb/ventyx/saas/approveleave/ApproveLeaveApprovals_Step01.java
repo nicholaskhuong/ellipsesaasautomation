@@ -25,7 +25,7 @@ public class ApproveLeaveApprovals_Step01 extends BaseTestCase {
 	@Test(description = "Access to Leave Request Application")
 	public void accessApproveLeave() {
 		loginToApplication(ApplicationName.APPROVE_LEAVE);
-		screenAction.waitObjVisible(driver, By.xpath(LeaveRequestsPageDefinition.APPROVE_LEAVE_REQUESTS_TITLE_ID),10);
+		ScreenAction.waitObjVisible(driver, By.xpath(LeaveRequestsPageDefinition.APPROVE_LEAVE_REQUESTS_TITLE_ID));
 		Assert.assertEquals(driver.findElement(By.xpath(LeaveRequestsPageDefinition.APPROVE_LEAVE_REQUESTS_TITLE_ID)).getText(), "Leave Requests");
 	}
 	

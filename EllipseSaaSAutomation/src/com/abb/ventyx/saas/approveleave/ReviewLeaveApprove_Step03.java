@@ -29,6 +29,8 @@ public class ReviewLeaveApprove_Step03 extends BaseTestCase {
 	@Test(description = "Assert row count ", dependsOnMethods="accessApproveLeave")
 	public void assertLeaveRequestsDetailsDisplay() {	
 		
+		screenAction.waitObjVisible(driver, By.id(LeaveRequestsPageDefinition.EMPLOYEE_TEXTFIELD_ID),20);
+		screenAction.waitObjVisible(driver, By.id(LeaveRequestsPageDefinition.STATUS_DESC_TEXT_ID),20);
 		List<WebElement> employee = driver.findElements(By.id(LeaveRequestsPageDefinition.EMPLOYEE_TEXTFIELD_ID));
 		List<WebElement> statusDesc = driver.findElements(By.id(LeaveRequestsPageDefinition.STATUS_DESC_TEXT_ID));
 		

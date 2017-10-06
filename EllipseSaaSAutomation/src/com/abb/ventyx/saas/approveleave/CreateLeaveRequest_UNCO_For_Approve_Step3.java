@@ -65,13 +65,18 @@ public class CreateLeaveRequest_UNCO_For_Approve_Step3 extends BaseTestCase {
 	@Test( description = "Input Notes", dependsOnMethods="inputStartDate", alwaysRun=true)
 	public void inputNotes(){
 		driver.findElement(By.cssSelector(NewLeaveBalancePageDefinition.NOTES_TEXTAREA_ID)).sendKeys("SaaS.\nUNCO transaction for approve");
-		
 		Assert.assertEquals(driver.findElement(By.cssSelector(NewLeaveBalancePageDefinition.NOTES_TEXTAREA_ID)).getAttribute("value"), "SaaS.\nUNCO transaction for approve");
 	}
 	
 	@Test( description = "Input End Date", dependsOnMethods="inputNotes", alwaysRun=true)
 	public void inputEndDate(){
 		screenAction.inputDate(driver, By.cssSelector(NewLeaveBalancePageDefinition.END_DATE_DATEPICKER_ID), "06022016");
+		
+		boolean isErrorReturned=ScreenAction.isElementPresent(driver, By.cssSelector(LeaveBalancePageDefinition.MESSAGE_TEXT_ID), 30);
+		if(isErrorReturned){
+			screenAction.clickTapToClose(driver, By.cssSelector(LeaveBalancePageDefinition.MESSAGE_TEXT_ID));
+		}
+		
 		Assert.assertEquals(driver.findElement(By.cssSelector(NewLeaveBalancePageDefinition.END_DATE_DATEPICKER_ID)).getAttribute("value"), "2016-06-02");
 	}
 	

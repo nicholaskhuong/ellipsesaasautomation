@@ -49,8 +49,8 @@ public class ReviewLeaveApprove_Step0102 extends BaseTestCase {
 	    driver.findElement(By.cssSelector(SettingPageDefinition.MENU_NAVIGATE_ID)).click();
 	    driver.findElement(By.xpath(SettingPageDefinition.SETTING_ID)).click();
 	    
-	    screenAction.waitObjVisible(driver, By.id(SettingPageDefinition.WORK_GROUP_BUTTON_ID),3);
-	    Assert.assertTrue(ScreenAction.isElementPresent(driver, By.id(SettingPageDefinition.WORK_GROUP_BUTTON_ID),3));
+	    screenAction.waitObjVisible(driver, By.id(SettingPageDefinition.WORK_GROUP_BUTTON_ID),60);
+	    Assert.assertTrue(ScreenAction.isElementPresent(driver, By.id(SettingPageDefinition.WORK_GROUP_BUTTON_ID),10));
 	
 	}
 	
@@ -63,11 +63,11 @@ public class ReviewLeaveApprove_Step0102 extends BaseTestCase {
 		
 		screenAction.inputTextField(By.id(SettingPageDefinition.WORK_GROUP_FILTER_ID), "SWG");
 		
-		screenAction.waitObjVisible(driver, By.xpath(SettingPageDefinition.WORK_GROUP_LIST_ID),20);
+		screenAction.waitObjVisible(driver, By.xpath(SettingPageDefinition.WORK_GROUP_LIST_ID),60);
 		
 		screenAction.clickBtn(By.xpath(SettingPageDefinition.WORK_GROUP_LIST_ID));
 		
-		Assert.assertTrue(ScreenAction.isElementPresent(driver,By.id(SettingPageDefinition.WORK_GROUP_BUTTON_ID),5));
+		Assert.assertTrue(ScreenAction.isElementPresent(driver,By.id(SettingPageDefinition.WORK_GROUP_BUTTON_ID),10));
 		
 		Assert.assertEquals(driver.findElement(By.id(SettingPageDefinition.CREW_BUTTON_ID)).getText(),"");
 		Assert.assertEquals(driver.findElement(By.id(SettingPageDefinition.POSITION_BUTTON_ID)).getText(),"");
@@ -142,6 +142,7 @@ public class ReviewLeaveApprove_Step0102 extends BaseTestCase {
 	public void clickButtonApplyAgain() {	
 		driver.findElement(By.cssSelector(SettingPageDefinition.APPLY_BUTTON_ID)).click();
 	  
+		 screenAction.waitObjInvisible(By.id(SettingPageDefinition.WORK_GROUP_BUTTON_ID));
 	    screenAction.waitObjVisible(driver, By.xpath(LeaveRequestsPageDefinition.APPROVE_LEAVE_REQUESTS_TITLE_ID),30);
 	    Assert.assertEquals(driver.findElement(By.xpath(LeaveRequestsPageDefinition.APPROVE_LEAVE_REQUESTS_TITLE_ID)).getText(), "Leave Requests");
 	}
@@ -153,5 +154,13 @@ public class ReviewLeaveApprove_Step0102 extends BaseTestCase {
 		List<WebElement> employee = driver.findElements(By.id(LeaveRequestsPageDefinition.EMPLOYEE_TEXTFIELD_ID));
 		
 		Assert.assertEquals(employee.size(), 0);
+	}
+	
+	@Test(description = "Assert error message displays ", dependsOnMethods="assertLeaveRequestsDetailsDisplayAgain")
+	public void assertErrorMessage() {	
+		List<WebElement> lismg=driver.findElements(By.cssSelector(LeaveBalancePageDefinition.MESSAGE_TEXT_ID));
+		
+		Assert.assertTrue(lismg.size()>0);
+		Assert.assertTrue(lismg.get(0).getText().contains("The search did not return any results"));
 	}
 }
