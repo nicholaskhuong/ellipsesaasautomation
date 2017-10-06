@@ -135,7 +135,7 @@ public class BaseTestCase {
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", applicationElement);
 		applicationElement.click();
 		login();
-		ScreenAction.isElementPresent(driver, By.xpath(HomePageDefinition.HOME_LINK), 60);
+		(new WebDriverWait(driver, 60)).until(ExpectedConditions.presenceOfElementLocated(By.xpath(HomePageDefinition.HOME_LINK)));
 	}
 
 	public void login() {
