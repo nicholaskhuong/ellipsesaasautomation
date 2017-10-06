@@ -34,7 +34,7 @@ public class QuickReceiptFullQuantity_NormalPO_OwnedSOH_Steps4to6 extends
 	public void inputPurchaseOrderNumber() {
 		WebElement purchaseOrderNumber = driver.findElement(By
 				.id(POSearchPageDefinition.PO_NUMBER_ID));
-		purchaseOrderNumber.sendKeys("P05042");
+		purchaseOrderNumber.sendKeys("P05090");
 	}
 
 	@Test(description = "Input value PO Item Number on PO search Page", dependsOnMethods = "inputPurchaseOrderNumber", alwaysRun = true)
@@ -78,15 +78,15 @@ public class QuickReceiptFullQuantity_NormalPO_OwnedSOH_Steps4to6 extends
 				.id(POItemsPageDefinition.UNIT_OF_ISSUE_ID));
 
 		Assert.assertEquals(documentItem.get(0).getAttribute("value"), "001");
-		Assert.assertEquals(stockCode.get(0).getAttribute("value"), "STC014");
+		Assert.assertEquals(stockCode.get(0).getAttribute("value"), "TC1020NT");
 		Assert.assertEquals(partNumber.get(0).getAttribute("value"), "");
 		Assert.assertEquals(description.get(0).getAttribute("value"),
 				"STOCK CODE;");
 		Assert.assertEquals(
-				outstandingQuantityUOP.get(0).getAttribute("value"), "30.0");
+				outstandingQuantityUOP.get(0).getAttribute("value"), "100.0");
 		Assert.assertEquals(unitOfPurchase.get(0).getAttribute("value"), "EA");
 		Assert.assertEquals(
-				outstandingQuantityUOI.get(0).getAttribute("value"), "30.0");
+				outstandingQuantityUOI.get(0).getAttribute("value"), "100.0");
 		Assert.assertEquals(unitOfIssue.get(0).getAttribute("value"), "EA");
 	}
 
@@ -99,6 +99,7 @@ public class QuickReceiptFullQuantity_NormalPO_OwnedSOH_Steps4to6 extends
 
 	@Test(description = "Input Value On Item Detail Page", dependsOnMethods = "clickFULLButton", alwaysRun = true)
 	public void inputValueOnItemDetailPage() {
+		screenAction.waitObjVisible(driver, By.id(ItemDetailPageDefinition.PO_NUMBER_ID), 3);
 		List<WebElement> stockCode = driver.findElements(By
 				.id(ItemDetailPageDefinition.STOCK_CODE_ID));
 		List<WebElement> description = driver.findElements(By
@@ -116,17 +117,17 @@ public class QuickReceiptFullQuantity_NormalPO_OwnedSOH_Steps4to6 extends
 		List<WebElement> receiptReference = driver.findElements(By
 				.id(ItemDetailPageDefinition.RECEIPT_REFERENCE_ID));
 
-		Assert.assertEquals(stockCode.get(0).getAttribute("value"), "STC014");
+		Assert.assertEquals(stockCode.get(0).getAttribute("value"), "TC1020NT");
 		Assert.assertEquals(description.get(0).getAttribute("value"),
 				"STOCK CODE;");
 		Assert.assertEquals(documentNumber.get(0).getAttribute("value"),
-				"P05042");
+				"P05090");
 		Assert.assertEquals(documentItem.get(0).getAttribute("value"), "001");
 		Assert.assertEquals(unitOfPurchase.get(0).getAttribute("value"), "EA");
 		Assert.assertEquals(
-				outstandingQuantityUOP.get(0).getAttribute("value"), "30.0");
+				outstandingQuantityUOP.get(0).getAttribute("value"), "100.0");
 		Assert.assertEquals(taskQuantityUOM.get(0).getAttribute("value"),
-				"30.0");
+				"100.0");
 		receiptReference.get(0).clear();
 		receiptReference.get(0).sendKeys("MAYCHAZ");
 
@@ -147,7 +148,7 @@ public class QuickReceiptFullQuantity_NormalPO_OwnedSOH_Steps4to6 extends
 				.cssSelector(POItemsPageDefinition.MESSAGE_TEXT_ID));
 		Assert.assertEquals(
 				lismg.get(0).getText(),
-				"The search did not return any results\n(INFO) CORE.E06004: Action successfully completed.\n(INFO) 3140.I0464: Successfully receipted purchase order. P05042001");
+				"The search did not return any results\n(INFO) CORE.E06004: Action successfully completed.\n(INFO) 3140.I0464: Successfully receipted purchase order. P05090001");
 		lismg.get(0).click();
 	}
 }

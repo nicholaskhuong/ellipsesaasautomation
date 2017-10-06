@@ -34,7 +34,7 @@ public class QuickReceiptFullQuantity_NormalPO_ConsignedSOH extends
 	public void inputPurchaseOrderNumber() {
 		WebElement purchaseOrderNumber = driver.findElement(By
 				.id(POSearchPageDefinition.PO_NUMBER_ID));
-		purchaseOrderNumber.sendKeys("P05062");
+		purchaseOrderNumber.sendKeys("P05063");
 	}
 
 	@Test(description = "Input value PO Item Number on PO search Page", dependsOnMethods = "inputPurchaseOrderNumber", alwaysRun = true)
@@ -59,6 +59,7 @@ public class QuickReceiptFullQuantity_NormalPO_ConsignedSOH extends
 
 	@Test(description = "Display Detail Items", dependsOnMethods = "accessToPOItemsPage", alwaysRun = true)
 	public void displayDetailItems() {
+		screenAction.waitObjVisible(driver, By.id(POItemsPageDefinition.PO_ITEM_NUMBER_ID), 3);
 		List<WebElement> documentItem = driver.findElements(By.id(POItemsPageDefinition.PO_ITEM_NUMBER_ID));
 		List<WebElement> stockCode = driver.findElements(By.id(POItemsPageDefinition.STOCK_CODE_ID));
 		List<WebElement> partNumber = driver.findElements(By.id(POItemsPageDefinition.PART_NUMBER_ID));
@@ -68,13 +69,13 @@ public class QuickReceiptFullQuantity_NormalPO_ConsignedSOH extends
 		List<WebElement> outstandingQuantityUOI = driver.findElements(By.id(POItemsPageDefinition.OUT_STANDING_QUANTITY_UOI_ID));
 		List<WebElement> unitOfIssue = driver.findElements(By.id(POItemsPageDefinition.UNIT_OF_ISSUE_ID));
 
-		Assert.assertEquals(documentItem.get(0).getAttribute("value"), "001");
-		Assert.assertEquals(stockCode.get(0).getAttribute("value"), "ST003");
+		Assert.assertEquals(documentItem.get(0).getAttribute("value"), "003");
+		Assert.assertEquals(stockCode.get(0).getAttribute("value"), "STC1027");
 		Assert.assertEquals(partNumber.get(0).getAttribute("value"), "");
 		Assert.assertEquals(description.get(0).getAttribute("value"),"STOCK CODE;");
-		Assert.assertEquals(outstandingQuantityUOP.get(0).getAttribute("value"), "1,000.0");
+		Assert.assertEquals(outstandingQuantityUOP.get(0).getAttribute("value"), "100.0");
 		Assert.assertEquals(unitOfPurchase.get(0).getAttribute("value"), "EA");
-		Assert.assertEquals(outstandingQuantityUOI.get(0).getAttribute("value"), "1,000.0");
+		Assert.assertEquals(outstandingQuantityUOI.get(0).getAttribute("value"), "100.0");
 		Assert.assertEquals(unitOfIssue.get(0).getAttribute("value"), "EA");
 	}
 
@@ -98,14 +99,14 @@ public class QuickReceiptFullQuantity_NormalPO_ConsignedSOH extends
 		List<WebElement> outstandingQuantityUOP = driver.findElements(By.id(ItemDetailPageDefinition.OUT_STANDING_QUANTITY_UOP_ID));
 		List<WebElement> receiptReference = driver.findElements(By.id(ItemDetailPageDefinition.RECEIPT_REFERENCE_ID));
 
-		Assert.assertEquals(stockCode.get(0).getAttribute("value"), "ST003");
+		Assert.assertEquals(stockCode.get(0).getAttribute("value"), "STC1027");
 		Assert.assertEquals(description.get(0).getAttribute("value"),"STOCK CODE;");
 		Assert.assertEquals(newBinCode.get(0).getAttribute("value"), "");
-		Assert.assertEquals(documentNumber.get(0).getAttribute("value"),"P05062");
-		Assert.assertEquals(documentItem.get(0).getAttribute("value"), "001");
+		Assert.assertEquals(documentNumber.get(0).getAttribute("value"),"P05063");
+		Assert.assertEquals(documentItem.get(0).getAttribute("value"), "003");
 		Assert.assertEquals(unitOfPurchase.get(0).getAttribute("value"), "EA");
-		Assert.assertEquals(outstandingQuantityUOP.get(0).getAttribute("value"), "1,000.0");
-		Assert.assertEquals(taskQuantityUOM.get(0).getAttribute("value"),"1000.0");
+		Assert.assertEquals(outstandingQuantityUOP.get(0).getAttribute("value"), "100.0");
+		Assert.assertEquals(taskQuantityUOM.get(0).getAttribute("value"),"100.0");
 		receiptReference.get(0).clear();
 		receiptReference.get(0).sendKeys("04MAY07");
 	}
@@ -123,7 +124,7 @@ public class QuickReceiptFullQuantity_NormalPO_ConsignedSOH extends
 	 //Assert.assertEquals(driver.findElement(By.xpath(POItemsPageDefinition.NEW_PO_ITEMS_TEXT_ID)).getText(), "PO Items"); // Still error
 	 List<WebElement> lismg
 	 =driver.findElements(By.cssSelector(POItemsPageDefinition.MESSAGE_TEXT_ID));
-	 Assert.assertEquals(lismg.get(0).getText(),"The search did not return any results\n(INFO) 3140.I0604: Quantity: 1000, consignment stock received\n(INFO) CORE.E06004: Action successfully completed.\n(INFO) 3140.I0464: Successfully receipted purchase order. P05062001");
+	 Assert.assertEquals(lismg.get(0).getText(),"The search did not return any results\n(INFO) 3140.I0604: Quantity: 100, consignment stock received\n(INFO) CORE.E06004: Action successfully completed.\n(INFO) 3140.I0464: Successfully receipted purchase order. P05063003");
 	 lismg.get(0).click();
 	 }
 }
