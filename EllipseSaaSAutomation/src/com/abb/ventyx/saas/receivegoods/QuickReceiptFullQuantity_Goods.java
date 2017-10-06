@@ -58,6 +58,7 @@ public class QuickReceiptFullQuantity_Goods extends BaseTestCase {
 
 	@Test(description = "Display Detail Items", dependsOnMethods = "accessToPOItemsPage", alwaysRun = true)
 	public void displayDetailItems() {
+		screenAction.waitObjVisible(driver, By.id(POItemsPageDefinition.PO_ITEM_NUMBER_ID), 3);
 		List<WebElement> documentItem = driver.findElements(By
 				.id(POItemsPageDefinition.PO_ITEM_NUMBER_ID));
 		List<WebElement> stockCode = driver.findElements(By
@@ -96,6 +97,7 @@ public class QuickReceiptFullQuantity_Goods extends BaseTestCase {
 
 	@Test(description = "Input Value On Item Detail Page", dependsOnMethods = "clickFULLButton", alwaysRun = true)
 	public void inputValueOnItemDetailPage() {
+		screenAction.waitObjVisible(driver, By.id(ItemDetailPageDefinition.PURCHASE_REP_ID), 3);
 		List<WebElement> preq = driver.findElements(By
 				.id(ItemDetailPageDefinition.PURCHASE_REP_ID));
 		List<WebElement> description = driver.findElements(By
