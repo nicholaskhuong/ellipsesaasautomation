@@ -3,6 +3,7 @@ package com.abb.ventyx.utilities;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -12,15 +13,46 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class DriverCreator {
-	private String driverType = "firefox";
+	private String driverType = "chrome";
+	private String osType = "windows";
 
 	public DriverCreator(String driverType) {
 		this.driverType = driverType;
 	}
 
+	public DriverCreator(String driverType, String osType) {
+		this.driverType = driverType;
+		this.osType = osType;
+	}
+
+	public WebDriver getWebDriver() throws MalformedURLException {
+		WebDriver result = null;
+		switch (driverType) {
+		case "firefox":
+			result = createFirefoxDriver();
+			break;
+		case "chrome":
+			result = createChromeDriver();
+			break;
+		case "android":
+			result = createAndroidDriver();
+			break;
+		case "ie":
+			result = createIEDriver();
+			break;
+		case "ios":
+			result = createIOSDriver();
+			break;
+		default:
+			result = createChromeDriver();
+		}
+
+		return result;
+	}
+
 	private WebDriver createAndroidDriver() {
 		WebDriver result = null;
-		if (Constants.MOBILE_PLATFORM == Platform.APPIUM_ANDROID) {
+		if (Constants.MOBILE_PLATFORM == com.abb.ventyx.utilities.Platform.APPIUM_ANDROID) {
 			// To create an object of Desired Capabilities
 			final DesiredCapabilities capabilities = new DesiredCapabilities();
 
@@ -42,7 +74,9 @@ public class DriverCreator {
 			// Capabilities
 
 			try {
-				result = new RemoteWebDriver(new URL(String.format("%s:%s/wd/hub", BaseTestCase.getProperties().getProperty("test.selenium.server"),BaseTestCase.getProperties().getProperty("test.selenium.port"))), capabilities);
+				result = new RemoteWebDriver(new URL(String.format("%s:%s/wd/hub",
+						BaseTestCase.getProperties().getProperty(BaseTestCase.TEST_SELENIUM_SERVER),
+						BaseTestCase.getProperties().getProperty(BaseTestCase.TEST_SELENIUM_PORT))), capabilities);
 			} catch (final MalformedURLException e) {
 				// TODO Auto-generated catch block
 				result = null;
@@ -59,84 +93,95 @@ public class DriverCreator {
 	private WebDriver createChromeDriver() {
 		DesiredCapabilities capability = DesiredCapabilities.chrome();
 		capability.setBrowserName("chrome");
-		System.setProperty("webdriver.chrome.driver", Constants.SELENIUM_WEB_DRIVER_PATH);
-		WebDriver result = null;
-		if (Boolean.valueOf(BaseTestCase.getProperties().getProperty("test.selenium.grid")))
-		{
-			result = createRemoteWebDriver(capability);
+		switch (osType) {
+		case "linux":
+			System.setProperty("webdriver.chrome.driver", Constants.SELENIUM_WEB_DRIVER_PATH_LINUX);
+			capability.setPlatform(Platform.LINUX);
+			break;
+		case "mac":
+			System.setProperty("webdriver.chrome.driver", Constants.SELENIUM_WEB_DRIVER_PATH_MAC);
+			capability.setPlatform(Platform.MAC);
+			break;
+		default:
+			System.setProperty("webdriver.chrome.driver", Constants.SELENIUM_WEB_DRIVER_PATH);
+			capability.setPlatform(Platform.WINDOWS);
 		}
-		else
-		{
-			result = new ChromeDriver();
+		WebDriver result = null;
+		if (Boolean.valueOf(BaseTestCase.getProperties().getProperty(BaseTestCase.TEST_SELENIUM_GRID))) {
+			result = createRemoteWebDriver(capability);
+		} else {
+			System.setProperty("webdriver.chrome.driver", Constants.SELENIUM_WEB_DRIVER_PATH_LINUX);
+			capability.setPlatform(Platform.LINUX);
+			result = new ChromeDriver(capability);
 		}
 		return result;
 	}
 
 	private WebDriver createFirefoxDriver() {
 		DesiredCapabilities capability = DesiredCapabilities.firefox();
-		capability.setBrowserName("firefox"); 
-		System.setProperty("webdriver.gecko.drive", Constants.SELENIUM_WEB_DRIVER_PATH_FF);
-		WebDriver result = null;
-		if (Boolean.valueOf(BaseTestCase.getProperties().getProperty("test.selenium.grid")))
-		{
-			result = createRemoteWebDriver(capability);
+		capability.setBrowserName("firefox");
+		switch (osType) {
+		case "linux":
+			System.setProperty("webdriver.gecko.drive", Constants.SELENIUM_WEB_DRIVER_PATH_FF_LINUX);
+			capability.setPlatform(Platform.LINUX);
+			break;
+		case "mac":
+			System.setProperty("webdriver.gecko.drive", Constants.SELENIUM_WEB_DRIVER_PATH_FF_MAC);
+			capability.setPlatform(Platform.MAC);
+			break;
+		default:
+			System.setProperty("webdriver.gecko.drive", Constants.SELENIUM_WEB_DRIVER_PATH_FF);
+			capability.setPlatform(Platform.WINDOWS);
 		}
-		else
-		{
-			result = new FirefoxDriver();
+
+		WebDriver result = null;
+
+		if (Boolean.valueOf(BaseTestCase.getProperties().getProperty(BaseTestCase.TEST_SELENIUM_GRID))) {
+			result = createRemoteWebDriver(capability);
+		} else {
+			System.setProperty("webdriver.chrome.driver", Constants.SELENIUM_WEB_DRIVER_PATH_FF_LINUX);
+			capability.setPlatform(Platform.LINUX);
+			result = new FirefoxDriver(capability);
 		}
 		return result;
 	}
-	
+
 	private WebDriver createIEDriver() {
 		DesiredCapabilities capability = DesiredCapabilities.internetExplorer();
-		capability.setBrowserName("internetexplorer"); 
+		capability.setBrowserName("internetexplorer");
 		WebDriver result = null;
-		if (Boolean.valueOf(BaseTestCase.getProperties().getProperty("test.selenium.grid")))
-		{
+		if (Boolean.valueOf(BaseTestCase.getProperties().getProperty(BaseTestCase.TEST_SELENIUM_GRID))) {
 			result = createRemoteWebDriver(capability);
-		}
-		else
-		{
+		} else {
 			result = new InternetExplorerDriver();
 		}
 		return result;
 	}
-	private WebDriver createRemoteWebDriver(DesiredCapabilities capability)
-	{
+
+	private WebDriver createRemoteWebDriver(DesiredCapabilities capability) {
+		System.out.println("------------Run from grid----------------------");
 		WebDriver result = null;
 		try {
-			result = new RemoteWebDriver(new URL(String.format("%s:%s/wd/hub", BaseTestCase.getProperties().getProperty("test.selenium.server"),BaseTestCase.getProperties().getProperty("test.selenium.port"))),capability);
+			// if
+			// (BaseTestCase.getProperties().containsKey(BaseTestCase.TEST_SELENIUM_SERVER)){
+			result = new RemoteWebDriver(new URL(String.format("%s:%s/wd/hub",
+					BaseTestCase.getProperties().getProperty(BaseTestCase.TEST_SELENIUM_SERVER),
+					BaseTestCase.getProperties().getProperty(BaseTestCase.TEST_SELENIUM_PORT))), capability);
+			// }
+			// result = new RemoteWebDriver(new
+			// URL(String.format("%s:%s/wd/hub",
+			// BaseTestCase.getProperties().getProperty(BaseTestCase.TEST_SELENIUM_SERVER),BaseTestCase.getProperties().getProperty(BaseTestCase.TEST_SELENIUM_PORT))),capability);
+			// result = new RemoteWebDriver(new
+			// URL("https://nicholaskhuong1:DHcS62YhmPCBTwLqyJ8q@hub-cloud.browserstack.com/wd/hub"),capability);
 		} catch (Exception e) {
-			System.setProperty("webdriver.gecko.drive", Constants.SELENIUM_WEB_DRIVER_PATH_FF);
-			result = new FirefoxDriver();
-			System.out.println(e.getMessage());
-		}
-		return result;
-	}
+			System.out.println("----------------Exception when run on Grid: " + e.getMessage() + " OS Type: " + osType
+					+ " -----------------------------------");
+			System.setProperty("webdriver.chrome.driver", Constants.SELENIUM_WEB_DRIVER_PATH_LINUX);
+			capability.setPlatform(Platform.LINUX);
+			result = new ChromeDriver(capability);
 
-	public WebDriver getWebDriver() throws MalformedURLException {
-		WebDriver result = null;
-		switch (driverType) {
-		case "firefox":
-			result = createFirefoxDriver();
-			break;
-		case "chrome":
-			result = createChromeDriver();
-			break;
-		case "android":
-			result = createAndroidDriver();
-			break;
-		case "ie":
-			result = createIEDriver();
-			break;	
-		case "ios":
-			result = createIOSDriver();
-			break;
-		default:
-			result = createFirefoxDriver();
 		}
-
+		System.out.println("------------End Run from grid----------------------");
 		return result;
 	}
 
@@ -145,20 +190,22 @@ public class DriverCreator {
 
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 		capabilities.setCapability("platformVersion", "9.3");
-        capabilities.setCapability("launchTimeout", 300000);
-        capabilities.setCapability("platformName", "iOS");
-        capabilities.setCapability(CapabilityType.BROWSER_NAME, "iOS");
-        capabilities.setCapability("deviceName", "iPhone 6");
-        capabilities.setCapability("udid", "1806356E-AB4E-407B-91DC-26F091A0CF90");
-        try {
-			result = new RemoteWebDriver(new URL(String.format("%s:%s/wd/hub", BaseTestCase.getProperties().getProperty("test.selenium.server"),BaseTestCase.getProperties().getProperty("test.selenium.port"))), capabilities);
+		capabilities.setCapability("launchTimeout", 300000);
+		capabilities.setCapability("platformName", "iOS");
+		capabilities.setCapability(CapabilityType.BROWSER_NAME, "iOS");
+		capabilities.setCapability("deviceName", "iPhone 6");
+		capabilities.setCapability("udid", "1806356E-AB4E-407B-91DC-26F091A0CF90");
+		try {
+			result = new RemoteWebDriver(new URL(String.format("%s:%s/wd/hub",
+					BaseTestCase.getProperties().getProperty(BaseTestCase.TEST_SELENIUM_SERVER),
+					BaseTestCase.getProperties().getProperty(BaseTestCase.TEST_SELENIUM_PORT))), capabilities);
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			result = null;
 		}
-        
-        return result;
 
-    }
+		return result;
+
+	}
 
 }

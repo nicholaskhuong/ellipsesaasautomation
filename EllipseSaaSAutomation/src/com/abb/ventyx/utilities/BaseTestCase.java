@@ -57,10 +57,12 @@ public class BaseTestCase {
 	public static final String TEST_SERVER_URL = "test.server.url";
 	public static final String TEST_BROWSER = "test.browser";
 	public static final String TEST_SELENIUM_SERVER = "test.selenium.server";
+	public static final String TEST_SELENIUM_GRID = "test.selenium.grid";
 	public static final String TEST_SELENIUM_PORT = "test.selenium.port";
 	public static final String TEST_EMAIL = "test.email";
 	public static final String TEST_VEIFY_CODE = "test.verify.code";
 	public static final String TEST_ELLIPSE_VERSION = "test.ellipse.version";
+	public static final String TEST_SERVER_FLATFORM = "test.server.platform";
 	private static Properties properties = new Properties();
 	private TestLoginCredentials defaultCredentials;
 	private TestLoginCredentials currentCredentials;
