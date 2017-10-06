@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Receive Goods" parallel="none">
+  	<test name="Quick Receipt Full Quantity Goods">
+		<classes>
+				<class name="com.abb.ventyx.saas.receivegoods.QuickReceiptFullQuantity_Goods" />
+		</classes>
+  	</test> <!-- Test -->
+  	
+  	<test name="Quick Receipt Partial Quantity GoodsPO">
+		<classes>
+				<class name="com.abb.ventyx.saas.receivegoods.QuickReceiptPartialQuantity_GoodsPO" />
+		</classes>
+  	</test> <!-- Test -->
+  	
   	<test name="Quick Receipt Full Quantity Normal PO Owned SOH">
 		<classes>
 				<class name="com.abb.ventyx.saas.receivegoods.QuickReceiptFullQuantity_NormalPO_OwnedSOH_Steps4to6" />
@@ -14,7 +26,12 @@
 				<class name="com.abb.ventyx.saas.receivegoods.QuickReceiptFullQuantity_NormalPO_OwnedSOH_Step15" />
 				
 				<class name="com.abb.ventyx.saas.receivegoods.QuickReceiptFullQuantity_NormalPO_OwnedSOH_Step16" />
-	
+		</classes>
+  	</test> <!-- Test -->
+  	
+  	<test name="Quick Receipt Full Quantity Normal PO Consigned SOH">
+		<classes>
+				<class name="com.abb.ventyx.saas.receivegoods.QuickReceiptFullQuantity_NormalPO_ConsignedSOH" />
 		</classes>
   	</test> <!-- Test -->
   	

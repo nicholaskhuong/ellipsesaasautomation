@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -119,7 +118,9 @@ public class QuickReceiptFullQuantity_NormalPO_OwnedSOH_Step10 extends
 				.id(ItemDetailPageDefinition.OUT_STANDING_QUANTITY_UOP_ID));
 		List<WebElement> receiptReference = driver.findElements(By
 				.id(ItemDetailPageDefinition.RECEIPT_REFERENCE_ID));
-
+		List<WebElement> newBinCode = driver.findElements(By
+				.id(ItemDetailPageDefinition.NEW_BIN_ID));
+		
 		Assert.assertEquals(stockCode.get(0).getAttribute("value"), "TC1020NT");
 		Assert.assertEquals(description.get(0).getAttribute("value"),
 				"STOCK CODE;");
@@ -132,9 +133,7 @@ public class QuickReceiptFullQuantity_NormalPO_OwnedSOH_Step10 extends
 		Assert.assertEquals(taskQuantityUOM.get(0).getAttribute("value"),
 				"30.0");
 		screenAction.waitObjVisible(driver, By.id(ItemDetailPageDefinition.NEW_BIN_ID), 5);
-		new Select(driver.findElement(By
-				.id(ItemDetailPageDefinition.NEW_BIN_ID)))
-				.selectByVisibleText("BIN2");
+		newBinCode.get(0).sendKeys("BIN2");
 		receiptReference.get(0).clear();
 		receiptReference.get(0).sendKeys("04MAYCHA7");
 	}
