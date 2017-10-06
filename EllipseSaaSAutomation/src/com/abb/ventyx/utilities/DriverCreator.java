@@ -110,8 +110,6 @@ public class DriverCreator {
 		if (Boolean.valueOf(BaseTestCase.getProperties().getProperty(BaseTestCase.TEST_SELENIUM_GRID))) {
 			result = createRemoteWebDriver(capability);
 		} else {
-			System.setProperty("webdriver.chrome.driver", Constants.SELENIUM_WEB_DRIVER_PATH_LINUX);
-			capability.setPlatform(Platform.LINUX);
 			result = new ChromeDriver(capability);
 		}
 		return result;
@@ -139,8 +137,6 @@ public class DriverCreator {
 		if (Boolean.valueOf(BaseTestCase.getProperties().getProperty(BaseTestCase.TEST_SELENIUM_GRID))) {
 			result = createRemoteWebDriver(capability);
 		} else {
-			System.setProperty("webdriver.chrome.driver", Constants.SELENIUM_WEB_DRIVER_PATH_FF_LINUX);
-			capability.setPlatform(Platform.LINUX);
 			result = new FirefoxDriver(capability);
 		}
 		return result;
