@@ -18,5 +18,7 @@ public class PickTasksDetailsPageDefinition {
 	public static final String CLOSE_BUTTON_ID = "closeAction2";
 	public static final String PICK_BUTTON_ID = "issueAction";
 	
+	public static final String CLOSE_BUTTON2_ID = "#closeAction2 > span > span";
+	
 	public static final String MESSAGE_TEXT_ID = "#saas-3522304-overlays > div.v-Notification.error.v-Notification-error > div";
 }

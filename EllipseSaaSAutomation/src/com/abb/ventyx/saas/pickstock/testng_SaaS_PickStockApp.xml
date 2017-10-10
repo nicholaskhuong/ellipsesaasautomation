@@ -54,4 +54,12 @@
 		</classes>
   	</test> <!-- Test -->
   	
+  	  	<test name="Quick Issue Close">
+		<classes>
+				<class name="com.abb.ventyx.saas.pickstock.QuickIssue_Close_Steps03_09" />
+		
+				<class name="com.abb.ventyx.saas.pickstock.QuickIssue_Close_Step12" />
+		</classes>
+  	</test> <!-- Test -->
+  	
 </suite> <!-- Suite -->

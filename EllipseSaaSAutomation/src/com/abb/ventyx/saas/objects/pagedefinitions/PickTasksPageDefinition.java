@@ -19,5 +19,5 @@ public class PickTasksPageDefinition {
 	public static final String MENU_NAVIGATION_ID = "#menuNavigation > span > span.v-menubar-menuitem-caption > span";
 	public static final String ICON_SETTING_BUTON_ID = "//div[@id='saas-3522304-overlays']/div[2]/div/div/span/span/span";
 	
-	public static final String MESSAGE_TEXT_ID = "#saas-3522304-overlays > div.v-Notification.error.v-Notification-error > div";
+	public static final String MESSAGE_TEXT_ID = "#saas-3522304-overlays > div.v-Notification.humanized.v-Notification-humanized";
 }
