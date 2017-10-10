@@ -54,11 +54,23 @@
 		</classes>
   	</test> <!-- Test -->
   	
-  	  	<test name="Quick Issue Close">
+  	 <test name="Quick Issue Close">
 		<classes>
+		
 				<class name="com.abb.ventyx.saas.pickstock.QuickIssue_Close_Steps03_09" />
 		
 				<class name="com.abb.ventyx.saas.pickstock.QuickIssue_Close_Step12" />
+				
+		</classes>
+  	</test> <!-- Test -->
+  	
+  	 <test name="Issue Record An Inability No Bin Single Item Non_Qty Tracked">
+		<classes>
+		
+				<class name="com.abb.ventyx.saas.pickstock.IssueRecordAnInabilityNoBinSingleItemNon_QtyTracked_Steps03_07" />
+		
+				<class name="com.abb.ventyx.saas.pickstock.IssueRecordAnInabilityNoBinSingleItemNon_QtyTracked_Step11" />
+	
 		</classes>
   	</test> <!-- Test -->
   	
