@@ -5,6 +5,7 @@ public class ItemDetailPageDefinition {
 	
 	public static final String RECEIPT_QTY_ID = "taskQuantityUOM";
 	public static final String RECEIPT_PEFERENCE_ID = "receiptReference";
+	public static final String RECEIPT_PEFERENCE2_ID = "//*[@id='updateAction']";
 	public static final String RECEIVE_BUTTON_ID = "#updateAction > span > span";
 	
 	public static final String 	TASK_QUANTITY_UOM_ID = "taskQuantityUOM";
@@ -23,5 +24,15 @@ public class ItemDetailPageDefinition {
 	
 	
 	public static final String MESSAGE_ERROR_TEXT_ID = "#saas-3522304-overlays > div.v-Notification.error.v-Notification-error > div";
+	
+	public static final String PO_ITEM_NUMBER_ID = "documentItem";
+	public static final String PART_NUMBER_ID = "partNumber";
+	public static final String OUT_STANDING_QUANTITY_UOI_ID = "outstandingQuantityUOI";
+	public static final String UNIT_OF_ISSUE_ID = "unitOfIssue";
+	public static final String WARE_HOUSE_ID = "#warehouseId";
+	
+	
+	public static final String PARTIAL_BUTTON_ID = "#partialAction > span > span";
+	public static final String FULL_BUTTON_ID = "#fullAction > span > span";
 }
 

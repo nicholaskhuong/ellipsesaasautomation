@@ -35,4 +35,12 @@
 		</classes>
   	</test> <!-- Test -->
   	
+  	<test name="Quick Receipt PO with Reactivation">
+		<classes>
+				<class name="com.abb.ventyx.saas.receivegoods.QuickReceiptPO_Reactivation_Steps04_07" />
+				
+				<class name="com.abb.ventyx.saas.receivegoods.QuickReceiptPO_Reactivation_Step11" />
+		</classes>
+  	</test> <!-- Test -->
+  	
 </suite> <!-- Suite -->
