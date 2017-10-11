@@ -43,7 +43,7 @@
 		</classes>
   	</test> <!-- Test -->
   	
-  	  	<test name="Quick Receipt Normal PO Multiples Items">
+  	<test name="Quick Receipt Normal PO Multiples Items">
 		<classes>
 				<class name="com.abb.ventyx.saas.receivegoods.QuickReceipt_NormalPO_MultiplesItems_Steps02_05" />
 				
@@ -53,4 +53,11 @@
 		</classes>
   	</test> <!-- Test -->
   	
+  	<test name="Bin Label of Automatic">
+		<classes>
+		
+				<class name="com.abb.ventyx.saas.receivegoods.BinLabel_Automatic_Steps05_08" />
+				
+		</classes>
+  	</test> <!-- Test -->
 </suite> <!-- Suite -->
