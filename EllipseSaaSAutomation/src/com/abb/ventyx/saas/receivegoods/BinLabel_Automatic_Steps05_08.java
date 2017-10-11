@@ -108,12 +108,12 @@ public class BinLabel_Automatic_Steps05_08 extends BaseTestCase {
 	}
 	
 	@Test(description = "Click Receive Button On Item Detail Page", dependsOnMethods = "inputReceiptReferenceOnItemDetailPage", alwaysRun = true)
-	public void clickRECEIVEItem0Button() {
+	public void clickRECEIVEButton() {
 		screenAction.clickBtn(By.id(ItemDetailPageDefinition.RECEIVE_ID));
 		screenAction.waitObjVisible(driver, By.id(ItemDetailPageDefinition.RECEIVE_ID), 3);
 	}
 
-	@Test(description = "Display Message On PO Item Page", dependsOnMethods = "clickRECEIVEItem0Button", alwaysRun = true)
+	@Test(description = "Display Message On PO Item Page", dependsOnMethods = "clickRECEIVEButton", alwaysRun = true)
 	public void displayMessage0OnPOItemPage() {
 			// Assert.assertEquals(driver.findElement(By.xpath(POItemsPageDefinition.NEW_PO_ITEMS_TEXT_ID)).getText(), "PO Items"); // Still error
 		screenAction.waitObjVisible(driver, By.cssSelector(POItemsPageDefinition.MESSAGE_TEXT_ID), 3);	
