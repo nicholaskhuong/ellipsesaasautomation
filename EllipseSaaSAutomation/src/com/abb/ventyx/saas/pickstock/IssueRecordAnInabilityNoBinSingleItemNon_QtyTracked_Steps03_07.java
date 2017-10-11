@@ -76,6 +76,7 @@ public class IssueRecordAnInabilityNoBinSingleItemNon_QtyTracked_Steps03_07 exte
 	@Test(description = "Show Pick Tasks type ", dependsOnMethods = "clickApplybuttonOnSettingPage", alwaysRun = true)
 	public void showPickTasks() {
 		// Assert.assertEquals(driver.findElement(By.xpath("//*[@id='saas-3522304']/div/div[2]/div/div[1]/div/div[1]/div[1]/span")).getText(),"Pick Tasks"); Still error
+		screenAction.waitObjVisible(driver, By.id(PickTasksPageDefinition.STOCK_CODE_ID), 6);
 		List<WebElement> stockCode = driver.findElements(By.id(PickTasksPageDefinition.STOCK_CODE_ID));
 		List<WebElement> binCode = driver.findElements(By.id(PickTasksPageDefinition.BIN_CODE_ID));
 		List<WebElement> quantityToIssue = driver.findElements(By.id(PickTasksPageDefinition.QUANTITY_TO_PICK_ID));
@@ -139,6 +140,7 @@ public class IssueRecordAnInabilityNoBinSingleItemNon_QtyTracked_Steps03_07 exte
 	
 	@Test(description = "Click PICK Button again", dependsOnMethods = "selectReasonInDropDown", alwaysRun = true)
 	public void clickPICK2Button() { 
+		screenAction.waitObjVisible(driver, By.id(PickTasksDetailsPageDefinition.PICK_BUTTON_ID), 6);
 		screenAction.clickBtn(By.id(PickTasksDetailsPageDefinition.PICK_BUTTON_ID));
 	}
 	
