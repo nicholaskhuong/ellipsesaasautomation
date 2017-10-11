@@ -114,7 +114,7 @@ public class BinLabel_Automatic_Steps05_08 extends BaseTestCase {
 	}
 
 	@Test(description = "Display Message On PO Item Page", dependsOnMethods = "clickRECEIVEButton", alwaysRun = true)
-	public void displayMessage0OnPOItemPage() {
+	public void displayMessageOnPOItemPage() {
 			// Assert.assertEquals(driver.findElement(By.xpath(POItemsPageDefinition.NEW_PO_ITEMS_TEXT_ID)).getText(), "PO Items"); // Still error
 		screenAction.waitObjVisible(driver, By.cssSelector(POItemsPageDefinition.MESSAGE_TEXT_ID), 3);	
 		Assert.assertEquals(driver.findElement(By.cssSelector(POItemsPageDefinition.MESSAGE_TEXT_ID)).getText(),"The search did not return any results\n(INFO) CORE.E06004: Action successfully completed.\n(INFO) 3140.I0464: Successfully receipted purchase order. P05102001\n(INFO) 3140.I0491: Bin Label print request submitted for processing");
