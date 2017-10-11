@@ -43,4 +43,14 @@
 		</classes>
   	</test> <!-- Test -->
   	
+  	  	<test name="Quick Receipt Normal PO Multiples Items">
+		<classes>
+				<class name="com.abb.ventyx.saas.receivegoods.QuickReceipt_NormalPO_MultiplesItems_Steps02_05" />
+				
+				<class name="com.abb.ventyx.saas.receivegoods.QuickReceipt_NormalPO_MultiplesItems_Step06" />
+				
+				<class name="com.abb.ventyx.saas.receivegoods.QuickReceipt_NormalPO_MultiplesItems_Step07" />
+		</classes>
+  	</test> <!-- Test -->
+  	
 </suite> <!-- Suite -->
