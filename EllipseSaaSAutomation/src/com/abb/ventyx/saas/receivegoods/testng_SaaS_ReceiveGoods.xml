@@ -60,4 +60,15 @@
 				
 		</classes>
   	</test> <!-- Test -->
+  	
+  	<test name="BinLabel Manual And UOI Of Quantity">
+		<classes>
+		
+				<class name="com.abb.ventyx.saas.receivegoods.BinLabel_Manual_And_UOI_Quantity_Steps05_09" />
+				
+				<class name="com.abb.ventyx.saas.receivegoods.BinLabel_Manual_And_UOI_Quantity_Step11" />
+				
+		</classes>
+  	</test> <!-- Test -->
+  	
 </suite> <!-- Suite -->
