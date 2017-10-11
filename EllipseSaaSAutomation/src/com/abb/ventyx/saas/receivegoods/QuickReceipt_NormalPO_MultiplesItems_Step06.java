@@ -80,11 +80,11 @@ public class QuickReceipt_NormalPO_MultiplesItems_Step06 extends BaseTestCase {
 	}
 
 	@Test(description = "Click button FULL on PO Items Page", dependsOnMethods = "displayDetailItems", alwaysRun = true)
-	public void clickPULLIteam0Button() {
+	public void clickPULLButton() {
 		screenAction.clickBtnByIndex(By.cssSelector(POItemsPageDefinition.FULL_BUTTON_ID), 0);
 	}
 
-	@Test(description = "Display Item Detail Items", dependsOnMethods = "clickPULLIteam0Button", alwaysRun = true)
+	@Test(description = "Display Item Detail Items", dependsOnMethods = "clickPULLButton", alwaysRun = true)
 	public void displayItemDetailItems() {
 		// Assert.assertEquals(driver.findElement(By.xpath(ItemDetailPageDefinition.NEW_ITEM_DETAIL_TEXT_ID)).getText(), "Item Detail");
 		List<WebElement> documentItem = driver.findElements(By.id(ItemDetailPageDefinition.PO_ITEM_NUMBER_ID));
@@ -115,12 +115,12 @@ public class QuickReceipt_NormalPO_MultiplesItems_Step06 extends BaseTestCase {
 	}
 	
 	@Test(description = "Click Receive Button On Item Detail Page", dependsOnMethods = "inputReceiptReferenceOnItemDetailPage", alwaysRun = true)
-	public void clickRECEIVEItem0Button() {
+	public void clickRECEIVEButton() {
 		screenAction.clickBtn(By.id(ItemDetailPageDefinition.RECEIVE_ID));
 		screenAction.waitObjVisible(driver, By.id(ItemDetailPageDefinition.RECEIVE_ID), 3);
 	}
 
-	@Test(description = "Display Message On PO Item Page", dependsOnMethods = "clickRECEIVEItem0Button", alwaysRun = true)
+	@Test(description = "Display Message On PO Item Page", dependsOnMethods = "clickRECEIVEButton", alwaysRun = true)
 	public void displayMessage0OnPOItemPage() {
 			// Assert.assertEquals(driver.findElement(By.xpath(POItemsPageDefinition.NEW_PO_ITEMS_TEXT_ID)).getText(), "PO Items"); // Still error
 		screenAction.waitObjVisible(driver, By.cssSelector(POItemsPageDefinition.MESSAGE_TEXT_ID), 3);	
