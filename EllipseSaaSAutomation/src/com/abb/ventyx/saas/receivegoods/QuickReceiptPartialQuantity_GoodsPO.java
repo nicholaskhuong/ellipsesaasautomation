@@ -14,7 +14,6 @@ import com.abb.ventyx.saas.objects.pagedefinitions.POSearchPageDefinition;
 import com.abb.ventyx.utilities.ALM;
 import com.abb.ventyx.utilities.BaseTestCase;
 import com.abb.ventyx.utilities.Credentials;
-import com.abb.ventyx.utilities.ScreenAction;
 
 @ALM(id = "1025")
 @Credentials(user = "SPR002", password = "", district = "R100", position = "MATMAN")
@@ -45,9 +44,8 @@ public class QuickReceiptPartialQuantity_GoodsPO extends BaseTestCase {
 
 	@Test(description = "Click button SEARCH on PO search Page", dependsOnMethods = "inputPurchaseOrderItemNumber", alwaysRun = true)
 	public void clickSEARCHButton() {
-		ScreenAction actionBtn = new ScreenAction(driver);
-		actionBtn.clickBtn(By
-				.cssSelector(POSearchPageDefinition.SEARCH_BUTTON_ID));
+		screenAction.clickBtn(By.cssSelector(POSearchPageDefinition.SEARCH_BUTTON_ID));
+		screenAction.waitObjVisible(driver, By.cssSelector(POSearchPageDefinition.SEARCH_BUTTON_ID), 3);
 	}
 
 	@Test(description = "Access to PO Items Page", dependsOnMethods = "clickSEARCHButton", alwaysRun = true)
@@ -119,9 +117,8 @@ public class QuickReceiptPartialQuantity_GoodsPO extends BaseTestCase {
 
 	@Test(description = "Click Receive Button On Item Detail Page", dependsOnMethods = "inputValueOnItemDetailPage", alwaysRun = true)
 	public void clickRECEIVEButton() {
-		ScreenAction actionBtn = new ScreenAction(driver);
-		actionBtn.clickBtn(By
-				.cssSelector(ItemDetailPageDefinition.RECEIPT_PEFERENCE_ID));
+		screenAction.waitObjVisible(driver, (By.cssSelector(ItemDetailPageDefinition.RECEIVE_BUTTON_ID)), 3);
+		screenAction.clickBtnByIndex((By.cssSelector(ItemDetailPageDefinition.RECEIVE_BUTTON_ID)),0);
 	}
 
 	@Test(description = "Display Message On PO Item Page", dependsOnMethods = "clickRECEIVEButton", alwaysRun = true)

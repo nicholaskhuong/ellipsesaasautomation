@@ -73,7 +73,7 @@
   	
   	 <test name="Under Supply Select Complete Order Indicator">
 		<classes>
-		
+	
 				<class name="com.abb.ventyx.saas.receivegoods.UnderSupply_SelectCompleteOrderIndicator_Step05_06" />
 				
 				<class name="com.abb.ventyx.saas.receivegoods.UnderSupply_SelectCompleteOrderIndicator_Step08" />
