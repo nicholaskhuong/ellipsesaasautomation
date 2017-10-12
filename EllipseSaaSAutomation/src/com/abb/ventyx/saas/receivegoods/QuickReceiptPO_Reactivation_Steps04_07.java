@@ -109,12 +109,13 @@ public class QuickReceiptPO_Reactivation_Steps04_07 extends BaseTestCase {
 		WebElement receiptReference = driver.findElement(By.id(ItemDetailPageDefinition.RECEIPT_PEFERENCE_ID));
 		receiptReference.clear();
 		receiptReference.sendKeys("04may005");
+		screenAction.waitObjVisible(driver, By.id(ItemDetailPageDefinition.RECEIPT_PEFERENCE_ID), 3);
 	}
 
 	@Test(description = "Click Receive Button On Item Detail Page", dependsOnMethods = "inputReceiptReferenceOnItemDetailPage", alwaysRun = true)
 	public void clickRECEIVEButton() {
-		screenAction.clickBtn(By.xpath(ItemDetailPageDefinition.RECEIPT_PEFERENCE2_ID));
-		screenAction.waitObjVisible(driver, By.xpath(ItemDetailPageDefinition.RECEIPT_PEFERENCE2_ID), 3);
+		screenAction.clickBtn(By.cssSelector(ItemDetailPageDefinition.RECEIVE_BUTTON_ID));
+		screenAction.waitObjVisible(driver, By.cssSelector(ItemDetailPageDefinition.RECEIVE_BUTTON_ID), 3);
 	}
 
 	@Test(description = "Display Message On PO Item Page", dependsOnMethods = "clickRECEIVEButton", alwaysRun = true)

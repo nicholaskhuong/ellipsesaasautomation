@@ -65,9 +65,9 @@ public class BinLabel_Manual_And_UOI_Quantity_Step11 extends BaseTestCase {
 		Assert.assertEquals(partNumber.get(0).getAttribute("value"), "");
 		Assert.assertEquals(stockCode.get(0).getAttribute("value"), "STC88");
 		Assert.assertEquals(description.get(0).getAttribute("value"), "STOCK CODE;");
-		Assert.assertEquals(outstandingQuantityUOP.get(0).getAttribute("value"), "50.0");
+		Assert.assertEquals(outstandingQuantityUOP.get(0).getAttribute("value"), "100.0");
 		Assert.assertEquals(unitOfPurchase.get(0).getAttribute("value"), "EA");
-		Assert.assertEquals(outstandingQuantityUOI.get(0).getAttribute("value"), "50.0");
+		Assert.assertEquals(outstandingQuantityUOI.get(0).getAttribute("value"), "100.0");
 		Assert.assertEquals(unitOfIssue.get(0).getAttribute("value"), "EA");
 	}
 
@@ -92,9 +92,9 @@ public class BinLabel_Manual_And_UOI_Quantity_Step11 extends BaseTestCase {
 		Assert.assertEquals(partNumber.get(0).getAttribute("value"), "");
 		Assert.assertEquals(stockCode.get(0).getAttribute("value"), "STC88");
 		Assert.assertEquals(description.get(0).getAttribute("value"), "STOCK CODE;");
-		Assert.assertEquals(outstandingQuantityUOP.get(0).getAttribute("value"), "50.0");
+		Assert.assertEquals(outstandingQuantityUOP.get(0).getAttribute("value"), "100.0");
 		Assert.assertEquals(unitOfPurchase.get(0).getAttribute("value"), "EA");
-		Assert.assertEquals(outstandingQuantityUOI.get(0).getAttribute("value"), "50.0");
+		Assert.assertEquals(outstandingQuantityUOI.get(0).getAttribute("value"), "100.0");
 		Assert.assertEquals(unitOfIssue.get(0).getAttribute("value"), "EA");
 	}
 	

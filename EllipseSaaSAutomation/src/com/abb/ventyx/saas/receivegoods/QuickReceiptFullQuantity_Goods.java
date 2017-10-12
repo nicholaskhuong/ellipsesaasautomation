@@ -48,6 +48,7 @@ public class QuickReceiptFullQuantity_Goods extends BaseTestCase {
 		ScreenAction actionBtn = new ScreenAction(driver);
 		actionBtn.clickBtn(By
 				.cssSelector(POSearchPageDefinition.SEARCH_BUTTON_ID));
+		screenAction.waitObjVisible(driver, By.cssSelector(POSearchPageDefinition.SEARCH_BUTTON_ID), 3);
 	}
 
 	@Test(description = "Access to PO Items Page", dependsOnMethods = "clickSEARCHButton", alwaysRun = true)

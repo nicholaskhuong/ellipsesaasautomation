@@ -110,20 +110,24 @@ public class QuickReceiptFullQuantity_NormalPO_ConsignedSOH extends
 		receiptReference.get(0).clear();
 		receiptReference.get(0).sendKeys("04MAY07");
 	}
+	
+	 @Test(description = "Input New Bin On Item Detail Page",dependsOnMethods="inputValueOnItemDetailPage",alwaysRun = true)
+	 public void  inputNewBinOnIteamDetailPage() {
+		screenAction.waitObjVisible(driver, By.id(ItemDetailPageDefinition.NEW_BIN_CODE_ID), 3);
+		WebElement taskQuantityUOM = driver.findElement(By.id(ItemDetailPageDefinition.NEW_BIN_CODE_ID));
+		taskQuantityUOM.sendKeys("BIN");
+	 }
 
-	 @Test(description = "Click Receive Button On Item Detail Page",
-	 dependsOnMethods="inputValueOnItemDetailPage",alwaysRun = true)
+	 @Test(description = "Click Receive Button On Item Detail Page",dependsOnMethods="inputNewBinOnIteamDetailPage",alwaysRun = true)
 	 public void clickRECEIVEButton() {
-	 ScreenAction actionBtn = new ScreenAction(driver);
-	 actionBtn.clickBtn(By.cssSelector(ItemDetailPageDefinition.RECEIVE_BUTTON_ID));
+	 screenAction.waitObjVisible(driver, By.cssSelector(ItemDetailPageDefinition.RECEIVE_BUTTON_ID), 3);
+	 screenAction.clickBtn(By.cssSelector(ItemDetailPageDefinition.RECEIVE_BUTTON_ID));
 	 }
 	
-	 @Test(description = "Display Message On PO Item Page",
-	 dependsOnMethods="clickRECEIVEButton",alwaysRun = true)
+	 @Test(description = "Display Message On PO Item Page",dependsOnMethods="clickRECEIVEButton",alwaysRun = true)
 	 public void displayMessageOnPOItemPage() {
 	 //Assert.assertEquals(driver.findElement(By.xpath(POItemsPageDefinition.NEW_PO_ITEMS_TEXT_ID)).getText(), "PO Items"); // Still error
-	 List<WebElement> lismg
-	 =driver.findElements(By.cssSelector(POItemsPageDefinition.MESSAGE_TEXT_ID));
+	 List<WebElement> lismg=driver.findElements(By.cssSelector(POItemsPageDefinition.MESSAGE_TEXT_ID));
 	 Assert.assertEquals(lismg.get(0).getText(),"The search did not return any results\n(INFO) 3140.I0604: Quantity: 100, consignment stock received\n(INFO) CORE.E06004: Action successfully completed.\n(INFO) 3140.I0464: Successfully receipted purchase order. P05063003");
 	 lismg.get(0).click();
 	 }
