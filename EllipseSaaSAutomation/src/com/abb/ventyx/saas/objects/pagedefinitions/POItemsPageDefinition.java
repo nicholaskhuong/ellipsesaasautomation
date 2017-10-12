@@ -18,4 +18,5 @@ public class POItemsPageDefinition {
 	
 	public static final String MESSAGE_TEXT_ID = "#saas-3522304-overlays > div.v-Notification.humanized.v-Notification-humanized";
 	public static final String BACK_NAVIGATION_BUTTON_ID = "backNavigation";
+	
 }

@@ -36,5 +36,9 @@ public class ItemDetailPageDefinition {
 	public static final String FULL_BUTTON_ID = "#fullAction > span > span";
 	
 	public static final String RECEIVE_ID = "updateAction";
+	
+	public static final String LABEL_QUANTITY_ID = "labelQuantity";
+	public static final String NEW_BIN_CODE_ID = "newBinCode";
+
 }
 

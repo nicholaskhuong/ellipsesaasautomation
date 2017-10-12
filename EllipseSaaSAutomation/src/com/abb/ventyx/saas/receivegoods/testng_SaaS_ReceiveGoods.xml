@@ -61,12 +61,22 @@
 		</classes>
   	</test> <!-- Test -->
   	
-  	<test name="BinLabel Manual And UOI Of Quantity">
+  	<test name="Bin Label Manual And UOI Of Quantity">
 		<classes>
 		
 				<class name="com.abb.ventyx.saas.receivegoods.BinLabel_Manual_And_UOI_Quantity_Steps05_09" />
 				
 				<class name="com.abb.ventyx.saas.receivegoods.BinLabel_Manual_And_UOI_Quantity_Step11" />
+				
+		</classes>
+  	</test> <!-- Test -->
+  	
+  	 <test name="Under Supply Select Complete Order Indicator">
+		<classes>
+		
+				<class name="com.abb.ventyx.saas.receivegoods.UnderSupply_SelectCompleteOrderIndicator_Step05_06" />
+				
+				<class name="com.abb.ventyx.saas.receivegoods.UnderSupply_SelectCompleteOrderIndicator_Step08" />
 				
 		</classes>
   	</test> <!-- Test -->
