@@ -64,9 +64,9 @@ public class QuickReceiptPO_Reactivation_Steps04_07 extends BaseTestCase {
 		Assert.assertEquals(partNumber.get(0).getAttribute("value"), "");
 		Assert.assertEquals(stockCode.get(0).getAttribute("value"), "STC83");
 		Assert.assertEquals(description.get(0).getAttribute("value"), "STOCK CODE;");
-		Assert.assertEquals(outstandingQuantityUOP.get(0).getAttribute("value"), "20.0");
+		Assert.assertEquals(outstandingQuantityUOP.get(0).getAttribute("value"), "18.0");
 		Assert.assertEquals(unitOfPurchase.get(0).getAttribute("value"), "EA");
-		Assert.assertEquals(outstandingQuantityUOI.get(0).getAttribute("value"), "20.0");
+		Assert.assertEquals(outstandingQuantityUOI.get(0).getAttribute("value"), "18.0");
 		Assert.assertEquals(unitOfIssue.get(0).getAttribute("value"), "EA");
 	}
 
@@ -91,9 +91,9 @@ public class QuickReceiptPO_Reactivation_Steps04_07 extends BaseTestCase {
 		Assert.assertEquals(partNumber.get(0).getAttribute("value"), "");
 		Assert.assertEquals(stockCode.get(0).getAttribute("value"), "STC83");
 		Assert.assertEquals(description.get(0).getAttribute("value"), "STOCK CODE;");
-		Assert.assertEquals(outstandingQuantityUOP.get(0).getAttribute("value"), "20.0");
+		Assert.assertEquals(outstandingQuantityUOP.get(0).getAttribute("value"), "18.0");
 		Assert.assertEquals(unitOfPurchase.get(0).getAttribute("value"), "EA");
-		Assert.assertEquals(outstandingQuantityUOI.get(0).getAttribute("value"), "20.0");
+		Assert.assertEquals(outstandingQuantityUOI.get(0).getAttribute("value"), "18.0");
 		Assert.assertEquals(unitOfIssue.get(0).getAttribute("value"), "EA");
 	}
 	
@@ -101,7 +101,7 @@ public class QuickReceiptPO_Reactivation_Steps04_07 extends BaseTestCase {
 	public void inputReceiptQtyOnItemDetailPage() {
 		screenAction.waitObjVisible(driver, By.id(ItemDetailPageDefinition.RECEIPT_QTY_ID), 3);
 		WebElement taskQuantityUOM = driver.findElement(By.id(ItemDetailPageDefinition.RECEIPT_QTY_ID));
-		taskQuantityUOM.sendKeys("2");
+		taskQuantityUOM.sendKeys("18");
 	}
 		
 	@Test(description = "Input Receipt Reference On Item Detail Page", dependsOnMethods = "inputReceiptQtyOnItemDetailPage", alwaysRun = true)
