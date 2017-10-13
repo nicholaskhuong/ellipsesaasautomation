@@ -98,7 +98,7 @@ public class QuickReceiptPO_Reactivation_Step11 extends BaseTestCase {
 	public void inputReceiptQtyOnItemDetailPage() {
 		screenAction.waitObjVisible(driver, By.id(ItemDetailPageDefinition.RECEIPT_QTY_ID), 3);
 		WebElement taskQuantityUOM = driver.findElement(By.id(ItemDetailPageDefinition.RECEIPT_QTY_ID));
-		taskQuantityUOM.sendKeys("7");
+		taskQuantityUOM.sendKeys("10");
 	}
 		
 	@Test(description = "Input Receipt Reference On Item Detail Page", dependsOnMethods = "inputReceiptQtyOnItemDetailPage", alwaysRun = true)
