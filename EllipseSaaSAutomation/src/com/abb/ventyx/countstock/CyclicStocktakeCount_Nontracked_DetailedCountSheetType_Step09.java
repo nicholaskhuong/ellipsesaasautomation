@@ -112,6 +112,6 @@ public class CyclicStocktakeCount_Nontracked_DetailedCountSheetType_Step09 exten
 	public void displayMessageSuccessfullyForBIN2() {
 		screenAction.waitObjVisible(driver,By.cssSelector(CountActivitiesPageDefinition.MESSAGE_TEXT_ID), 3);
 		Assert.assertEquals(driver.findElement(By.cssSelector(CountActivitiesPageDefinition.MESSAGE_TEXT_ID)).getText(),"(INFO) CORE.E06004: Action successfully completed.");
-		driver.findElement(By.cssSelector(PickTasksPageDefinition.MESSAGE_TEXT_ID)).click();
+		driver.findElement(By.cssSelector(CountActivitiesPageDefinition.MESSAGE_TEXT_ID)).click();
 	}
 }
