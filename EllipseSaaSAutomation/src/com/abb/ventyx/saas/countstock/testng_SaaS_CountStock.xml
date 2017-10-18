@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Count Stock" parallel="none">
+  	<test name="Cyclic Stocktake Count Nontracked Detailed Count Sheet Type">
+		<classes>
+		
+				<class name="com.abb.ventyx.saas.countstock.CyclicStocktakeCount_Nontracked_DetailedCountSheetType_Steps03_07" />
+				
+				<class name="com.abb.ventyx.saas.countstock.CyclicStocktakeCount_Nontracked_DetailedCountSheetType_Steps09" />
+		
+		</classes>
+  	</test> <!-- Test --> 	
+  	<test name="StockCount Confirm SOH And SAB is Yes CountSheet Type Detailed">
+		<classes>
+		
+				<class name="com.abb.ventyx.saas.countstock.StockCount_ConfirmSOH_SAB_Yes_CountSheetTypeDetailed_Steps02_05" />
+				
+				<class name="com.abb.ventyx.saas.countstock.StockCount_ConfirmSOH_SAB_Yes_CountSheetTypeDetailed_Steps07_10" />
+				
+				<class name="com.abb.ventyx.saas.countstock.StockCount_ConfirmSOH_SAB_Yes_CountSheetTypeDetailed_Steps11_13" />
+		
+		</classes>
+  	</test> <!-- Test --> 	
+</suite> <!-- Suite -->

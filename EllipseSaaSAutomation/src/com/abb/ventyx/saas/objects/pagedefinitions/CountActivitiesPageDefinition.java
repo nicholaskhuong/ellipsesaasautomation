@@ -17,5 +17,5 @@ public class CountActivitiesPageDefinition {
 	public static final String ENTER_COUNT_QTY_ID = "#inputAction > span";
 	public static final String CONFIRM_SOH_ID = "#confirmAction > span";
 
-	public static final String MESSAGE_TEXT_ID = "#saas-3522304-overlays > div.v-Notification.humanized.v-Notification-humanized > div";
+	public static final String MESSAGE_TEXT_ID = "#saas-3522304-overlays > div.v-Notification.humanized.v-Notification-humanized";
 }

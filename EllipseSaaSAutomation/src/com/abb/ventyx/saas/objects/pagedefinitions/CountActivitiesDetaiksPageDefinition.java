@@ -7,7 +7,7 @@ public class CountActivitiesDetaiksPageDefinition {
 	
 	public static final String STOCK_CODE_ID = "stockCode";
 	public static final String DESCRIPTION_ID = "description";
-	public static final String STOCK_ON_HAND_ID = "stockOnHand";
+	public static final String STOCK_ON_HAND_ID = "#stockOnHand";
 	public static final String UNIT_OF_MEASURE_ID =  "uom";
 	public static final String ENTER_COUNT_QTY_ID = "#inputAction > span";
 	public static final String CONFIRM_SOH_ID = "#confirmAction > span";
@@ -16,5 +16,11 @@ public class CountActivitiesDetaiksPageDefinition {
 	public static final String STOCKTAKE_NUMBER_ID = "stocktakeNumber";
 	public static final String COUNT_QTY_ID = "countQty";
 	
+	public static final String WARE_HOUSE_SOH_ID = "warehouseSoh";
+	public static final String COUNT_SO_FAR_ID = "countSoFar";
+	
 	public static final String APPLY_BUTTON_ID = "#updateAndCleanStorageAction > span > span";
+	
+	public static final String APPLY_BUTTON2_ID = "#updateAction > span";
+	public static final String BACK_NAVIGATION_ID = "#backNavigation > span";
 }
