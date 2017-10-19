@@ -6,7 +6,7 @@
 		
 				<class name="com.abb.ventyx.saas.countstock.CyclicStocktakeCount_Nontracked_DetailedCountSheetType_Steps03_07" />
 				
-				<class name="com.abb.ventyx.saas.countstock.CyclicStocktakeCount_Nontracked_DetailedCountSheetType_Steps09" />
+				<class name="com.abb.ventyx.saas.countstock.CyclicStocktakeCount_Nontracked_DetailedCountSheetType_Step09" />
 		
 		</classes>
   	</test> <!-- Test --> 	
