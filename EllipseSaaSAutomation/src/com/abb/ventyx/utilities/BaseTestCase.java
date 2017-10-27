@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.annotation.Annotation;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Properties;
 import java.util.Random;
@@ -72,7 +73,7 @@ public class BaseTestCase {
 	private static int startRow = 1;
 	private static int endRow = 1;
 	private static int currentRow = 1;
-
+	ArrayList<TestMethodResultAdapter> resultAdapters = new ArrayList<>();
 	protected HashMap<String, String> data = new HashMap<String, String>();
 
 	public BaseTestCase() {
@@ -163,10 +164,7 @@ public class BaseTestCase {
 		resultAdapter.setValue(testResult.getName());
 		Reporter.allResults.add(resultAdapter);
 
-		// Save to disk
-
-		Serializion serializer = new Serializion();
-		serializer.saveToDisk(resultAdapter);
+		resultAdapters.add(resultAdapter);
 
 		// End
 
@@ -180,8 +178,12 @@ public class BaseTestCase {
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() throws IOException {
-		exportALMReferenceCsv(testCaseName, testCaseStatus);
+		// Save to disk
 		driver.quit();
+		Serializion serializer = new Serializion();
+		serializer.saveToDisk(resultAdapters);
+		exportALMReferenceCsv(testCaseName, testCaseStatus);
+
 	}
 
 	private void exportALMReferenceCsv(String tcName, String status) {
